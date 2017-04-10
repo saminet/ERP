@@ -1,0 +1,68 @@
+gestion_preinscription_homepage:
+    path:     /
+    defaults: { _controller: GestionPreinscriptionBundle:Default:index }
+
+preinscrits:
+    path:     /preinscrits/instance
+    defaults: { _controller: GestionPreinscriptionBundle:Default:new }
+
+Liste_preinscrits:
+    path:     /preinscrit/liste
+    defaults: { _controller: GestionPreinscriptionBundle:Default:listPreinscrit }
+
+infosPreEtudiant:
+    path:     preinscrit/infos/{id}
+    defaults: { _controller: GestionPreinscriptionBundle:Default:infosPreEtudiant }
+
+valider_preinscrit:
+    path:     /preinscrit/valider/{id}
+    defaults: { _controller: GestionPreinscriptionBundle:Default:validerPreinscrit }
+
+acepterPreinscrit:
+    path: /preinscrits/acepter/{id}
+    defaults: { _controller: GestionPreinscriptionBundle:Default:accepterPreinscrit }
+
+refuserPreinscrit:
+    path: /preinscrits/refuser/{id}
+    defaults: { _controller: GestionPreinscriptionBundle:Default:refuserPreinscrit }
+
+suprimerPreinscrit:
+    path: /preinscrits/suprimer/{id}
+    defaults: { _controller: GestionPreinscriptionBundle:Default:suprimerPreinscrit }
+
+
+listEtudiant:
+    path:     /etudiant/list
+    defaults: { _controller: GestionPreinscriptionBundle:Default:listEtudiant }
+
+infosEtudiant:
+    path:     /etudiant/infos/{id}
+    defaults: { _controller: GestionPreinscriptionBundle:Default:infosEtudiant }
+
+supprimerEtudiant:
+    path:     /etudiant/supprimer/{id}
+    defaults: { _controller: GestionPreinscriptionBundle:Default:supprimerEtudiant }
+
+ajouter_Etudiant:
+    path: /etudiant/ajouter
+    defaults: { _controller: GestionPreinscriptionBundle:Default:ajouterEtudiant }
+
+modifier_Etudiant:
+    path: /etudiant/edit/{id}
+    defaults: { _controller: GestionPreinscriptionBundle:Default:modifierEtudiant }
+
+validerModificationEtd:
+    path: /etudiant/valider
+    defaults: { _controller: GestionPreinscriptionBundle:Default:sauvegarderEtudiant }
+
+myapplication_contact:
+    path:     /contact
+    defaults: { _controller: GestionPreinscriptionBundle:Default:contact }
+
+email_form:
+    path:     /contact
+    defaults: { _controller: GestionPreinscriptionBundle:Default:contact  }
+
+
+
+

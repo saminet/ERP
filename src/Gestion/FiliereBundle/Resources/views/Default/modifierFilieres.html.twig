@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form,{'attr':{'action':path('modifier_filières',{ 'id': filiere.id })}}) }}
+
+    <div class="form-group">
+        <label for="gestion_filierebundle_filiere_intitule">{{ form_label(form.intitule) }}</label>
+        {{ form_widget(form.intitule) }}
+    </div>
+
+    <div>
+        {{ form_rest(form) }}
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

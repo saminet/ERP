@@ -1,0 +1,114 @@
+admin_admin_homepage:
+    path:     /
+    defaults: { _controller: AdminAdminBundle:Default:index }
+
+GestionProfilAdmin:
+    path:     /profil
+    defaults: { _controller: AdminAdminBundle:Default:gestionProfil }
+
+AddProfil:
+    path:     /AddProfil
+    defaults: { _controller: AdminAdminBundle:Default:AddProfil }
+
+er_pviescolaire_homepage:
+    path:     /indexviescolare
+    defaults: { _controller: AdminAdminBundle:Default:index }
+
+infoSondage:
+    path:     /infoSondage
+    defaults: { _controller: AdminAdminBundle:Default:infoSondage }
+
+agenda:
+    path:     /agenda
+    defaults: { _controller: AdminAdminBundle:Default:agenda }
+
+gererMatiere:
+    path:     /gererMatiere
+    defaults: { _controller: AdminAdminBundle:Default:gererMatiere }
+
+rechercheAvance:
+    path:     /rechercheAvance
+    defaults: { _controller: AdminAdminBundle:Default:rechercheAvance }
+
+gererClasse:
+    path:     /gererClasse
+    defaults: { _controller: AdminAdminBundle:Default:gererClasse }
+
+gererSalle:
+    path:     /gererSalle
+    defaults: { _controller: AdminAdminBundle:Default:gererSalle }
+
+listeMatiere:
+    path:     /listeMatiere
+    defaults: { _controller: AdminAdminBundle:Default:listeMatiere }
+
+listeSalle:
+    path:     /listeSalle
+    defaults: { _controller: AdminAdminBundle:Default:listeSalle }
+
+listePersonnel:
+    path:     /listePersonnel
+    defaults: { _controller: AdminAdminBundle:Default:listePersonnel }
+
+planingSalle:
+    path:     /planingSalle
+    defaults: { _controller: AdminAdminBundle:Default:planingSalle }
+
+EDTProfesseur:
+    path:     /EDTProfesseur
+    defaults: { _controller: AdminAdminBundle:Default:EDTProfesseur }
+
+planingProf:
+    path:     /planingProf
+    defaults: { _controller: AdminAdminBundle:Default:planingProf }
+
+table_datatables_managed:
+        path:     /indexviescolare
+        defaults: { _controller: AdminAdminBundle:Default:listProf }
+
+viescolaireGrilleabsences:
+        path:     /Grilleabsences
+        defaults: { _controller: AdminAdminBundle:Default:ajoutabs }
+
+listeabsencesenseignants:
+        path:     /ListeAbsence
+        defaults: { _controller: AdminAdminBundle:Default:listeabsenseignants }
+        
+listeabsencesetudiants:
+                path:     /ListeAbsenceetudiants
+                defaults: { _controller: AdminAdminBundle:Default:listeabsensetudiants }
+suiviabsences:
+                path:     /suiviabsences
+                defaults: { _controller: AdminAdminBundle:Default:suiviabsensetudiants }
+
+competencesajoutevaluation:
+                path:     /AjoutEvaluation
+                defaults: { _controller: AdminAdminBundle:Default:ajoutevaluation }
+competenceslistevaluation:
+                path:     /listeevaluation
+                defaults: { _controller: AdminAdminBundle:Default:listeevaluation }
+competencescahierdestext:
+                path:     /cahierdestext
+                defaults: { _controller: AdminAdminBundle:Default:cahierdestext }
+
+ressourceslisteetudiants:
+                path:     /listsetudiants
+                defaults: { _controller: AdminAdminBundle:Default:listsetudiants }
+ressourcesrelvedesnotes:
+                path:     /relvedesnotesetudiants
+                defaults: { _controller: AdminAdminBundle:Default:relvedesnotes }
+ressourcesTrombinoscopeetudiants:
+                path:     /Trombinoscopeetudiants
+                defaults: { _controller: AdminAdminBundle:Default:Trombinoscopeetudiants }
+ressourcesTrombinoscopeadmin:
+                path:     /Trombinoscopeadmin
+                defaults: { _controller: AdminAdminBundle:Default:Trombinoscopeadmin }
+ressourcesemploitemps:
+                path:     /ressourcesemploitemps
+                defaults: { _controller: AdminAdminBundle:Default:ressourcesemploitemps }
+ressourceplanning:
+                path:     /ressourceplanning
+                defaults: { _controller: AdminAdminBundle:Default:ressourceplanning }
+ressourceplanningclasses:
+                path:     /ressourceplanningclasses
+                defaults: { _controller: AdminAdminBundle:Default:ressourceplanningclasses }

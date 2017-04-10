@@ -1,0 +1,7 @@
+user_user_homepage:
+    path:     /
+    defaults: { _controller: UserUserBundle:Default:index }
+
+user_test_homepage:
+    path:     /user
+    defaults: { _controller: UserUserBundle:Default:showUser }

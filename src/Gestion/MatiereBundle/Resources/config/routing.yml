@@ -1,0 +1,19 @@
+CrudMatiere:
+    path:     /CrudMatiere
+    defaults: { _controller: GestionMatiereBundle:Default:index }
+
+AddMatiere:
+    path:     /AddMatiere
+    defaults: { _controller: GestionMatiereBundle:Default:AddMatiere }
+
+modifierMatiere:
+    path:     /modifierMatiere/{id}
+    defaults: { _controller: GestionMatiereBundle:Default:modifierMatiere }
+
+deleteMatiere:
+    path:     /deleteMatiere/{id}
+    defaults: { _controller: GestionMatiereBundle:Default:deleteMatiere }
+
+ValiderModification:
+    path:     /ValiderModification
+    defaults: { _controller: GestionMatiereBundle:Default:ValiderModification }

@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <h1>Information sur l'étudiant(e) : <b>{{ etudiant.nom }}</b> </h1>
+    <table class="table">
+
+    <tbody>
+
+
+
+        <tr><td><b>Nom</b></td><td>{{ etudiant.nom }}</td></tr>
+        <tr><td><b>Prenom</b></td><td>{{ etudiant.prenom }}</td></tr>
+        <tr><td><b>Sexe</b></td><td>{{ etudiant.sexe }}</td></tr>
+        <tr><td><b>LieuNaissance</b></td><td>{{ etudiant.nationalite }}</td></tr>
+        <tr><td><b>Ville</b></td><td>{{ etudiant.ville }}</td>
+        <tr><td><b>Numéro Cin/Pass</b></td><td>{{ etudiant.numCinPass }}</td></tr>
+        <tr><td><b>Adresse</b></td><td>{{ etudiant.adresse }}</td></tr>
+        <tr><td><b>Téléphone</b></td><td>{{ etudiant.tel }}</td></tr>
+        <tr><td><b>Email</b></td><td>{{ etudiant.email }}</td></tr>
+        <tr><td><b>Diplome</b></td><td>{{ etudiant.diplome }}</td></tr>
+        <tr><td><b>Etablissement</b></td><td>{{ etudiant.etablissement }}</td></tr>
+        <tr><td><b>Niveau</b></td><td>{{ etudiant.niveau }}</td></tr>
+        <tr><td><b>Formation</b></td><td>{{ etudiant.formation }}</td></tr>
+        <tr><td><a href="{{ path('modifier_Etudiant',{'id':etudiant.id}) }}"><button class="btn btn-primary">Modifier</button></a></td></tr>
+
+    </tbody>
+
+{% endblock %}

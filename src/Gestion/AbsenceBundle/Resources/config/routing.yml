@@ -1,0 +1,36 @@
+absence_gestion_absence_homepage:
+    path:     /Absence
+    defaults: { _controller: GestionAbsenceBundle:Default:index }
+
+Save_Query:
+    path: /Save
+    defaults: { _controller: GestionAbsenceBundle:Default:save }
+
+
+Save_QueryGroupe:
+    path: /Save_QueryGroupe
+    defaults: { _controller: GestionAbsenceBundle:Default:Save_QueryGroupe }
+
+SaveAbsenceForm:
+    path: /SaveAbsenceForm
+    defaults: { _controller: GestionAbsenceBundle:Default:SaveAbsenceForm }
+
+ConsulterAbsenceRetard:
+    path: /ConsulterAbsenceRetard
+    defaults: { _controller: GestionAbsenceBundle:consulterAbsenceRetard:ConsulterAbsenceRetard }
+
+Save_QueryConsu:
+    path: /Save_QueryConsu
+    defaults: { _controller: GestionAbsenceBundle:consulterAbsenceRetard:Save_QueryConsultation }
+
+Save_QueryGroupeConsu:
+    path: /Save_QueryGroupeConsu
+    defaults: { _controller: GestionAbsenceBundle:consulterAbsenceRetard:Save_QueryGroupeConsu }
+
+ListAbsence:
+    path: /ListAbsence
+    defaults: { _controller: GestionAbsenceBundle:consulterAbsenceRetard:ListAbsence }
+
+SaveAbsenceMatiereConsu:
+    path: /SaveAbsenceMatiereConsu
+    defaults: { _controller: GestionAbsenceBundle:consulterAbsenceRetard:SaveAbsenceMatiereConsu }

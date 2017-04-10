@@ -1,0 +1,15 @@
+gestion_enseignant_homepage:
+    path:     /enseignant
+    defaults: { _controller: GestionEnseignantBundle:Default:listEnseignant }
+
+Liste_enseignant:
+    path:     /enseignant/liste
+    defaults: { _controller: GestionEnseignantBundle:Default:listEnseignant }
+
+infos_Enseignant:
+    path:     enseignant/infos/{id}
+    defaults: { _controller: GestionEnseignantBundle:Default:infosEnseignant }
+
+modifier_Enseignant:
+    path: /enseignant/edit/{id}
+    defaults: { _controller: GestionEnseignantBundle:Default:modifierEnseignant }

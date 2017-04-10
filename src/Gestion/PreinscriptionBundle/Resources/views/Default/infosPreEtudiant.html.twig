@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <h1>Information sur le candidat : <b>{{ preinscrit.nom }}</b> </h1>
+    <table class="table">
+
+    <tbody>
+
+
+
+        <tr><td><b>Nom</b></td><td>{{ preinscrit.nom }}</td></tr>
+        <tr><td><b>Prenom</b></td><td>{{ preinscrit.prenom }}</td></tr>
+        <tr><td><b>Sexe</b></td><td>{{ preinscrit.sexe }}</td></tr>
+        <tr><td><b>LieuNaissance</b></td><td>{{ preinscrit.nationalite }}</td></tr>
+        <tr><td><b>Ville</b></td><td>{{ preinscrit.ville }}</td>
+        <tr><td><b>Numéro Cin/Pass</b></td><td>{{ preinscrit.numCinPass }}</td></tr>
+        <tr><td><b>Adresse</b></td><td>{{ preinscrit.adresse }}</td></tr>
+        <tr><td><b>Téléphone</b></td><td>{{ preinscrit.tel }}</td></tr>
+        <tr><td><b>Email</b></td><td>{{ preinscrit.email }}</td></tr>
+        <tr><td><b>Diplome</b></td><td>{{ preinscrit.diplome }}</td></tr>
+        <tr><td><b>Etablissement</b></td><td>{{ preinscrit.etablissement }}</td></tr>
+        <tr><td><b>Niveau</b></td><td>{{ preinscrit.niveau }}</td></tr>
+        <tr><td><b>Formation</b></td><td>{{ preinscrit.formation }}</td></tr>
+
+        <tr><td>
+                <a href="{{ path('acepterPreinscrit',{ 'id': preinscrit.id }) }}"><button class="btn btn-success">Accepter</button></a>
+                <a href="{{ path('refuserPreinscrit',{ 'id': preinscrit.id }) }}"><button class="btn btn-danger">Refuser</button></a>
+            </td>
+        </tr>
+
+    </tbody>
+
+
+{% endblock %}

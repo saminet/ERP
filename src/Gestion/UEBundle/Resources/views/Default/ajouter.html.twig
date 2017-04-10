@@ -1,0 +1,58 @@
+
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <form action="{{path('Valider_Ajout')}}" method="POST" id="MyForm">
+
+        <div class="form-group">
+            <label for="usr">Intitulé de l'unité:</label>
+            <input type="text" class="form-control" id="usr" name="nomUnite" value="" >
+        </div>
+
+        <div class="form-group">
+            <label for="gestion_niveaubundle_niveau_nomFiliere">Niveau:</label>
+            <select Id='gestion_niveaubundle_niveau_nomFiliere' name='nomNiveau' >
+                {% for niv in niveau %}
+                <OPTION name={{niv.nomNiveau}} value='{{ niv.nomNiveau }}'>{{ niv.nomNiveau }}
+                    {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="gestion_niveaubundle_niveau_nomFiliere">Filière</label>
+            <select Id='gestion_niveaubundle_niveau_nomFiliere' name='nomFiliere' >
+                {% for fil in filiere %}
+                <OPTION name={{fil.intitule}} value='{{ fil.intitule }}'>{{ fil.intitule }}
+                    {% endfor %}
+            </select>
+        </div>
+
+        <!-- parcour de la table matiere pour l'affichage des module present dans la table -->
+        <div class="form-group">
+            {% for mat in matiere %}
+                <br>
+                <label><input type="checkbox" name="nomMatiere[]" multiple="multiple" value={{mat.nomMatiere}}>{{mat.nomMatiere}}</label>
+            {% endfor %}
+            <br>
+        </div>
+
+        <div class="form-group">
+            <label for="usr">Totale Coefficients:</label>
+            <input type="text" class="form-control" id="cef" name="Coef" value="" >
+        </div>
+
+        <div class="form-group">
+            <label for="usr">Total Crédit:</label>
+            <input type="text" class="form-control" id="cred" name="Credit" value="" >
+        </div>
+
+
+
+
+
+        <center><input type="submit" value="Affecter" type="button" class="btn btn-success"></center>
+    </form>
+
+
+{% endblock %}

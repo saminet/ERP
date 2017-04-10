@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <!-- select niveau -->
+    <div class="floating-box" style ="display: inline-block;">
+                <form action="{{path('UE_Ajouter')}}" method="post" id="myFormNiveau" class="form-inline">
+                    Niveau: <select name="NameNiveau" onchange="getValue(this)">
+                        <option value=""></option>
+                        {% for niv in niveau %}
+                            <option value={{ niv.id }}>{{ niv.nomNiveau }}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+
+    <!-- select groupe -->
+    <form action="{{path('UE_Ajout_UE')}}" method="post" id="myFormFiliere" class="form-inline">
+        Filière: <select name="NameFiliere" onchange="getValueNiveau(this)">
+            <option value=""></option>
+            {% if filiere is not empty %}
+                {% for fil in filiere %}
+                    <option value={{fil.id}}>{{fil.intitule}}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
+            <br>
+        <input type="submit" value="Submit" type="button" class="btn btn-success">
+    </form>
+            </div>
+    <script>
+        function getValue(obj){
+            $('#myFormNiveau').submit();}
+    </script>
+
+    <script>
+        function getValueNiveau(obj){
+        $('#myFormFiliere').submit();}
+    </script>
+
+    </div>
+
+
+{% endblock %}

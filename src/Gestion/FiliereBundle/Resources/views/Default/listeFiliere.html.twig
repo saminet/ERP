@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des filières :</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Intitulé</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        {% for fil in filiere %}
+        <tbody>
+        <tr>
+            <td>{{ fil.id }}</td>
+            <td>{{ fil.intitule }}</td>
+            <td><a href="{{ path('modifier_filieres', { 'id': fil.id }) }}"><button class="btn btn-success">Modifier</button></a><a href="{{ path('supprimer_filieres', { 'id': fil.id }) }}"><button class="btn btn-danger">Supprimer</button></a>
+        </tr>
+        {% else %}
+            <p>Aucune filières n'a été trouvée.</p>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+

@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des salles :</h1>
+    <a href="{{ path('ajouter_Salle') }}"><button class="btn btn-success"> Ajouter </button></a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom Salle</th>
+            <th>Etat</th>
+            <th>Nombre Max. de chaises</th>
+            <th>Etage</th>
+        </tr>
+        </thead>
+        {% for sal in salle %}
+        <tbody>
+        <tr>
+            <td>{{ sal.nomSalle }}</td>
+            <td>{{ sal.etat }}</td>
+            <td>{{ sal.nbrMaxChaises }}</td>
+            <td>{{ sal.etage }}</td>
+            <td><a href="{{ path('modifier_Salle',{ 'id': sal.id }) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('suprimer_Salle',{'id':sal.id}) }}"><button class="btn btn-danger">Supprimer</button></a>
+        </tr>
+        {% else %}
+            <p>Aucune salle n'a été trouvée.</p>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+

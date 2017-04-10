@@ -1,0 +1,4 @@
+services:
+#    gestion_filiere.example:
+#        class: Gestion\FiliereBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

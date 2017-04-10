@@ -1,0 +1,94 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form,{'attr':{'action':path('modifier_Etudiant',{ 'id': etudiant.id })}}) }}
+
+    <div class="form-group">
+        <label for="etudiant_nom">{{ form_label(form.nom) }}</label>
+        {{ form_widget(form.nom) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_prenom">{{ form_label(form.prenom) }}</label>
+        {{ form_widget(form.prenom) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_sexe">{{ form_label(form.sexe) }}</label>
+        {{ form_widget(form.sexe) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_dateNaissance">{{ form_label(form.dateNaissance) }}</label>
+        {{ form_widget(form.dateNaissance) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_adresse">{{ form_label(form.adresse) }}</label>
+        {{ form_widget(form.adresse) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_lieuNaissance">{{ form_label(form.lieuNaissance) }}</label>
+        {{ form_widget(form.lieuNaissance) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_ville">{{ form_label(form.ville) }}</label>
+        {{ form_widget(form.ville) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_numCinPass">{{ form_label(form.numCinPass) }}</label>
+        {{ form_widget(form.numCinPass) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_tel">{{ form_label(form.tel) }}</label>
+        {{ form_widget(form.tel) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_email">{{ form_label(form.email) }}</label>
+        {{ form_widget(form.email) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_diplome">{{ form_label(form.diplome) }}</label>
+        {{ form_widget(form.diplome) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_etablissement">{{ form_label(form.etablissement) }}</label>
+        {{ form_widget(form.etablissement) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_anneeObtention">{{ form_label(form.anneeObtention) }}</label>
+        {{ form_widget(form.anneeObtention) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_niveau">{{ form_label(form.niveau) }}</label>
+        {{ form_widget(form.niveau) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_formation">{{ form_label(form.formation) }}</label>
+        {{ form_widget(form.formation) }}
+    </div>
+
+    <div class="form-group">
+        <label for="etudiant_nationalite">{{ form_label(form.nationalite) }}</label>
+        {{ form_widget(form.nationalite) }}
+    </div>
+
+    <div>
+        {{ form_rest(form) }}
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

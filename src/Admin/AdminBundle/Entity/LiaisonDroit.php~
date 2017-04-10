@@ -1,0 +1,48 @@
+<?php
+
+namespace Admin\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * LiaisonDroit
+ *
+ * @ORM\Table(name="liaison_droit")
+ * @ORM\Entity(repositoryClass="Admin\AdminBundle\Repository\LiaisonDroitRepository")
+ */
+class LiaisonDroit
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     *@ORM\ManyToOne(targetEntity="Admin\AdminBundle\Entity\DroitAcces")
+     *@ORM\joinColumn(onDelete="SET NULL")
+     */
+     private $droitAcces;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="Admin\AdminBundle\Entity\Acces")
+     *@ORM\joinColumn(onDelete="SET NULL")
+     */
+     private $acces;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+

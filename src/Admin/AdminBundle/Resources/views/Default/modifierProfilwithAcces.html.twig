@@ -1,0 +1,24 @@
+<table class="table table-striped">
+   <thead>
+      <tr>
+        <th>Nom Profil</th>
+        <th>Nom Poste</th>
+        <th>Module</th>
+        <th>Droit d'acces</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for acces in acces %}
+      <tr>
+      <td>{{acces.id}}</td>
+      <td>{{acces.profil.nomProfil}}</td> 
+      <td>{{acces.profil.posteProfil}}</td>
+      <td>{{acces.module.nomModule}}</td>
+      <td></td>
+
+        
+        <td><a href="{{ path('modifierProfil', { 'id': acces.id }) }}"><button type="button" class="btn btn-success">Modifier</button></a><button type="button" class="btn btn-danger">Supprimer</button></td> 
+      </tr>
+    {% endfor %}

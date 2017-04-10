@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <h1>Information sur l'enseignant(e) : <b>{{ enseignant.nom }}</b> </h1>
+    <table class="table">
+
+    <tbody>
+
+
+
+        <tr><td><b>Nom</b></td><td>{{ enseignant.nom }}</td></tr>
+        <tr><td><b>Prenom</b></td><td>{{ enseignant.prenom }}</td></tr>
+        <tr><td><b>Sexe</b></td><td>{{ enseignant.sexe }}</td></tr>
+        <tr><td><b>LieuNaissance</b></td><td>{{ enseignant.nationalite }}</td></tr>
+        <tr><td><b>Ville</b></td><td>{{ enseignant.ville }}</td>
+        <tr><td><b>Numéro Cin/Pass</b></td><td>{{ enseignant.cin }}</td></tr>
+        <tr><td><b>Adresse</b></td><td>{{ enseignant.adresse }}</td></tr>
+        <tr><td><b>Téléphone</b></td><td>{{ enseignant.tel }}</td></tr>
+        <tr><td><b>Email</b></td><td>{{ enseignant.email }}</td></tr>
+        <tr><td><b>RIB</b></td><td>{{ enseignant.rib }}</td></tr>
+        <tr><td><a href="{{ path('modifier_Enseignant',{ 'id': enseignant.id }) }}"><button class="btn btn-primary">Modifier</button></a></td></tr>
+
+    </tbody>
+
+{% endblock %}

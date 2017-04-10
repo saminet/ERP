@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form,{'attr':{'action':path('ajouter_Niveau')}}) }}
+
+    <div class="form-group">
+        <label for="gestion_filierebundle_filiere_intitule">{{ form_label(form.nomNiveau) }}</label>
+        {{ form_widget(form.nomNiveau) }}
+    </div>
+{#
+    <div class="form-group">
+        <label for="gestion_filierebundle_filiere_intitule">{{ form_label(form.nomNiveau) }}</label>
+        <select>
+            <option value="volvo">*** Veuillez choisir le niveau ***</option>
+            <optgroup label="Licence">
+                <option value="volvo">{{ form_widget("1'ère année") }}</option>
+                <option value="saab">{{ form_widget("2 ème année") }}</option>
+                <option value="saab">{{ form_widget("3 ème année") }}</option>
+            </optgroup>
+            <optgroup label="Master Professionnel">
+                <option value="volvo">{{ form_widget("1 ère année") }}</option>
+                <option value="saab">{{ form_widget("2 ème année") }}</option>
+            </optgroup>
+            <optgroup label="Master de recherche">
+                <option value="volvo">{{ form_widget("1 ère année") }}</option>
+                <option value="saab">{{ form_widget("2 ème année") }}</option>
+            </optgroup>
+        </select>
+    </div>
+
+#}
+    <div>
+        {{ form_rest(form) }}
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

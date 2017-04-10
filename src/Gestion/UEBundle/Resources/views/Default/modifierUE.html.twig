@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form,{'attr':{'action':path('modifier_UE', { 'id': unite.id })}}) }}
+
+    <div>
+        {{ form_rest(form) }}
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

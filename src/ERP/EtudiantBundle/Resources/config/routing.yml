@@ -1,0 +1,46 @@
+erp_etudiant_homepage:
+    path:     /indexEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:index }
+
+coursEtudiant:
+    path:     /coursEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:coursEtudiant }
+
+BulletinEtudiant:
+    path:     /BulletinEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:BulletinEtudiant }
+
+releveEtudiant:
+    path:     /releveEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:releveEtudiant }
+
+EvaluationEtudiant:
+    path:     /EvaluationEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:EvaluationEtudiant }
+
+PvEtudiant:
+    path:     /PvEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:PvEtudiant }
+
+
+InfoSondageEtudiant:
+    path:     /InfoSondageEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:InfoSondageEtudiant }
+
+EDTEtudiant:
+    path:     /EDTEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:EDTEtudiant }
+
+
+ListAbsenceEtudiant:
+    path:     /ListAbsenceEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:ListAbsenceEtudiant }
+
+FicheStageEtudiant:
+    path:     /FicheStageEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:FicheStageEtudiant }
+
+
+OffreStageEtudiant:
+    path:     /OffreStageEtudiant
+    defaults: { _controller: ERPEtudiantBundle:Default:OffreStageEtudiant }

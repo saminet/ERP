@@ -1,0 +1,20 @@
+gestion_salle_homepage:
+    path:     /salles
+    defaults: { _controller: GestionSalleBundle:Default:listSalles }
+
+list_Salles:
+    path:     /salles/liste
+    defaults: { _controller: GestionSalleBundle:Default:listSalles  }
+
+ajouter_Salle:
+    path: /salles/ajouter
+    defaults: { _controller: GestionSalleBundle:Default:ajouterSalle }
+
+suprimer_Salle:
+    path: /salles/supprimer/{id}
+    defaults: { _controller: GestionSalleBundle:Default:supprimerSalle }
+
+modifier_Salle:
+    path: /salles/modifier/{id}
+    defaults: { _controller: GestionSalleBundle:Default:modifierSalle }
+

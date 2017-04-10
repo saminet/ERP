@@ -1,0 +1,4 @@
+services:
+#    gestion_ue.example:
+#        class: Gestion\UEBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

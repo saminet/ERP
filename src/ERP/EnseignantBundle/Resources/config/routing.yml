@@ -1,0 +1,71 @@
+erp_enseignant_homepage:
+    path:     /indexEnseignant
+    defaults: { _controller: ERPEnseignantBundle:Default:index }
+
+cahierTextEnseignant:
+    path:     /cahierEnseignant
+    defaults: { _controller: ERPEnseignantBundle:Default:cahierText }
+
+coursEnseignant:
+    path:     /cours
+    defaults: { _controller: ERPEnseignantBundle:Default:cours }
+
+saisieNoteEnseignant:
+    path:     /saisieNote
+    defaults: { _controller: ERPEnseignantBundle:Default:saisieNote }
+
+releveEnseignant:
+    path:     /releveNote
+    defaults: { _controller: ERPEnseignantBundle:Default:releveNote }
+
+EvaluationEnseignant:
+    path:     /evaluation
+    defaults: { _controller: ERPEnseignantBundle:Default:evaluation }
+
+PVClasseEnseignant:
+    path:     /PvClasse
+    defaults: { _controller: ERPEnseignantBundle:Default:PvClasse }
+
+InfoSondageEnseignant:
+    path:     /infoSondage
+    defaults: { _controller: ERPEnseignantBundle:Default:infoSondage }
+
+SaisieEvalEnseignant:
+    path:     /SaisieEvaluation
+    defaults: { _controller: ERPEnseignantBundle:Default:SaisieEvaluation }
+
+ListeEvalEnseignant:
+    path:     /listeEval
+    defaults: { _controller: ERPEnseignantBundle:Default:listeEval }
+
+circulationEnseignant:
+    path:     /circulationDirection
+    defaults: { _controller: ERPEnseignantBundle:Default:circulationDirection }
+
+ListeEleveEnseignant:
+    path:     /listeEleve
+    defaults: { _controller: ERPEnseignantBundle:Default:listeEleve }
+
+ListeEnseignant:
+    path:     /listeEnseignant
+    defaults: { _controller: ERPEnseignantBundle:Default:listeEnseignant }
+
+EDTEnseignant:
+    path:     /EDTEnseignant
+    defaults: { _controller: ERPEnseignantBundle:Default:EDTEnseignant }
+
+PlaningSalleEnseignant:
+    path:     /PlaningSalle
+    defaults: { _controller: ERPEnseignantBundle:Default:PlaningSalle }
+
+AbsRetarEnseignant:
+    path:     /AbsRetard
+    defaults: { _controller: ERPEnseignantBundle:Default:AbsRetard }
+
+FicheStageEnseignant:
+    path:     /FicheStage
+    defaults: { _controller: ERPEnseignantBundle:Default:FicheStage }
+
+ListeStagiaireEnseignant:
+    path:     /ListeStagiaire
+    defaults: { _controller: ERPEnseignantBundle:Default:ListeStagiaire }

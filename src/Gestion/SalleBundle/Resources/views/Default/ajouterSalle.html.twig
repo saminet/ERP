@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form,{'attr':{'action':path('ajouter_Salle')}}) }}
+
+    <div class="form-group">
+        <label for="salle_nomSalle">{{ form_label(form.nomSalle) }}</label>
+        {{ form_widget(form.nomSalle) }}
+    </div>
+
+    <div class="form-group">
+        <label for="salle_etat">{{ form_label(form.etat) }}</label>
+        {{ form_widget(form.etat) }}
+    </div>
+
+    <div class="form-group">
+        <label for="salle_nbrMaxChaises">{{ form_label(form.nbrMaxChaises) }}</label>
+        {{ form_widget(form.nbrMaxChaises) }}
+    </div>
+
+    <div class="form-group">
+        <label for="salle_etage">{{ form_label(form.etage) }}</label>
+        {{ form_widget(form.etage) }}
+    </div>
+
+
+    <div>
+        {{ form_rest(form) }}
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    gestion_absence.example:
+#        class: Gestion\AbsenceBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,35 @@
+gestion_ue_homepage:
+    path:     /Unite_Enseignement
+    defaults: { _controller: GestionUEBundle:Default:index }
+
+Liste_UE:
+    path:     /Unite_Enseignement/liste
+    defaults: { _controller: GestionUEBundle:Default:list }
+
+ajouter_UE:
+    path: /Unite_Enseignement/ajouter
+    defaults: { _controller: GestionUEBundle:Default:ajouter }
+
+modifier_UE:
+    path: /Unite_Enseignement/modifier/{id}
+    defaults: { _controller: GestionUEBundle:Default:modifierUE }
+
+supprimer_UE:
+    path: /Unite_Enseignement/supprimer/{id}
+    defaults: { _controller: GestionUEBundle:Default:supprimerUE }
+
+UE_Ajout:
+    path:     /Unite_Enseignement/new
+    defaults: { _controller: GestionUEBundle:Default:new }
+
+Valider_Ajout:
+    path: /Unite_Enseignement/valider
+    defaults: { _controller: GestionUEBundle:Default:validerUE }
+
+UE_Ajouter:
+    path:     /Unite_Enseignement/newUE
+    defaults: { _controller: GestionUEBundle:Default:ajouterUE }
+
+UE_Ajout_UE:
+    path:     /Unite_Enseignement/addUE
+    defaults: { _controller: GestionUEBundle:Default:addUE }

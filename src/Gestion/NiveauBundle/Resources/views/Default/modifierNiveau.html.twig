@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form,{'attr':{'action':path('modifier_Niveau',{ 'id': niveau.id })}}) }}
+
+    <div class="form-group">
+        <label for="gestion_niveaubundle_niveau_nomNiveau">{{ form_label(form.nomNiveau) }}</label>
+        {{ form_widget(form.nomNiveau) }}
+    </div>
+
+    <div>
+        {{ form_rest(form) }}
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

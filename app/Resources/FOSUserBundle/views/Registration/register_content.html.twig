@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="../assets/styleRegister.css" rel="stylesheet" type="text/css" />
+
+</head>
+{% trans_default_domain 'FOSUserBundle' %}
+<body>
+<div class="container">
+      <div class="row main">
+        <div class="panel-heading">
+                 <div class="panel-title text-center">
+                    <h1 class="title">Company Name</h1>
+                    <hr />
+                  </div>
+              </div> 
+        <div class="main-login main-center">
+    <form action="{{ path('fos_user_registration_register') }}" method="POST" class="form-horizontal">
+    <div class="form-group" id="fos_user_registration_form">
+
+    <div class="form-group">
+              <label for="email" class="cols-sm-2 control-label">Your Email</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'form.email'|trans, } }) }}
+        {{ form_errors(form.email) }}
+          </div>
+
+              </div>
+            </div>
+
+      <div class="form-group">
+              <label for="test" class="cols-sm-2 control-label">Your Email</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+        {{ form_widget(form.test, { 'attr': {'class': 'form-control', 'placeholder': 'form.test'|trans, } }) }}
+        {{ form_errors(form.test) }}
+          </div>
+
+              </div>
+            </div>
+
+
+ <div class="form-group">
+              <label for="name" class="cols-sm-2 control-label">Your name</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+        {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans } }) }}
+        {{ form_errors(form.username) }}
+          </div>
+              </div>
+            </div>
+<div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Password</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'form.password'|trans } }) }}
+        {{ form_errors(form.plainPassword.first) }}
+          </div>
+              </div>
+            </div>
+  <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Repeat password</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'form.password_confirmation'|trans } }) }}
+        {{ form_errors(form.plainPassword.second) }}
+  </div>
+              </div>
+            </div>
+        {{ form_rest(form) }}
+
+    </div>
+    <div>
+    <div class="form-group ">
+        <input class="btn btn-primary btn-lg btn-block login-button" type="submit" value="{{ 'registration.submit'|trans }}">
+        </div>
+    </div>
+</form>
+{{ form_end(form) }}
+</body>

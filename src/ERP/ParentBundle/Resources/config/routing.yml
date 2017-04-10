@@ -1,0 +1,54 @@
+erp_parent_homepage:
+    path:     /indexParent
+    defaults: { _controller: ERPParentBundle:Default:index }
+
+ConsNoteParent:
+    path:     /ConsNoteParent
+    defaults: { _controller: ERPParentBundle:Default:ConsNoteParent }
+
+releveNoteParent:
+    path:     /releveNoteParent
+    defaults: { _controller: ERPParentBundle:Default:releveNoteParent }
+
+ConsEvaluationParent:
+    path:     /ConsEvaluationParent
+    defaults: { _controller: ERPParentBundle:Default:ConsEvaluationParent }
+
+
+PvClasseParent:
+    path:     /PvClasseParent
+    defaults: { _controller: ERPParentBundle:Default:PvClasseParent }
+
+
+InfoSondageParent:
+    path:     /InfoSondageParent
+    defaults: { _controller: ERPParentBundle:Default:InfoSondageParent }
+
+
+CirculationParent:
+    path:     /CirculationParent
+    defaults: { _controller: ERPParentBundle:Default:CirculationParent }
+
+ListeEleveParent:
+    path:     /ListeEleveParent
+    defaults: { _controller: ERPParentBundle:Default:ListeEleveParent }
+
+EDTParent:
+    path:     /EDTParent
+    defaults: { _controller: ERPParentBundle:Default:EDTParent }
+
+AbsRetardParent:
+    path:     /AbsRetardParent
+    defaults: { _controller: ERPParentBundle:Default:AbsRetardParent }
+
+FicheStageParent:
+    path:     /FicheStageParent
+    defaults: { _controller: ERPParentBundle:Default:FicheStageParent }
+
+OffrestageParent:
+    path:     /OffrestageParent
+    defaults: { _controller: ERPParentBundle:Default:OffrestageParent }
+
+ListEnseignantParent:
+    path:     /ListEnseignantParent
+    defaults: { _controller: ERPParentBundle:Default:ListEnseignantParent }

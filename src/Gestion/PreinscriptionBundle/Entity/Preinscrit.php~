@@ -1,0 +1,143 @@
+<?php
+
+namespace Gestion\PreinscriptionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * preinscrit
+ *
+ * @ORM\Table(name="preinscrit")
+ * @ORM\Entity(repositoryClass="Gestion\PreinscriptionBundle\Repository\preinscritRepository")
+ */
+class Preinscrit
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
+     */
+    private $prenom;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_naissance", type="date")
+     */
+    private $dateNaissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu_naissance", type="string", length=255)
+     */
+    private $lieuNaissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nationalite", type="string", length=255)
+     */
+    private $nationalite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="num_cin_pass", type="integer")
+     */
+    private $numCinPass;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=255)
+     */
+    private $sexe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="text")
+     */
+    private $adresse;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="tel", type="integer")
+     */
+    private $tel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diplome", type="string", length=255)
+     */
+    private $diplome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etablissement", type="string", length=255)
+     */
+    private $etablissement;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="annee_obtention", type="date")
+     */
+    private $anneeObtention;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text")
+     */
+    private $message;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", length=255)
+     */
+    private $niveau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formation", type="string", length=255)
+     */
+    private $formation;
+}
+

@@ -1,0 +1,451 @@
+<?php
+
+namespace Gestion\PreinscriptionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Etudiant
+ *
+ * @ORM\Table(name="etudiant")
+ * @ORM\Entity(repositoryClass="Gestion\PreinscriptionBundle\Repository\EtudiantRepository")
+ */
+class Etudiant
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Etudiant
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Preinscrit
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set dateNaissance
+     *
+     * @param \DateTime $dateNaissance
+     *
+     * @return Preinscrit
+     */
+    public function setDateNaissance($dateNaissance)
+    {
+        $this->dateNaissance = $dateNaissance;
+
+        return $this;
+    }
+
+    /**
+     * Get dateNaissance
+     *
+     * @return \DateTime
+     */
+    public function getDateNaissance()
+    {
+        return $this->dateNaissance;
+    }
+
+    /**
+     * Set lieuNaissance
+     *
+     * @param string $lieuNaissance
+     *
+     * @return Preinscrit
+     */
+    public function setLieuNaissance($lieuNaissance)
+    {
+        $this->lieuNaissance = $lieuNaissance;
+
+        return $this;
+    }
+
+    /**
+     * Get lieuNaissance
+     *
+     * @return string
+     */
+    public function getLieuNaissance()
+    {
+        return $this->lieuNaissance;
+    }
+
+    /**
+     * Set nationalite
+     *
+     * @param string $nationalite
+     *
+     * @return Preinscrit
+     */
+    public function setNationalite($nationalite)
+    {
+        $this->nationalite = $nationalite;
+
+        return $this;
+    }
+
+    /**
+     * Get nationalite
+     *
+     * @return string
+     */
+    public function getNationalite()
+    {
+        return $this->nationalite;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Preinscrit
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set numCinPass
+     *
+     * @param integer $numCinPass
+     *
+     * @return Preinscrit
+     */
+    public function setNumCinPass($numCinPass)
+    {
+        $this->numCinPass = $numCinPass;
+
+        return $this;
+    }
+
+    /**
+     * Get numCinPass
+     *
+     * @return integer
+     */
+    public function getNumCinPass()
+    {
+        return $this->numCinPass;
+    }
+
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     *
+     * @return Preinscrit
+     */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    /**
+     * Get sexe
+     *
+     * @return string
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Preinscrit
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set tel
+     *
+     * @param integer $tel
+     *
+     * @return Preinscrit
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return integer
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Preinscrit
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set diplome
+     *
+     * @param string $diplome
+     *
+     * @return Preinscrit
+     */
+    public function setDiplome($diplome)
+    {
+        $this->diplome = $diplome;
+
+        return $this;
+    }
+
+    /**
+     * Get diplome
+     *
+     * @return string
+     */
+    public function getDiplome()
+    {
+        return $this->diplome;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param string $etablissement
+     *
+     * @return Preinscrit
+     */
+    public function setEtablissement($etablissement)
+    {
+        $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return string
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
+
+    /**
+     * Set anneeObtention
+     *
+     * @param \DateTime $anneeObtention
+     *
+     * @return Preinscrit
+     */
+    public function setAnneeObtention($anneeObtention)
+    {
+        $this->anneeObtention = $anneeObtention;
+
+        return $this;
+    }
+
+    /**
+     * Get anneeObtention
+     *
+     * @return \DateTime
+     */
+    public function getAnneeObtention()
+    {
+        return $this->anneeObtention;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     *
+     * @return Preinscrit
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param string $niveau
+     *
+     * @return Preinscrit
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return string
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * Set formation
+     *
+     * @param string $formation
+     *
+     * @return Preinscrit
+     */
+    public function setFormation($formation)
+    {
+        $this->formation = $formation;
+
+        return $this;
+    }
+
+    /**
+     * Get formation
+     *
+     * @return string
+     */
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+
+}
+

@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Niveaux :</h1>
+    <a href="{{path('ajouter_Niveau')}}"><button class="btn btn-success">Ajouter Niveau</button></a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Niveau</th>
+            <th>Filière</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        {% for niv in niveau %}
+        <tbody>
+        <tr>
+            <td>{{ niv.NomNiveau }}</td>
+            <td>{{ niv.filiere }}</td>
+            <td><a href="{{ path('modifier_Niveau', { 'id': niv.id }) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimer_Niveau', { 'id': niv.id }) }}"><button class="btn btn-danger">Supprimer</button></a>
+        </tr>
+        {% else %}
+            <p>Aucune Niveau n'a été trouvée.</p>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+

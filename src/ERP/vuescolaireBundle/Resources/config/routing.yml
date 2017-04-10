@@ -1,0 +1,3 @@
+er_pvuescolaire_homepage:
+    path:     /
+    defaults: { _controller: ERPvuescolaireBundle:Default:index }

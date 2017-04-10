@@ -1,0 +1,19 @@
+gestion_niveau_homepage:
+    path:     /
+    defaults: { _controller: GestionNiveauBundle:Default:index }
+
+Liste_Niveau:
+    path:     /niveau/liste
+    defaults: { _controller: GestionNiveauBundle:Default:listeNiveaux }
+
+ajouter_Niveau:
+    path:     /niveau/ajouter
+    defaults: { _controller: GestionNiveauBundle:Default:ajouterNiveau }
+
+modifier_Niveau:
+    path:     /niveau/modifier/{id}
+    defaults: { _controller: GestionNiveauBundle:Default:modifierNiveau }
+
+supprimer_Niveau:
+    path:     /niveau/supprimer/{id}
+    defaults: { _controller: GestionNiveauBundle:Default:supprimerNiveau }
