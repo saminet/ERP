@@ -1,5 +1,5 @@
 CrudMatiere:
-    path:     /CrudMatiere
+    path:     /matieres
     defaults: { _controller: GestionMatiereBundle:Default:index }
 
 AddMatiere:

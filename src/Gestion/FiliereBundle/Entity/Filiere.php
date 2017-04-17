@@ -35,7 +35,6 @@ class Filiere
 
     /**
      *@ORM\ManyToOne(targetEntity="Gestion\NiveauBundle\Entity\Niveau")
-     *@ORM\joinColumn(onDelete="SET NULL")
      */
     private $niveau;
 

@@ -28,8 +28,26 @@ Valider_Ajout:
 
 UE_Ajouter:
     path:     /Unite_Enseignement/newUE
-    defaults: { _controller: GestionUEBundle:Default:ajouterUE }
+    defaults: { _controller: GestionUEBundle:Default:ajouter_UE }
 
 UE_Ajout_UE:
+    path:     /Unite_Enseignement/add_UE
+    defaults: { _controller: GestionUEBundle:Default:add_UE }
+
+
+Unites:
+    path:     /Unite_Enseignement/unites
+    defaults: { _controller: GestionUEBundle:Default:unites }
+
+
+filieres_list_ajax_call:
+    path:     /ajax/filieres_list
+    defaults: { _controller: GestionUEBundle:Default:ajaxGetFilieres }
+
+Save_Unites:
     path:     /Unite_Enseignement/addUE
-    defaults: { _controller: GestionUEBundle:Default:addUE }
+    defaults: { _controller: GestionUEBundle:Default:save }
+
+Save_Query_Unites:
+    path:     /Unite_Enseignement/ajouterUE
+    defaults: { _controller: GestionUEBundle:Default:Save_Query }

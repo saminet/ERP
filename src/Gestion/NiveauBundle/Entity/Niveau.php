@@ -28,6 +28,11 @@ class Niveau
      * @ORM\Column(name="nomNiveau", type="string", length=255)
      */
     private $nomNiveau;
+	
+	        public function __toString()
+    {
+        return $this->nomNiveau;
+    }
 
 
     /**

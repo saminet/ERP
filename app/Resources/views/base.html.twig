@@ -30,10 +30,10 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="//fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css" />
     <!-- END LAYOUT FIRST STYLES -->
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -51,7 +51,17 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{ asset('templates/assets/layouts/layout5/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+
+    <!--[if IE 8]><script src="bundles/gestionue/js/es5.js"></script><![endif]-->
+    <!-- BEGIN jquery -->
+    <script src="{{ asset('templates/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+    <!-- END jquery -->
+    <!-- BEGIN selectize -->
+    <script src="{{ asset('bundles/gestionue/js/selectize.js') }}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/gestionue/dist/css/selectize.default.css') }}" />
+    <script src="{{ asset('bundles/gestionue/js/index.js') }}" type="text/javascript"></script>
+    <!-- END selectize -->
+
 </head>
 <!-- END HEAD -->
 
@@ -858,7 +868,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="{{ asset('templates/assets/global/plugins/ie8.fix.min.js') }}"></script>
 <![endif]-->
 <!-- BEGIN CORE PLUGINS -->
-<script src="{{ asset('templates/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('templates/assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('templates/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
@@ -908,7 +917,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="{{ asset('templates/assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('templates/assets/layouts/global/scripts/quick-nav.min.js') }}" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
 </body>
 
 </html>

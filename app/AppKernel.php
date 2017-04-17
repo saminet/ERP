@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new ERP\EtudiantBundle\ERPEtudiantBundle(),
             new ERP\vuescolaireBundle\ERPvuescolaireBundle(),
             new ERP\viescolaireBundle\ERPviescolaireBundle(),
-           new FOS\UserBundle\FOSUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new User\UserBundle\UserUserBundle(),
             new Admin\AdminBundle\AdminAdminBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Gestion\EnseignantBundle\GestionEnseignantBundle(),
             new Gestion\UEBundle\GestionUEBundle(),
             new Gestion\AbsenceBundle\GestionAbsenceBundle(),
+            new Gestion\EventBundle\GestionEventBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

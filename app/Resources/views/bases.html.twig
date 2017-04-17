@@ -30,10 +30,10 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="//fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css" />
     <!-- END LAYOUT FIRST STYLES -->
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -50,7 +50,13 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{ asset('templates/assets/layouts/layout5/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/layouts/layout5/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
-    <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- BEGIN jquery -->
+    <script src="{{ asset('templates/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+    <!-- END jquery -->
+
+</head>
 <!-- END HEAD -->
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo">
@@ -215,7 +221,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <!-- END GROUP INFORMATION -->
                         <!-- BEGIN USER PROFILE -->
-                     {% block profil %} {% endblock%}
+                        {% block profil %} {% endblock%}
                         <!-- END USER PROFILE -->
                         <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                         <button type="button" class="quick-sidebar-toggler md-skip" data-toggle="collapse">
@@ -230,19 +236,25 @@ License: You must have a valid license purchased only from themeforest(the above
                 {% block menu %} {% endblock %}
                 <!-- END HEADER MENU -->
             </div>
-                    <!--/container-->
-                </nav>
-            </header>
-            <!-- END HEADER -->
-            <div class="container-fluid">
-                <div class="page-content">
-                    <!-- BEGIN BREADCRUMBS -->
-                    <div class="breadcrumbs">
+            <!--/container-->
+        </nav>
+    </header>
+    <!-- END HEADER -->
+    <div class="container-fluid">
+        <div class="page-content">
+            <!-- BEGIN BREADCRUMBS -->
+            <div class="breadcrumbs">
+                <h1>Admin Dashboard 2</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+            <!-- END BREADCRUMBS -->
             {% block body %} {% endblock %}
         </div>
-        <!-- BEGIN FOOTER -->
-       
-        <!-- END FOOTER -->
     </div>
 </div>
 <!-- END CONTAINER -->
@@ -850,7 +862,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="{{ asset('templates/assets/global/plugins/ie8.fix.min.js') }}"></script>
 <![endif]-->
 <!-- BEGIN CORE PLUGINS -->
-<script src="{{ asset('templates/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('templates/assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('templates/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>

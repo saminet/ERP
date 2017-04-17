@@ -38,7 +38,6 @@ class DefaultController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-        $modulee= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
         $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
 
         return $this->render('AdminAdminBundle:Default:profil.html.twig', array(
@@ -71,6 +70,7 @@ class DefaultController extends Controller
     	//determiner l'objet module selectionné à partir de nom saisie dans le formulaire
         $nomModuleVar= array();
     	$nomModuleVar=$request->get('nomModule');
+        var_dump($nomModuleVar);die('Hello');
 
     	foreach($nomModuleVar as $nomModuleVarr){ 
 

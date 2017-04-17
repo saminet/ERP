@@ -2,8 +2,7 @@
 
 {% block body %}
     <h1>Liste des unités d'enseignements :</h1>
-
-    <a href="{{path('ajouter_UE')}}"><button class="btn btn-success">Ajouter UE</button></a>
+    <a href="{{path('Unites')}}"><button class="btn btn-success">Ajouter UE</button></a>
     <table class="table">
         <thead>
         <tr>
@@ -11,16 +10,18 @@
             <th>Coefficient</th>
             <th>Credit d'unité</th>
             <th>Niveau</th>
+            <th>Matiere</th>
         </tr>
         </thead>
-        {% for ue in unite %}
+        {% for ue in unites %}
         <tbody>
         <tr>
             <td>{{ ue.intitule }}</td>
             <td>{{ ue.coeffUnite }}</td>
             <td>{{ ue.creditUnite }}</td>
-            <td>..........</td>
-            <td><a href="{{ path('modifier_UE', { 'id': ue.id }) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimer_UE', { 'id': ue.id }) }}"><button class="btn btn-danger">Supprimer</button></a>
+            <td>{{ ue.niveau.nomNiveau }}</td>
+            <td>{% for matiere in ue.matieres %}- {{matiere.nomMatiere}}<br>{% endfor %}</td>
+            <td><a href="{{path('modifier_UE',{'id':ue.id})}}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimer_UE', { 'id' : ue.id }) }}"><button class="btn btn-danger">Supprimer</button></a>
         </tr>
         {% else %}
             <p>Aucune Unité n'a été trouvée.</p>
