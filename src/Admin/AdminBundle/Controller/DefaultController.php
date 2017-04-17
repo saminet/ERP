@@ -50,6 +50,7 @@ class DefaultController extends Controller
     {
     	//insertion des attribut dans la table  profil 
         $nomProfil=$request->get('nomProfil');
+        //var_dump($nomProfil);die('Hello');
         $posteProfil=$request->get('poste');
         //sauvegarde dans la base des donnée,table profil
     	$profil = new Profil();
@@ -59,7 +60,7 @@ class DefaultController extends Controller
     //sauvegarde des idprofil dans chaque ligne de boucle dans acces
         $em = $this->getDoctrine()->getManager();
 
-    // tells Doctrine you want to (eventually) save the Product (no queries yet)
+    // tells Doctrine you want to (eventually) save the profil (no queries yet)
         $em->persist($profil);
 
     // actually executes the queries (i.e. the INSERT query)
@@ -70,17 +71,18 @@ class DefaultController extends Controller
     	//determiner l'objet module selectionné à partir de nom saisie dans le formulaire
         $nomModuleVar= array();
     	$nomModuleVar=$request->get('nomModule');
-        var_dump($nomModuleVar);die('Hello');
+        //var_dump($nomModuleVar);die('Hello');
 
-    	foreach($nomModuleVar as $nomModuleVarr){ 
-
+    	foreach($nomModuleVar as $nomModuleVarr){
         $repository1=$this->getDoctrine()->getRepository('AdminAdminBundle:Module');
         $SelectedModule=$repository1->createQueryBuilder('e')->where('e.nomModule = :nomModuleVarr')->setParameter('nomModuleVarr', $nomModuleVarr)->getQuery()->getResult();
-      
-        //recherche de l'objet module selon id
-        $module= $this->getDoctrine()->getRepository('AdminAdminBundle:Module')->find($SelectedModule[0]->getId());
-    	 
-         //determiner l'id de profil enregistrer apres saisie de la formulaire en haut
+            var_dump($SelectedModule);die('Hello');
+            //recherche de l'objet module selon id
+            $module= $this->getDoctrine()->getRepository('AdminAdminBundle:Module')->find($SelectedModule[0]->getId());
+            //var_dump($module);die('Hello');
+
+
+                //determiner l'id de profil enregistrer apres saisie de la formulaire en haut
          $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:Profil');
          $ProfilEnCours=$repository2->createQueryBuilder('e')->where('e.nomProfil = :nomProfilVarr')->setParameter('nomProfilVarr', $nomProfil)->getQuery()->getResult();
       
@@ -112,7 +114,7 @@ class DefaultController extends Controller
       
         //recherche de l'objet module selon id
             if (empty($droitEnCours)) {
-                echo "viveeeeeeeee";
+                echo "la liste est vide";
             }
                
            
@@ -429,6 +431,16 @@ $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdmin
     public function ressourceplanningclassesAction()
     {
         return $this->render('AdminAdminBundle:Default:ressourceplanningclasses.html.twig');
+    }
+
+
+    public function membreAction()
+    {
+        //Affichage de nom de l'utilisateur
+        $user = $this->getUser();
+        return $this->render('AdminAdminBundle:Default:CrudMembre.html.twig', array(
+            'user' => $user
+        ));
     }
 
 

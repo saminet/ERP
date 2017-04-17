@@ -434,7 +434,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
-
+                        <br>
 
     <form action="{{path('AddProfil')}}" method="POST" id="MyForm">
     <br>
@@ -451,17 +451,14 @@ License: You must have a valid license purchased only from themeforest(the above
       <div class="form-group">
        {% for modules in module %}
           <br>
-          <label><input name="nomModule[]" type="checkbox" value={{modules.nomModule}}>{{modules.nomModule}}</label>
+          <label><input name="nomModule[]" type="checkbox" id="chk" value={{modules.nomModule}}>{{modules.nomModule}}</label>
        {% endfor %}
-       <input type="submit" value="Submit">
+          <br><br>
+       <input type="submit" class="btn btn-success" value="Enregistrer">
        </div> 
     
     </form>
 
-
-
-
-    
 
                     </div>
                     <!-- END BREADCRUMBS -->
