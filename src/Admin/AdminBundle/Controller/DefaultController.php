@@ -54,7 +54,7 @@ class DefaultController extends Controller
             throw new AccessDeniedException('Désolé, mais vous n\'etes pas autorisé à accéder à ce service.');
         }
 
-        return $this->render('AdminAdminBundle:Default:ajoutpersonnel.html.twig', array('user' => $user));
+        return $this->render('AdminAdminBundle:Default:ajoutPersonnels.html.twig', array('user' => $user));
     }
 
     public function validerMembreAction(Request $request)
@@ -80,7 +80,7 @@ class DefaultController extends Controller
         $tel=$request->get('tel');
         $email=$request->get('Mail');
         $adresse=$request->get('adresse');
-        $username=$request->get('login');
+        $username=$request->get('pseudo');
         $password=$request->get('password');
         //$roles=array();
         $roles=$request->get('role');
@@ -90,9 +90,13 @@ class DefaultController extends Controller
         // Pour récupérer la liste de tous les utilisateurs
         $pseudo =$userManager->findUserByUsername($username);
         //var_dump($pseudo);die('Hello');
-        if ($pseudo == NULL){echo ('Nothing');}
-        else {$this->get('session')->getFlashBag('info', 'Un utilisateur déjà existant avec le meme pseudo');
-            return $this->redirect( $this->generateUrl('Ajout_Personnel'));
+        $res= array($pseudo);
+        if(Count($pseudo)>0) {
+            echo "1";
+        }
+        else
+        {
+            echo "0";
         }
         die('zzzzzz');
 
@@ -133,6 +137,26 @@ class DefaultController extends Controller
             $em->flush();
         return $this->redirect($this->generateUrl('liste_Membre', array('user' => $user)));
     }
+
+
+    public function verifLoginAction(Request $request)
+    {
+        $pseudo = $request->get('pseudo');
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        // Pour récupérer la liste de tous les utilisateurs
+        $pseuudo =$userManager->findUserByUsername($pseudo);
+        //var_dump($res);die('Hello');
+        if(Count($pseuudo)>0) {
+            echo "1";
+        }
+        else
+        {
+            echo "0";
+        }
+        return new JsonResponse(Count($pseuudo));
+    }
+
 
     public function listMembreAction()
     {

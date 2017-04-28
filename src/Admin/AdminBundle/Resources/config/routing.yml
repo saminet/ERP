@@ -10,6 +10,10 @@ Ajout_Personnel:
     path:     /membre/personnel/ajouter
     defaults: { _controller: AdminAdminBundle:Default:ajoutPersonnel }
 
+verifLogin:
+    path:     /verifLogin
+    defaults: { _controller: AdminAdminBundle:Default:verifLogin}
+
 Valider_Membre:
     path:     /membre/valider
     defaults: { _controller: AdminAdminBundle:Default:validerMembre }
