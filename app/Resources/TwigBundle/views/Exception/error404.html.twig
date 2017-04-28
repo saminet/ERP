@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>erreur lors d'accée au service</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        désolé, mais vous n'êtes pas autorisé à accéder à ce service
+    </p>
+{% endblock %}

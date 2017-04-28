@@ -5,3 +5,11 @@ user_user_homepage:
 user_test_homepage:
     path:     /user
     defaults: { _controller: UserUserBundle:Default:showUser }
+
+user_index:
+    path:     /users
+    defaults: { _controller: UserUserBundle:Default:role }
+
+edit_user:
+    path:     /user/edit/{id}
+    defaults: { _controller: UserUserBundle:Default:edit }

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Erreur lors de saisie</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        L'email est déjà utilisé, veuillez utiliser un autre <br><br>
+        <a href="{{ path('Add_Membre') }}">retour au formulaire</a>.
+    </br>
+{% endblock %}

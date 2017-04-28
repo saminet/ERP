@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form,{'attr':{'action':path('AjoutProfil')}}) }}
+
+    <div class="form-group">
+        <label for="admin_adminbundle_profil_nomProfil">{{ form_label(form.nomProfil) }}</label>
+        {{ form_widget(form.nomProfil) }}
+    </div>
+
+    <div>
+        {{ form_rest(form) }}
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

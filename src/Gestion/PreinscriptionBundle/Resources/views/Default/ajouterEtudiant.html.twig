@@ -4,22 +4,6 @@
 
     {{ form_start(form,{'attr':{'action':path('ajouter_Etudiant')}}) }}
 
-    <div class="form-group">
-        <label for="etudiant_nom">{{ form_label(form.nom) }}</label>
-        {{ form_widget(form.nom) }}
-    </div>
-
-    <div class="form-group">
-        <label for="etudiant_prenom">{{ form_label(form.prenom) }}</label>
-        {{ form_widget(form.prenom) }}
-    </div>
-
-    <div class="form-group">
-        <label for="etudiant_sexe">{{ form_label(form.sexe) }}</label>
-        {{ form_widget(form.sexe) }}
-    </div>
-
-
     <div>
         {{ form_rest(form) }}
     </div>

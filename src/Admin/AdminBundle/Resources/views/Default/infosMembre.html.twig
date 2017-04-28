@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <h1>Information sur le personnel : <b>{{ membre.nom }}</b> </h1>
+    <a href="{{path('liste_Membre')}}">Revenir à la liste des personnels</a>
+    <table class="table">
+
+    <tbody>
+
+        <tr><td><b>Nom</b></td><td>{{ membre.nom }}</td></tr>
+        <tr><td><b>Prenom</b></td><td>{{ membre.prenom }}</td></tr>
+        <tr><td><b>Sexe</b></td><td>{{ membre.sexe }}</td></tr>
+        <tr><td><b>Numéro CIN</b></td><td>{{ membre.cin }}</td></tr>
+        <tr><td><b>LieuNaissance</b></td><td>{{ membre.lieuxNaissance }}</td></tr>
+        <tr><td><b>Ville</b></td><td>{{ membre.ville }}</td>
+        <tr><td><b>Nationalité</b></td><td>{{ membre.nationalite }}</td></tr>
+        <tr><td><b>Adresse</b></td><td>{{ membre.adresse }}</td></tr>
+        <tr><td><b>Téléphone</b></td><td>{{ membre.tel }}</td></tr>
+        <tr><td><b>Email</b></td><td>{{ membre.email }}</td></tr>
+        <tr><td><b>Login</b></td><td>{{ membre.login }}</td></tr>
+        <tr><td><b>Mot de Passe</b></td><td>{{ membre.password }}</td></tr>
+        <tr><td><b>Role</b></td><td>{{ membre.role }}</td></tr>
+        <tr><td><a href="{{ path('modifier_Membre',{ 'id': membre.id }) }}"><button class="btn btn-primary">Modifier</button></a></td></tr>
+
+    </tbody>
+
+{% endblock %}

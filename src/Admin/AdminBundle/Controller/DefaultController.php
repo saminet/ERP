@@ -18,11 +18,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Admin\AdminBundle\Entity\Acces;
 use Admin\AdminBundle\Entity\LiaisonDroit;
+use Admin\AdminBundle\Entity\Membre;
 use Admin\AdminBundle\Entity\DroitAcces;
 use Admin\AdminBundle\Entity\Profil;
+use User\UserBundle\Entity\User;
+use Admin\AdminBundle\Form\ProfilType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
 class DefaultController extends Controller
 {
@@ -31,10 +37,331 @@ class DefaultController extends Controller
         return $this->render('AdminAdminBundle:Default:index.html.twig');
     }
 
+    public function addMembreAction()
+    {
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('Désolé, mais vous n\'etes pas autorisé à accéder à ce service.');
+        }
+        return $this->render('AdminAdminBundle:Default:membre.html.twig', array('user' => $user));
+    }
+
+    public function ajoutPersonnelAction()
+    {
+        // On teste que l'utilisateur dispose bien du rôle ROLE_AUTEUR
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('Désolé, mais vous n\'etes pas autorisé à accéder à ce service.');
+        }
+
+        return $this->render('AdminAdminBundle:Default:ajoutpersonnel.html.twig', array('user' => $user));
+    }
+
+    public function validerMembreAction(Request $request)
+    {
+
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $Membre = $em->getRepository('AdminAdminBundle:Membre')->findAll();
+
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+
+        $nom=$request->get('nom');
+        $prenom=$request->get('prenom');
+        //$Date_Nais=$request->get('date_naissance');
+        $cin=$request->get('cin');
+        $rib=$request->get('rib');
+        $sexe=$request->get('sexe');
+        $ville=$request->get('ville');
+        $leuxNais=$request->get('leuxNais');
+        $nat=$request->get('nat');
+        $tel=$request->get('tel');
+        $email=$request->get('Mail');
+        $adresse=$request->get('adresse');
+        $username=$request->get('login');
+        $password=$request->get('password');
+        //$roles=array();
+        $roles=$request->get('role');
+
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        // Pour récupérer la liste de tous les utilisateurs
+        $pseudo =$userManager->findUserByUsername($username);
+        //var_dump($pseudo);die('Hello');
+        if ($pseudo == NULL){echo ('Nothing');}
+        else {$this->get('session')->getFlashBag('info', 'Un utilisateur déjà existant avec le meme pseudo');
+            return $this->redirect( $this->generateUrl('Ajout_Personnel'));
+        }
+        die('zzzzzz');
+
+
+            $user = $userManager->createUser();
+            $user->setUsername($username);
+            $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 13]);
+            $user->setPassword($hash);
+            $user->setEmail($email);
+            $user->setEnabled(true);
+            $user->setRoles(array($roles));
+            $userManager->updateUser($user);
+
+            //var_dump($nom,$prenom,$cin,$rib,$sexe,$ville,$leuxNais,$nat,$tel,$email,$adresse,$username,$password,$roles);die('Hello');
+            //sauvegarde dans la base des donnée,table membre
+            $membre = new Membre();
+            $membre->setNom($nom);
+            $membre->setPrenom($prenom);
+            //$membre->setDateNaissance($Date_Nais);
+            $membre->setCin($cin);
+            $membre->setRib($rib);
+            $membre->setSexe($sexe);
+            $membre->setVille($ville);
+            $membre->setLieuxNaissance($leuxNais);
+            $membre->setNationalite($nat);
+            $membre->setTel($tel);
+            $membre->setEmail($email);
+            $membre->setAdresse($adresse);
+            $membre->setLogin($username);
+            $membre->setPassword($password);
+            $membre->setRole($roles);
+
+            //sauvegarde des idprofil dans chaque ligne de boucle dans acces
+            $em = $this->getDoctrine()->getManager();
+            // tells Doctrine you want to (eventually) save the Product (no queries yet)
+            $em->persist($membre);
+            // actually executes the queries (i.e. the INSERT query)
+            $em->flush();
+        return $this->redirect($this->generateUrl('liste_Membre', array('user' => $user)));
+    }
+
+    public function listMembreAction()
+    {
+        $membre= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Membre')->findAll();
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        $user = $this->getUser();
+        return $this->render('AdminAdminBundle:Default:listMembre.html.twig', array('user' => $user, 'membre' => $membre ));
+    }
+
+    public function infosMembreAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $membre= $em->getRepository('AdminAdminBundle:Membre')->find($id);
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        $user = $this->getUser();
+        return $this->render('AdminAdminBundle:Default:infosMembre.html.twig', array('user' => $user, 'membre' => $membre ));
+    }
+
+    public function editMembreAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $membre= $em->getRepository('AdminAdminBundle:Membre')->find($id);
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        $user = $this->getUser();
+        return $this->render('AdminAdminBundle:Default:modifierMembre.html.twig', array('user' => $user, 'membre' => $membre ));
+    }
+
+    public function validerEditMembreAction($id, Request $request)
+    {
+
+        $IDMembre=$request->get('idMembre');
+        $nom=$request->get('nom');
+        $prenom=$request->get('prenom');
+        //$Date_Nais=$request->get('date_naissance');
+        $cin=$request->get('cin');
+        $rib=$request->get('rib');
+        $sexe=$request->get('sexe');
+        $ville=$request->get('ville');
+        $leuxNais=$request->get('leuxNais');
+        $nat=$request->get('nat');
+        $tel=$request->get('tel');
+        $email=$request->get('Mail');
+        $adresse=$request->get('adresse');
+        $username=$request->get('login');
+        $username_Old=$request->get('Old_login');
+        $password=$request->get('password');
+        //$roles=array();
+        $roles=$request->get('role');
+        //var_dump($nom,$prenom,$cin,$rib,$sexe,$ville,$leuxNais,$nat,$tel,$email,$adresse,$username,$password,$roles);die('Hello');
+
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+
+        //sauvegarde dans la base des donnée,table membre
+        $em = $this->getDoctrine()->getManager();
+        $membre = $em->getRepository('AdminAdminBundle:Membre')->find($IDMembre);
+        $membre->setNom($nom);
+        $membre->setPrenom($prenom);
+        //$membre->setDateNaissance($Date_Nais);
+        $membre->setCin($cin);
+        $membre->setRib($rib);
+        $membre->setSexe($sexe);
+        $membre->setVille($ville);
+        $membre->setLieuxNaissance($leuxNais);
+        $membre->setNationalite($nat);
+        $membre->setTel($tel);
+        $membre->setEmail($email);
+        $membre->setAdresse($adresse);
+        $membre->setLogin($username);
+        $membre->setPassword($password);
+        $membre->setRole($roles);
+        //var_dump($username_Old);die('Hello');
+
+
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        $usr = $userManager->findUserByUsername($username_Old);
+        $usr->setUsername($username);
+        $hash = password_hash($password,PASSWORD_BCRYPT,['cost' => 13]) ;
+        $usr->setPassword($hash);
+        $usr->setEmail($email);
+        $usr->setEnabled(true);
+        $usr->setRoles(array($roles));
+        $userManager->updateUser($usr);
+
+
+        // tells Doctrine you want to (eventually) save the Product (no queries yet)
+        $em->persist($membre);
+        // actually executes the queries (i.e. the INSERT query)
+        $em->flush();
+        return $this->redirect($this->generateUrl('liste_Membre', array('user' => $user)));
+    }
+
+    public function deleteMembreAction(Request $request)
+    {
+        $IDMembre=$request->get('id');
+        $username=$request->get('username');
+        //var_dump($username);die('Hello');
+        $em = $this->getDoctrine()->getManager();
+        $membre = $em->getRepository('AdminAdminBundle:Membre')->find($IDMembre);
+
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        $usr = $userManager->findUserByUsername($username);
+        $em->remove($usr);
+        $em->remove($membre);
+        $em->flush();
+        return $this->redirect($this->generateUrl('liste_Membre', array('user' => $user)));
+    }
+
+    public function listeProfilAction()
+    {
+        $profil = $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Profil')->findAll();
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        return $this->render('AdminAdminBundle:Default:listeProfil.html.twig', array('user' => $user, 'profil' => $profil ));
+    }
+
+    public function newProfilAction(Request $request)
+    {
+        // Pour récupérer le service UserManager du bundle
+        $userManager = $this->get('fos_user.user_manager');
+        // Pour récupérer la liste de tous les utilisateurs
+        $users = $userManager->findUsers();
+        return $this->render('AdminAdminBundle:Default:ajoutProfil.html.twig',array('users' => $users));
+    }
+
+    public function AddProfilsAction(Request $request)
+    {
+        $profils= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Profil')->findAll();
+        //insertion des attribut dans la table  profil
+        $nomProfil=$request->get('nomProfil');
+        $posteProfil=$request->get('poste');
+        $roles=array();
+        $roles=$request->get('nomRole');
+
+        if(!is_null($roles)) {
+            foreach ($roles as $role) {
+                $role = $request->get('nomRole');
+                //var_dump($role);
+            }
+            //die('Hello');
+            //sauvegarde dans la base des donnée,table profil
+            $profil = new Profil();
+            $profil->setNomProfil($nomProfil);
+            $profil->setPosteProfil($posteProfil);
+            $profil->setRole(serialize($roles));
+
+            //sauvegarde des idprofil dans chaque ligne de boucle dans acces
+            $em = $this->getDoctrine()->getManager();
+            // tells Doctrine you want to (eventually) save the Product (no queries yet)
+            $em->persist($profil);
+
+            // actually executes the queries (i.e. the INSERT query)
+            $em->flush();
+
+            $user = $this->getUser();
+            if (!is_object($user) || !$user instanceof UserInterface) {
+                throw new AccessDeniedException('This user does not have access to this section.');
+            }
+            return $this->redirect($this->generateUrl('listeProfil'));
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function gestionProfilAction()
     {
-    	//Affichage de nom de l'utilisateur
-    	$user = $this->getUser();
+        //Affichage de nom de l'utilisateur
+        $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -43,95 +370,90 @@ class DefaultController extends Controller
         return $this->render('AdminAdminBundle:Default:profil.html.twig', array(
             'user' => $user,'module'=>$module
         ));
-
     }
-   //fonction de sauvegarde de formulaire de creation de profil
+    //fonction de sauvegarde de formulaire de creation de profil
     public function AddProfilAction(Request $request)
     {
-    	//insertion des attribut dans la table  profil 
+        //insertion des attribut dans la table  profil
         $nomProfil=$request->get('nomProfil');
-        //var_dump($nomProfil);die('Hello');
         $posteProfil=$request->get('poste');
         //sauvegarde dans la base des donnée,table profil
-    	$profil = new Profil();
-    	$profil->setNomProfil($nomProfil);
-    	$profil->setPosteProfil($posteProfil);
+        $profil = new Profil();
+        $profil->setNomProfil($nomProfil);
+        $profil->setPosteProfil($posteProfil);
 
-    //sauvegarde des idprofil dans chaque ligne de boucle dans acces
+        //sauvegarde des idprofil dans chaque ligne de boucle dans acces
         $em = $this->getDoctrine()->getManager();
 
-    // tells Doctrine you want to (eventually) save the profil (no queries yet)
+        // tells Doctrine you want to (eventually) save the Product (no queries yet)
         $em->persist($profil);
 
-    // actually executes the queries (i.e. the INSERT query)
-         $em->flush();
+        // actually executes the queries (i.e. the INSERT query)
+        $em->flush();
 
-    //fin bloc profilllll
-
-    	//determiner l'objet module selectionné à partir de nom saisie dans le formulaire
+        //fin bloc profilllll
+        //determiner l'objet module selectionné à partir de nom saisie dans le formulaire
         $nomModuleVar= array();
-    	$nomModuleVar=$request->get('nomModule');
-        //var_dump($nomModuleVar);die('Hello');
+        $nomModuleVar=$request->get('nomModule');
 
-    	foreach($nomModuleVar as $nomModuleVarr){
-        $repository1=$this->getDoctrine()->getRepository('AdminAdminBundle:Module');
-        $SelectedModule=$repository1->createQueryBuilder('e')->where('e.nomModule = :nomModuleVarr')->setParameter('nomModuleVarr', $nomModuleVarr)->getQuery()->getResult();
-            var_dump($SelectedModule);die('Hello');
+        foreach($nomModuleVar as $nomModuleVarr){
+
+            $repository1=$this->getDoctrine()->getRepository('AdminAdminBundle:Module');
+            $SelectedModule=$repository1->createQueryBuilder('e')->where('e.nomModule = :nomModuleVarr')->setParameter('nomModuleVarr', $nomModuleVarr)->getQuery()->getResult();
+
             //recherche de l'objet module selon id
             $module= $this->getDoctrine()->getRepository('AdminAdminBundle:Module')->find($SelectedModule[0]->getId());
-            //var_dump($module);die('Hello');
+
+            //determiner l'id de profil enregistrer apres saisie de la formulaire en haut
+            $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:Profil');
+            $ProfilEnCours=$repository2->createQueryBuilder('e')->where('e.nomProfil = :nomProfilVarr')->setParameter('nomProfilVarr', $nomProfil)->getQuery()->getResult();
+
+            //recherche de l'objet module selon id
+            $profill= $this->getDoctrine()->getRepository('AdminAdminBundle:Profil')->find($ProfilEnCours[0]->getId());
+
+            //sauvegarde dans la base des donnée,table Acces
+            //sauvegarde idModule dans la table acess
+            //sauvegarde idProfil dans la table acess
+            $acces = new Acces();
+            $acces->setModule($module);
+            $acces->setProfil($profill);
+            $em = $this->getDoctrine()->getManager();
+            // tells Doctrine you want to (eventually) save the Product (no queries yet)
+            $em->persist($acces);
+            // actually executes the queries (i.e. the INSERT query)
+            $em->flush();
+            //traitement de droit d'acces qui a ete inserer en haut
+            $id=$acces->getId();
+            //recuperer les droit selectionner pour chaque module
+            $nomdroitVar= array();
+            //setParameter('nomModuleVarrr', $nomModuleVarr);
+            $nomdroitVar=$request->get($nomModuleVar);
+            //var_dump($nomdroitVar); die('Hello');
+            foreach($nomdroitVar as $nomdroiteVarr){
+
+                $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces');
+                $droitEnCours=$repository2->createQueryBuilder('e')->where('e.nomDroit = :nomDroitVarr')->setParameter('nomDroitVarr', $nomdroiteVarr)->getQuery()->getResult();
+
+                //recherche de l'objet module selon id
+                if (empty($droitEnCours)) {
+                    echo "viveeeeeeeee";
+                }
 
 
-                //determiner l'id de profil enregistrer apres saisie de la formulaire en haut
-         $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:Profil');
-         $ProfilEnCours=$repository2->createQueryBuilder('e')->where('e.nomProfil = :nomProfilVarr')->setParameter('nomProfilVarr', $nomProfil)->getQuery()->getResult();
-      
-        //recherche de l'objet module selon id
-       $profill= $this->getDoctrine()->getRepository('AdminAdminBundle:Profil')->find($ProfilEnCours[0]->getId());
+                $droit= $this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces')->find($droitEnCours[0]->getId());
 
-    //sauvegarde dans la base des donnée,table Acces
-    //sauvegarde idModule dans la table acess
-    //sauvegarde idProfil dans la table acess
-    	$acces = new Acces();
-    	$acces->setModule($module);
-    	$acces->setProfil($profill); 
-        $em = $this->getDoctrine()->getManager(); 
-    // tells Doctrine you want to (eventually) save the Product (no queries yet)
-        $em->persist($acces);
-    // actually executes the queries (i.e. the INSERT query)
-         $em->flush();
-    //traitement de droit d'acces qui a ete inserer en haut
-        $id=$acces->getId();
-    //recuperer les droit selectionner pour chaque module
-        $nomdroitVar= array();
-        //setParameter('nomModuleVarrr', $nomModuleVarr);
-        $nomdroitVar=$request->get($nomModuleVarr);
-       
-        foreach($nomdroitVar as $nomdroiteVarr){
-
-            $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces');
-            $droitEnCours=$repository2->createQueryBuilder('e')->where('e.nomDroit = :nomDroitVarr')->setParameter('nomDroitVarr', $nomdroiteVarr)->getQuery()->getResult();
-      
-        //recherche de l'objet module selon id
-            if (empty($droitEnCours)) {
-                echo "la liste est vide";
+                $liaison = new LiaisonDroit();
+                $liaison->setAcces($acces);
+                $liaison->setDroitAcces($droit);
+                $em = $this->getDoctrine()->getManager();
+                // tells Doctrine you want to (eventually) save the Product (no queries yet)
+                $em->persist($liaison);
+                // actually executes the queries (i.e. the INSERT query)
+                $em->flush();
             }
-               
-           
-       $droit= $this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces')->find($droitEnCours[0]->getId());
+        }
 
-        $liaison = new LiaisonDroit();
-        $liaison->setAcces($acces);
-        $liaison->setDroitAcces($droit); 
-        $em = $this->getDoctrine()->getManager(); 
-    // tells Doctrine you want to (eventually) save the Product (no queries yet)
-        $em->persist($liaison);
-    // actually executes the queries (i.e. the INSERT query)
-         $em->flush();
-} 
-}
-
-	   $user = $this->getUser();
+        $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -139,53 +461,53 @@ class DefaultController extends Controller
         $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Acces')->findAll();
         $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
 
-         $acces  = $this->get('knp_paginator')->paginate(
-        $Listeacces, /* query NOT result */
-        $request->query->getInt('page', 1)/*page number*/,
-        8/*limit per page*/
-    );
-        
+        $acces  = $this->get('knp_paginator')->paginate(
+            $Listeacces, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            8/*limit per page*/
+        );
+
 
         return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
             'user' => $user,'module'=>$module,'acces'=>$acces,'liaisons'=>$liaison
         ));
 
     }
-  
+
     public function CrudProfilAction(Request $request)
     {
 
-    $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Acces')->findAll();
-    $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
-    $liaison= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:LiaisonDroit')->findAll();
+        $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Acces')->findAll();
+        $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
+        $liaison= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:LiaisonDroit')->findAll();
 //pagination
-    //$request=$this->getRequest();
+        //$request=$this->getRequest();
         $acces  = $this->get('knp_paginator')->paginate(
-        $Listeacces, /* query NOT result */
-        $request->query->getInt('page', 1)/*page number*/,
-        8/*limit per page*/
-    );
+            $Listeacces, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            8/*limit per page*/
+        );
 
 //fin pagination
-      $user = $this->getUser();
+        $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-      return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
+        return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
             'user' => $user,'module'=>$module,'liaisons'=>$liaison,'acces' => $acces
         ));
 
-}
+    }
 
     public function modifierProfilAction($id)
     {
-         $user = $this->getUser();
+        $user = $this->getUser();
         $droit= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:DroitAcces')->findAll();
         $acces= $this->getDoctrine()->getRepository('AdminAdminBundle:Acces')->find($id);
         $liaison= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:LiaisonDroit')->findAll();
 
-         return $this->render('AdminAdminBundle:Default:modifierProfil.html.twig', array(
+        return $this->render('AdminAdminBundle:Default:modifierProfil.html.twig', array(
             'acces' => $acces,'droit' => $droit,'liaisons'=>$liaison,'user' => $user
         ));
 
@@ -193,37 +515,37 @@ class DefaultController extends Controller
 
 
     public function DeleteProfilAction(Request $request,$id)
-{
+    {
 
-    //determiner l'objet acces selon l'id passe en parametre
-       $repository3=$this->getDoctrine()->getRepository('AdminAdminBundle:Acces');
+        //determiner l'objet acces selon l'id passe en parametre
+        $repository3=$this->getDoctrine()->getRepository('AdminAdminBundle:Acces');
         $SelectedAcces=$repository3->createQueryBuilder('e')->where('e.id = :idAcces')->setParameter('idAcces', $id)->getQuery()->getResult();
-      
+
         //recherche de l'objet liaisonDroit selon id
 
-       $accesObjet= $this->getDoctrine()->getRepository('AdminAdminBundle:Acces')->find($SelectedAcces[0]->getId());
+        $accesObjet= $this->getDoctrine()->getRepository('AdminAdminBundle:Acces')->find($SelectedAcces[0]->getId());
 
 //determiner l'objet liaison selon objet acces selected
-     $repository1=$this->getDoctrine()->getRepository('AdminAdminBundle:LiaisonDroit');
+        $repository1=$this->getDoctrine()->getRepository('AdminAdminBundle:LiaisonDroit');
         $SelectedLiaison=$repository1->createQueryBuilder('e')->where('e.acces = :accesObjet')->setParameter('accesObjet', $accesObjet)->getQuery()->getResult();
-      
+
         //recherche de l'objet liaisonDroit selon id
 
-       $Liaison= $this->getDoctrine()->getRepository('AdminAdminBundle:LiaisonDroit')->find($SelectedLiaison[0]->getId());
+        $Liaison= $this->getDoctrine()->getRepository('AdminAdminBundle:LiaisonDroit')->find($SelectedLiaison[0]->getId());
 
-    $something = $this->getDoctrine()
-        ->getRepository('AdminAdminBundle:Acces')
-        ->find($id);
+        $something = $this->getDoctrine()
+            ->getRepository('AdminAdminBundle:Acces')
+            ->find($id);
 
-    $em = $this->getDoctrine()->getManager();
-    $em->remove($Liaison);
-    $em->remove($something);
-    $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($Liaison);
+        $em->remove($something);
+        $em->flush();
 
-    // Suggestion: add a message in the flashbag
+        // Suggestion: add a message in the flashbag
 
-    // Redirect to the table page
-     $user = $this->getUser();
+        // Redirect to the table page
+        $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -231,143 +553,143 @@ class DefaultController extends Controller
         $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Acces')->findAll();
         $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
 
- $acces  = $this->get('knp_paginator')->paginate(
-        $Listeacces, /* query NOT result */
-        $request->query->getInt('page', 1)/*page number*/,
-        8/*limit per page*/
-    );
- return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
+        $acces  = $this->get('knp_paginator')->paginate(
+            $Listeacces, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            8/*limit per page*/
+        );
+        return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
             'user' => $user,'module'=>$module,'acces'=>$acces,'liaisons'=>$liaison
         ));
 
-}
+    }
 
-  public function validerModificationAction(Request $request)
-    {   
+    public function validerModificationAction(Request $request)
+    {
         $profileID=$request->get('idProfil');
         $NomProfil=$request->get('nomProfil');
         $PosteProfil=$request->get('posteProfil');
 
-    $em = $this->getDoctrine()->getManager();
-    $profil = $em->getRepository('AdminAdminBundle:Profil')->find($profileID);
-    $profil->setNomProfil($NomProfil);
-    $profil->setPosteProfil($PosteProfil); 
-    $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $profil = $em->getRepository('AdminAdminBundle:Profil')->find($profileID);
+        $profil->setNomProfil($NomProfil);
+        $profil->setPosteProfil($PosteProfil);
+        $em->flush();
 
 
-        
+
         $idAcces=$request->get('idAcces');
         $nomDroitAccesVar= array();
         $nomDroitAccesVar=$request->get('nomDroit');
-       if(empty($nomDroitAccesVar)){
-        $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Acces')->findAll();
-      $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
-      $liaison= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:LiaisonDroit')->findAll();
-       $acces  = $this->get('knp_paginator')->paginate(
-        $Listeacces, /* query NOT result */
-        $request->query->getInt('page', 1)/*page number*/,
-        8/*limit per page*/
-    );
-      $user = $this->getUser();
-      return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
-        'acces' => $acces,'user' => $user,'module'=>$module,'liaisons'=>$liaison
-        ));
-       }
-       else  {
-       
-       foreach($nomDroitAccesVar as $nomDroitAccesVarr){
+        if(empty($nomDroitAccesVar)){
+            $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Acces')->findAll();
+            $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
+            $liaison= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:LiaisonDroit')->findAll();
+            $acces  = $this->get('knp_paginator')->paginate(
+                $Listeacces, /* query NOT result */
+                $request->query->getInt('page', 1)/*page number*/,
+                8/*limit per page*/
+            );
+            $user = $this->getUser();
+            return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
+                'acces' => $acces,'user' => $user,'module'=>$module,'liaisons'=>$liaison
+            ));
+        }
+        else  {
 
-        $repository1=$this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces');
-        $SelectedDroit=$repository1->createQueryBuilder('e')->where('e.nomDroit = :nomAccesVarr')->setParameter('nomAccesVarr', $nomDroitAccesVarr)->getQuery()->getResult();
-      
-        //recherche de l'objet module selon id
-       $droitValue= $this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces')->find($SelectedDroit[0]->getId());
-       
-       $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:Acces');
-        $SelectedAcces=$repository2->createQueryBuilder('e')->where('e.id = :idAcces')->setParameter('idAcces', $idAcces)->getQuery()->getResult();
-      
-        //recherche de l'objet module selon id
-       $AccesValue= $this->getDoctrine()->getRepository('AdminAdminBundle:Acces')->find($SelectedAcces[0]->getId());
+            foreach($nomDroitAccesVar as $nomDroitAccesVarr){
+
+                $repository1=$this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces');
+                $SelectedDroit=$repository1->createQueryBuilder('e')->where('e.nomDroit = :nomAccesVarr')->setParameter('nomAccesVarr', $nomDroitAccesVarr)->getQuery()->getResult();
+
+                //recherche de l'objet module selon id
+                $droitValue= $this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces')->find($SelectedDroit[0]->getId());
+
+                $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:Acces');
+                $SelectedAcces=$repository2->createQueryBuilder('e')->where('e.id = :idAcces')->setParameter('idAcces', $idAcces)->getQuery()->getResult();
+
+                //recherche de l'objet module selon id
+                $AccesValue= $this->getDoctrine()->getRepository('AdminAdminBundle:Acces')->find($SelectedAcces[0]->getId());
 
 
-        $liaison = new LiaisonDroit();
-        $liaison->setDroitAcces($droitValue);
-        $liaison->setAcces($AccesValue); 
-        $em = $this->getDoctrine()->getManager(); 
-    // tells Doctrine you want to (eventually) save the Product (no queries yet)
-        $em->persist($liaison);
-    // actually executes the queries (i.e. the INSERT query)
-         $em->flush();
-}
-$Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Acces')->findAll();
-      $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
-      $liaison= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:LiaisonDroit')->findAll();
+                $liaison = new LiaisonDroit();
+                $liaison->setDroitAcces($droitValue);
+                $liaison->setAcces($AccesValue);
+                $em = $this->getDoctrine()->getManager();
+                // tells Doctrine you want to (eventually) save the Product (no queries yet)
+                $em->persist($liaison);
+                // actually executes the queries (i.e. the INSERT query)
+                $em->flush();
+            }
+            $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Acces')->findAll();
+            $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
+            $liaison= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:LiaisonDroit')->findAll();
 
-       $acces  = $this->get('knp_paginator')->paginate(
-        $Listeacces, /* query NOT result */
-        $request->query->getInt('page', 1)/*page number*/,
-        8/*limit per page*/
-    );
+            $acces  = $this->get('knp_paginator')->paginate(
+                $Listeacces, /* query NOT result */
+                $request->query->getInt('page', 1)/*page number*/,
+                8/*limit per page*/
+            );
 
-      $user = $this->getUser();
-      return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
-        'acces' => $acces,'user' => $user,'module'=>$module,'liaisons'=>$liaison
-        ));
-}
+            $user = $this->getUser();
+            return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
+                'acces' => $acces,'user' => $user,'module'=>$module,'liaisons'=>$liaison
+            ));
+        }
 
     }
 
 
 
-      public function agendaAction()
+    public function agendaAction()
     {
         return $this->render('AdminAdminBundle:Default:agenda.html.twig');
     }
 
-     public function infoSondageAction()
+    public function infoSondageAction()
     {
         return $this->render('AdminAdminBundle:Default:infoSondage.html.twig');
     }
 
-     public function gererMatiereAction()
+    public function gererMatiereAction()
     {
         return $this->render('AdminAdminBundle:Default:gererMatiere.html.twig');
     }
 
-     public function rechercheAvanceAction()
+    public function rechercheAvanceAction()
     {
         return $this->render('AdminAdminBundle:Default:rechercheAvance.html.twig');
     }
 
-      public function gererClasseAction()
+    public function gererClasseAction()
     {
         return $this->render('AdminAdminBundle:Default:gererClasse.html.twig');
     }
 
-      public function listeMatiereAction()
+    public function listeMatiereAction()
     {
         return $this->render('AdminAdminBundle:Default:listeMatiere.html.twig');
     }
 
-     public function gererSalleAction()
+    public function gererSalleAction()
     {
         return $this->render('AdminAdminBundle:Default:gererSalle.html.twig');
     }
 
-  
 
- public function ajoutabsAction()
+
+    public function ajoutabsAction()
     {
         return $this->render('AdminAdminBundle:Default:viescolaire.html.twig');
     }
 
- 
-  public function listeSalleAction()
+
+    public function listeSalleAction()
     {
         return $this->render('AdminAdminBundle:Default:listeSalle.html.twig');
     }
 
-  public function planingSalleAction()
+    public function planingSalleAction()
     {
         return $this->render('AdminAdminBundle:Default:planingSalle.html.twig');
     }
@@ -408,7 +730,7 @@ $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdmin
     {
         return $this->render('AdminAdminBundle:Default:relvedesnotes.html.twig');
     }
-     public function EDTProfesseurAction()
+    public function EDTProfesseurAction()
     {
         return $this->render('AdminAdminBundle:Default:EDTProfesseur.html.twig');
     }
@@ -432,17 +754,4 @@ $Listeacces= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdmin
     {
         return $this->render('AdminAdminBundle:Default:ressourceplanningclasses.html.twig');
     }
-
-
-    public function membreAction()
-    {
-        //Affichage de nom de l'utilisateur
-        $user = $this->getUser();
-        return $this->render('AdminAdminBundle:Default:CrudMembre.html.twig', array(
-            'user' => $user
-        ));
-    }
-
-
-  
 }

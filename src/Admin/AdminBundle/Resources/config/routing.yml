@@ -2,6 +2,54 @@ admin_admin_homepage:
     path:     /
     defaults: { _controller: AdminAdminBundle:Default:index }
 
+Add_Membre:
+    path:     /membre
+    defaults: { _controller: AdminAdminBundle:Default:addMembre }
+
+Ajout_Personnel:
+    path:     /membre/personnel/ajouter
+    defaults: { _controller: AdminAdminBundle:Default:ajoutPersonnel }
+
+Valider_Membre:
+    path:     /membre/valider
+    defaults: { _controller: AdminAdminBundle:Default:validerMembre }
+
+liste_Membre:
+    path:     /membre/liste
+    defaults: { _controller: AdminAdminBundle:Default:listMembre }
+
+infos_Membre:
+    path:     /membre/infos/{id}
+    defaults: { _controller: AdminAdminBundle:Default:infosMembre }
+
+modifier_Membre:
+    path:     /membre/edit/{id}
+    defaults: { _controller: AdminAdminBundle:Default:editMembre }
+
+ValiderEditMembre:
+    path:     /membre/edit/valider/{id}
+    defaults: { _controller: AdminAdminBundle:Default:validerEditMembre }
+
+DeletetMembre:
+    path:     /membre/delete/{id}
+    defaults: { _controller: AdminAdminBundle:Default:deleteMembre }
+
+listProfil:
+    path:     /profil/liste
+    defaults: { _controller: AdminAdminBundle:Default:listProfil }
+
+listeProfil:
+    path:     /profil/list
+    defaults: { _controller: AdminAdminBundle:Default:listeProfil }
+
+AjoutProfil:
+    path:     /profil/newProfil
+    defaults: { _controller: AdminAdminBundle:Default:newProfil }
+
+ValiderProfil:
+    path:     /profil/add
+    defaults: { _controller: AdminAdminBundle:Default:AddProfils }
+
 GestionProfilAdmin:
     path:     /profil
     defaults: { _controller: AdminAdminBundle:Default:gestionProfil }

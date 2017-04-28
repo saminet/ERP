@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<!-- BEGIN BREADCRUMBS -->
+<div class="breadcrumbs">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-11" style="background-color:lavender;">
+                <form action="{{path('ValiderProfil')}}" method="POST" id="MyForm">
+                    <br>
+                    <div class="form-group">
+                        <label for="usr">Nom de Profil:</label>
+                        <input type="text" class="form-control" id="usr" name="nomProfil" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">Nom de Poste:</label>
+                        <input type="text" class="form-control" id="usr" name="poste" required>
+                    </div>
+                    <!-- parcour de la table module pour l'affichage des module present dans la table -->
+                    <div class="form-group">
+                        <label for="usr">Rôle:</label>
+                        {% for usr in users %}
+                            <br>
+                            <label><input name="nomRole[]" type="checkbox" id="chk" value={{usr.username}}>{{usr.username}}</label>
+                        {% endfor %}
+                        <br>
+                    </div>
+                        <input type="submit" name="nomRole[]" class="btn btn-success" value="Enregistrer">
+                </form>
+            </div>
+
+{% endblock %}

@@ -49,9 +49,11 @@
                     <i class="icon-home"></i> Liste etudiants </a>
 
             </li>
+        </ul>
             {% endblock %}
             {% block body %}
                 <h1>Liste des étudiants :</h1>
+                <a href="{{path('ajouter_Etudiant')}}"><button class="btn btn-success">Ajouter Etudiant</button></a>
                 <table class="table">
                     <thead>
                     <tr>
@@ -73,7 +75,7 @@
                         <td>{{ etd.lieuNaissance }}</td>
                         <td>{{ etd.ville }}</td>
                         <td>{{ etd.sexe }}</td>
-                        <td><a href="{{ path('modifier_Etudiant',{'id':etd.id}) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimerEtudiant',{'id':etd.id}) }}"><button class="btn btn-danger">Supprimer</button></a>
+                        <td><a href="{{ path('modifier_Etudiant',{'id':etd.id,'username':etd.login}) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimerEtudiant',{'id':etd.id,'username':etd.login}) }}"><button class="btn btn-danger">Supprimer</button></a></td>
                     </tr>
                     {% else %}
                         <p>Aucune préinscrit n'a été trouvée.</p>
@@ -82,5 +84,3 @@
                 </table>
 
             {% endblock %}
-
-

@@ -34,8 +34,7 @@ class Profil
      * @ORM\Column(name="PosteProfil", type="string", length=255)
      */
     private $posteProfil;
-
-
+    
     /**
      * Get id
      *

@@ -204,7 +204,7 @@ class DefaultController extends Controller
     {
         $selectedniveau=$request->get('NameNiveau');
         //recherche de l'objet niveau selon id
-        var_dump($selectedniveau); die('Hello');
+        //var_dump($selectedniveau); die('Hello');
         //$selectedniveau='1 ère année Finance';
         $selectedFiliere=$request->get('NameFiliere');
 

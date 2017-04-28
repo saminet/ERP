@@ -125,4 +125,3 @@ class Matiere
         return $this->credit;
     }
 }
-

@@ -3,6 +3,7 @@
 {% block body %}
 
     <h1>Information sur l'étudiant(e) : <b>{{ etudiant.nom }}</b> </h1>
+    <a href="{{path('listEtudiant')}}">Revenir à la liste des étudiants</a>
     <table class="table">
 
     <tbody>
@@ -22,7 +23,9 @@
         <tr><td><b>Etablissement</b></td><td>{{ etudiant.etablissement }}</td></tr>
         <tr><td><b>Niveau</b></td><td>{{ etudiant.niveau }}</td></tr>
         <tr><td><b>Formation</b></td><td>{{ etudiant.formation }}</td></tr>
-        <tr><td><a href="{{ path('modifier_Etudiant',{'id':etudiant.id}) }}"><button class="btn btn-primary">Modifier</button></a></td></tr>
+        <tr><td><b>Login</b></td><td>{{ etudiant.login }}</td></tr>
+        <tr><td><b>Mot de Passe</b></td><td>{{ etudiant.password }}</td></tr>
+        <tr><td><a href="{{ path('modifier_Etudiant',{'id':etudiant.id,'username':etudiant.login}) }}"><button class="btn btn-primary">Modifier</button></a></td></tr>
 
     </tbody>
 

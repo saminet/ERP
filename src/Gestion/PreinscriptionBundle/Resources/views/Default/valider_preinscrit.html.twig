@@ -2,6 +2,12 @@
 
 {% block body %}
 
-<div>L'étudiant : {{ etudiant.nom }} est validé</div>
+<div>L'étudiant : {{ etudiant.nom }} est validé
+
+    <p>
+        <br><br>
+        <a href="{{ path('Liste_preinscrits') }}">Revenir à la liste des préinscrits </a>
+    </p>
+</div>
 
 {% endblock %}

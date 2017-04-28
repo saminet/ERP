@@ -32,7 +32,7 @@ suprimerPreinscrit:
 
 
 listEtudiant:
-    path:     /etudiant/list
+    path:     /etudiant/liste
     defaults: { _controller: GestionPreinscriptionBundle:Default:listEtudiant }
 
 infosEtudiant:

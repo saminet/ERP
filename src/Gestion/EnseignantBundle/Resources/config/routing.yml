@@ -10,6 +10,14 @@ infos_Enseignant:
     path:     enseignant/infos/{id}
     defaults: { _controller: GestionEnseignantBundle:Default:infosEnseignant }
 
+ajouter_Enseignant:
+    path: /enseignant/ajouter
+    defaults: { _controller: GestionEnseignantBundle:Default:ajouterEnseignant }
+
 modifier_Enseignant:
     path: /enseignant/edit/{id}
     defaults: { _controller: GestionEnseignantBundle:Default:modifierEnseignant }
+
+supprimerEnseignant:
+    path: /enseignant/delete/{id}
+    defaults: { _controller: GestionEnseignantBundle:Default:supprimerEnseignant }

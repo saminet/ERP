@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 class DefaultController extends Controller
 {
 
@@ -32,6 +32,7 @@ class DefaultController extends Controller
         $preinscrit1->setVille('Paris');
         $preinscrit1->setNumCinPass('123990');
         $preinscrit1->setSexe('Masculain');
+        $preinscrit1->setSexe('28');
         $preinscrit1->setAdresse('Paris');
         $preinscrit1->setTel('123456');
         $preinscrit1->setEmail('Alain@gmail.com');
@@ -41,6 +42,8 @@ class DefaultController extends Controller
         $preinscrit1->setMessage('Bonjour');
         $preinscrit1->setNiveau('Master');
         $preinscrit1->setFormation('Finance');
+        $preinscrit1->setLogin('Alain@gmail.com');
+        $preinscrit1->setPassword('123990');
         $em->persist($preinscrit1);
 
         $em->flush();
@@ -184,8 +187,22 @@ class DefaultController extends Controller
         $etudiant->setAnneeObtention($preinscrit->getAnneeObtention());
         $etudiant->setNiveau($preinscrit->getNiveau());
         $etudiant->setFormation($preinscrit->getFormation());
+        $etudiant->setLogin($preinscrit->getEmail());
+        $etudiant->setPassword($preinscrit->getNumCinPass());
 
         $em->persist($etudiant);
+
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        $user->setUsername($preinscrit->getEmail());
+        $hash = password_hash($preinscrit->getNumCinPass(),PASSWORD_BCRYPT,['cost' => 13]) ;
+        $user->setPassword($hash);
+        $user->setEmail($preinscrit->getEmail());
+        $user->setEnabled(true);
+        $roles = 'ROLE_ETUDIANT';
+        $user->setRoles(array($roles));
+        $userManager->updateUser($user);
 
         $em->flush();
 
@@ -235,21 +252,38 @@ class DefaultController extends Controller
         $formView = $form->createView();
         // Refill the fields in case the form is not valid.
         $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $donnee = $form->getData();
+            $username = $donnee->getLogin();
+            //var_dump($username);die('Hello');
+            $password = $donnee->getPassword();
+            $email = $donnee->getEmail();
+            $roles = 'ROLE_ETUDIANT';
+            //var_dump($username,$password,$email,$roles);die('Hello');
+            $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->createUser();
+            $user->setUsername($username);
+            $hash = password_hash($password,PASSWORD_BCRYPT,['cost' => 13]) ;
+            $user->setPassword($hash);
+            $user->setEmail($email);
+            $user->setEnabled(true);
+            $user->setRoles(array($roles));
+            $userManager->updateUser($user);
 
-        if($form->isSubmitted()){
-            if($form->isValid()){
                 $em->persist($etudiant);
                 $em->flush();
                 return $this->redirect($this->generateUrl('listEtudiant'));
-            }
         }
         //on rend la vue
         return $this->render('GestionPreinscriptionBundle:Default:ajouterEtudiant.html.twig',array(
-            'form' => $formView) );
+            'form'   => $formView));
     }
 
     public function modifierEtudiantAction($id, Request $request)
     {
+        $Old_user=$request->get('username');
+        $Old_usr=$request->get('idEtud');
+        //var_dump($Old_user);die('Hello');
         $em = $this->container->get('doctrine')->getEntityManager();
         $etudiant= $em->getRepository('GestionPreinscriptionBundle:Etudiant')->find($id);
         if (null === $etudiant) {
@@ -260,6 +294,23 @@ class DefaultController extends Controller
         //on génère le html du formulaire crée
         $formView = $form->createView();
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+            $donnee = $form->getData();
+            $username = $donnee->getLogin();
+            $password = $donnee->getPassword();
+            $email = $donnee->getEmail();
+            $roles = 'ROLE_ETUDIANT';
+            //var_dump($username,$Old_usr,$roles,$password,$email,$roles);die('Hello');
+            $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->findUserByUsername($Old_usr);
+            $user->setUsername($username);
+            $hash = password_hash($password,PASSWORD_BCRYPT,['cost' => 13]) ;
+            $user->setPassword($hash);
+            $user->setEmail($email);
+            $user->setEnabled(true);
+            $user->setRoles(array($roles));
+            $userManager->updateUser($user);
+
             // Inutile de persister ici, Doctrine connait déjà notre annonce
             $em->flush();
 
@@ -270,7 +321,7 @@ class DefaultController extends Controller
 
         return $this->render('GestionPreinscriptionBundle:Default:modifierEtudiant.html.twig', array(
             'etudiant' => $etudiant,
-            'form'   => $formView,
+            'form' => $formView, 'oldUser' => $Old_user,
         ));
     }
 
@@ -360,14 +411,22 @@ class DefaultController extends Controller
         return $mailer->send($message);
     }
 
-    public function supprimerEtudiantAction($id)
+    public function supprimerEtudiantAction(Request $request, $id)
     {
+        $username=$request->get('username');
+        //var_dump($username);die('Hello');
         $em = $this->container->get('doctrine')->getEntityManager();
         $etudiant= $this->getDoctrine()->getRepository('GestionPreinscriptionBundle:Etudiant')->find($id);
         if (!$etudiant)
         {
             throw new NotFoundHttpException("Etudiant non trouvé");
         }
+        
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        $usr = $userManager->findUserByUsername($username);
+        $em->remove($usr);
+
         $em->remove($etudiant);
         $em->flush();
         return new RedirectResponse($this->container->get('router')->generate('listEtudiant'));

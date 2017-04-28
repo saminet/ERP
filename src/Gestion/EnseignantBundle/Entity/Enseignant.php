@@ -94,6 +94,13 @@ class Enseignant
     /**
      * @var string
      *
+     * @ORM\Column(name="login", type="string", length=255)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
@@ -347,30 +354,6 @@ class Enseignant
     }
 
     /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return Enseignant
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
      * Set cin
      *
      * @param string $cin
@@ -464,5 +447,53 @@ class Enseignant
     public function getTel()
     {
         return $this->tel;
+    }
+
+    /**
+     * Set login
+     *
+     * @param string $login
+     *
+     * @return Enseignant
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * Get login
+     *
+     * @return string
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Enseignant
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }

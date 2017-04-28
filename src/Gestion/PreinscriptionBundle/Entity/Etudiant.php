@@ -122,13 +122,6 @@ class Etudiant
     /**
      * @var string
      *
-     * @ORM\Column(name="message", type="text")
-     */
-    private $message;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="niveau", type="string", length=255)
      */
     private $niveau;
@@ -139,6 +132,20 @@ class Etudiant
      * @ORM\Column(name="formation", type="string", length=255)
      */
     private $formation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=255)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
 
 
     /**
@@ -488,30 +495,6 @@ class Etudiant
     }
 
     /**
-     * Set message
-     *
-     * @param string $message
-     *
-     * @return etudiant
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    /**
      * Set niveau
      *
      * @param string $niveau
@@ -557,5 +540,53 @@ class Etudiant
     public function getFormation()
     {
         return $this->formation;
+    }
+
+    /**
+     * Set login
+     *
+     * @param string $login
+     *
+     * @return Etudiant
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * Get login
+     *
+     * @return string
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Etudiant
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }
