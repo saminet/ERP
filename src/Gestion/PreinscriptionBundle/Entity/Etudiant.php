@@ -3,6 +3,10 @@
 namespace Gestion\PreinscriptionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gestion\AbsenceBundle\Entity\Classe;
+use Gestion\PreinscriptionBundle\Entity\Formation;
+use Gestion\NiveauBundle\Entity\Niveau;
+use Gestion\FiliereBundle\Entity\Filiere;
 
 /**
  * etudiant
@@ -120,18 +124,14 @@ class Etudiant
     private $anneeObtention;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="niveau", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Gestion\NiveauBundle\Entity\Niveau", cascade={"persist"})
      */
     private $niveau;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="formation", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Gestion\FiliereBundle\Entity\Filiere", cascade={"persist"})
      */
-    private $formation;
+    private $filiere;
 
     /**
      * @var string
@@ -146,7 +146,6 @@ class Etudiant
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
-
 
     /**
      * Get id
@@ -495,54 +494,6 @@ class Etudiant
     }
 
     /**
-     * Set niveau
-     *
-     * @param string $niveau
-     *
-     * @return etudiant
-     */
-    public function setNiveau($niveau)
-    {
-        $this->niveau = $niveau;
-
-        return $this;
-    }
-
-    /**
-     * Get niveau
-     *
-     * @return string
-     */
-    public function getNiveau()
-    {
-        return $this->niveau;
-    }
-
-    /**
-     * Set formation
-     *
-     * @param string $formation
-     *
-     * @return etudiant
-     */
-    public function setFormation($formation)
-    {
-        $this->formation = $formation;
-
-        return $this;
-    }
-
-    /**
-     * Get formation
-     *
-     * @return string
-     */
-    public function getFormation()
-    {
-        return $this->formation;
-    }
-
-    /**
      * Set login
      *
      * @param string $login
@@ -588,5 +539,53 @@ class Etudiant
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Gestion\NiveauBundle\Entity\Niveau $niveau
+     *
+     * @return Etudiant
+     */
+    public function setNiveau(\Gestion\NiveauBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Gestion\NiveauBundle\Entity\Niveau
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * Set filiere
+     *
+     * @param \Gestion\FiliereBundle\Entity\Filiere $filiere
+     *
+     * @return Etudiant
+     */
+    public function setFiliere(\Gestion\FiliereBundle\Entity\Filiere $filiere = null)
+    {
+        $this->filiere = $filiere;
+
+        return $this;
+    }
+
+    /**
+     * Get filiere
+     *
+     * @return \Gestion\FiliereBundle\Entity\Filiere
+     */
+    public function getFiliere()
+    {
+        return $this->filiere;
     }
 }

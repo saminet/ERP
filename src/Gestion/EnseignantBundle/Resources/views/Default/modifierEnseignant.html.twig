@@ -1,67 +1,171 @@
-{% extends '::base.html.twig' %}
+{% extends '::layoutAdmin.html.twig' %}
+{% block javascripts %}
+
+    <script type="text/javascript">
+        function checkname()
+        {
+            var name=document.getElementById( "gestion_enseignantbundle_enseignant_login" ).value;
+            var pseudo = $("#gestion_enseignantbundle_enseignant_login").val();
+
+            if(name)
+            {
+                $.ajax({
+                    type: 'post',
+                    url: "{{ url('verifLogin') }}?pseudo=" + pseudo,
+                    data: {
+                        user_name:name,
+                    },
+                    success: function (response) {
+                        $( '#name_status' ).html(response);
+                        if(response=="OK")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                });
+            }
+            else
+            {
+                $( '#name_status' ).html("");
+                return false;
+            }
+        }
+
+        function checkemail()
+        {
+            var email=document.getElementById( "gestion_enseignantbundle_enseignant_email" ).value;
+            var email = $("#gestion_enseignantbundle_enseignant_email").val();
+
+            if(email)
+            {
+                $.ajax({
+                    type: 'post',
+                    url: "{{ url('verifEmail') }}?mail=" + email,
+                    data: {
+                        user_email:email,
+                    },
+                    success: function (response) {
+                        $( '#email_status' ).html(response);
+                        if(response=="OK")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                });
+            }
+            else
+            {
+                $( '#email_status' ).html("");
+                return false;
+            }
+        }
+
+        function checkall()
+        {
+            var namehtml=document.getElementById("name_status").innerHTML;
+            var emailhtml=document.getElementById("email_status").innerHTML;
+
+            if((namehtml && emailhtml)=="OK")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+    </script>
+
+{% endblock %}
 
 {% block body %}
 
     {{ form_start(form,{'attr':{'action':path('modifier_Enseignant',{ 'id': enseignant.id })}}) }}
 
     <div class="form-group">
-        <label for="etudiant_nom">{{ form_label(form.nom) }}</label>
+        <label for="gestion_enseignantbundle_nom">{{ form_label(form.nom) }}</label>
         {{ form_widget(form.nom) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_prenom">{{ form_label(form.prenom) }}</label>
+        <label for="gestion_enseignantbundle_prenom">{{ form_label(form.prenom) }}</label>
         {{ form_widget(form.prenom) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_sexe">{{ form_label(form.sexe) }}</label>
+        <label for="gestion_enseignantbundle_sexe">{{ form_label(form.sexe) }}</label>
         {{ form_widget(form.sexe) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_dateNaissance">{{ form_label(form.dateNaissance) }}</label>
+        <label for="gestion_enseignantbundle_dateNaissance">{{ form_label(form.dateNaissance) }}</label>
         {{ form_widget(form.dateNaissance) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_adresse">{{ form_label(form.adresse) }}</label>
+        <label for="gestion_enseignantbundle_enseignant_adresse">{{ form_label(form.adresse) }}</label>
         {{ form_widget(form.adresse) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_lieuNaissance">{{ form_label(form.lieuxNaissance) }}</label>
+        <label for="gestion_enseignantbundle_enseignant_lieuxNaissance">{{ form_label(form.lieuxNaissance) }}</label>
         {{ form_widget(form.lieuxNaissance) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_ville">{{ form_label(form.ville) }}</label>
+        <label for="gestion_enseignantbundle_enseignant_ville">{{ form_label(form.ville) }}</label>
         {{ form_widget(form.ville) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_numCinPass">{{ form_label(form.cin) }}</label>
+        <label for="gestion_enseignantbundle_enseignant_cin">{{ form_label(form.cin) }}</label>
         {{ form_widget(form.cin) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_tel">{{ form_label(form.tel) }}</label>
+        <label for="gestion_enseignantbundle_enseignant_rib">{{ form_label(form.rib) }}</label>
+        {{ form_widget(form.rib) }}
+    </div>
+
+    <div class="form-group">
+        <label for="gestion_enseignantbundle_enseignant_tel">{{ form_label(form.tel) }}</label>
         {{ form_widget(form.tel) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_email">{{ form_label(form.email) }}</label>
-        {{ form_widget(form.email) }}
+        <label for="gestion_enseignantbundle_enseignant_email">{{ form_label(form.email) }}</label>
+        {{ form_widget(form.email, { 'attr': { 'onkeyup': 'checkemail()'  } } ) }}
+        <span id="email_status"></span>
     </div>
 
     <div class="form-group">
-        <label for="etudiant_nationalite">{{ form_label(form.nationalite) }}</label>
+        <label for="gestion_enseignantbundle_enseignant_nationalite">{{ form_label(form.nationalite) }}</label>
         {{ form_widget(form.nationalite) }}
+    </div>
+
+    <div class="form-group">
+        <label for="gestion_enseignantbundle_enseignant_login">{{ form_label(form.login) }}</label>
+        {{ form_widget(form.login, { 'attr': { 'onkeyup': 'checkname()'  } } ) }}
+        <span id="name_status"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label for="gestion_enseignantbundle_enseignant_password">{{ form_label(form.password) }}</label>
+        {{ form_widget(form.password) }}
     </div>
 
     <div>
         {{ form_rest(form) }}
-        <input type="hidden" name="idEns" value={{ oldUser }} >
     </div>
 
     {{ form_end(form) }}

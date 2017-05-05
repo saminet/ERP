@@ -24,7 +24,7 @@ class LiaisonDroit
 
     /**
      *@ORM\ManyToOne(targetEntity="Admin\AdminBundle\Entity\DroitAcces")
-     *@ORM\joinColumn(onDelete="SET NULL")
+     *@ORM\JoinColumn(onDelete="SET NULL")
      */
      private $droitAcces;
 

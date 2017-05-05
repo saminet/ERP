@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des notes :</h1>
+    <a href="{{path('ajout_note')}}"><button class="btn btn-success">Ajouter Nouvelle Note</button></a>
+<table class="table">
+<thead>
+<tr>
+    <th>Etudiant</th>
+    <th>Matière</th>
+    <th>Note</th>
+    <th>Type d'épreuve</th>
+    <th>Session</th>
+    <th>Action</th>
+</tr>
+</thead>
+{% for note in notes %}
+        <tbody>
+        <tr>
+            <td>{{ note.etudiant.nom }}</td>
+            <td>{{ note.matiere.nomMatiere }}</td>
+            <td>{{ note.note }}</td>
+            <td>{{ note.type }}</td>
+            <td>{{ note.session }}</td>
+            <td><a href=""><button class="btn btn-success">Modifier</button></a><a href=""><button class="btn btn-danger">Supprimer</button></a>
+        </tr>
+{% else %}
+    <p>Aucune note n'a été trouvée.</p>
+{% endfor %}
+        </tbody>
+</table>
+
+{% endblock %}
+
+

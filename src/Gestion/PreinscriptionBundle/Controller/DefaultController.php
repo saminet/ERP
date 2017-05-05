@@ -3,6 +3,8 @@
 namespace Gestion\PreinscriptionBundle\Controller;
 use Gestion\PreinscriptionBundle\Entity\Preinscrit;
 use Gestion\PreinscriptionBundle\Entity\Etudiant;
+use Gestion\NiveauBundle\Entity\Niveau;
+use Gestion\FiliereBundle\Entity\Filiere;
 use Gestion\PreinscriptionBundle\Entity\Task;
 use Gestion\PreinscriptionBundle\Form\EtudiantForm;
 use Gestion\PreinscriptionBundle\Form\EtudiantType;
@@ -32,7 +34,6 @@ class DefaultController extends Controller
         $preinscrit1->setVille('Paris');
         $preinscrit1->setNumCinPass('123990');
         $preinscrit1->setSexe('Masculain');
-        $preinscrit1->setSexe('28');
         $preinscrit1->setAdresse('Paris');
         $preinscrit1->setTel('123456');
         $preinscrit1->setEmail('Alain@gmail.com');
@@ -41,12 +42,12 @@ class DefaultController extends Controller
         $preinscrit1->setAnneeObtention(new \DateTime("2011-07-23 06:12:33"));
         $preinscrit1->setMessage('Bonjour');
         $preinscrit1->setNiveau('Master');
-        $preinscrit1->setFormation('Finance');
-        $preinscrit1->setLogin('Alain@gmail.com');
-        $preinscrit1->setPassword('123990');
+        $preinscrit1->setFormation('Licence Fondamentale en Management');
         $em->persist($preinscrit1);
 
         $em->flush();
+
+        return new RedirectResponse($this->container->get('router')->generate('Liste_preinscrits'));
 
         $message = 'Insertion terminée : ';
 
@@ -204,6 +205,7 @@ class DefaultController extends Controller
         $user->setRoles(array($roles));
         $userManager->updateUser($user);
 
+        $em->remove($preinscrit);
         $em->flush();
 
         $attachment = \Swift_Attachment::fromPath('../web/uploads/frais-scolarite.pdf');
@@ -213,8 +215,8 @@ class DefaultController extends Controller
             ->setFrom('jeap37208@gmail.com')
             ->setTo(''.$preinscrit->getEmail().'')
             ->setBody(
-                'Bonjour Mr/Mme '.$preinscrit->getPrenom().',<br /> <br /> <br /> nous vous informons que votre demande d\'inscription à été bien accéptée 
-                <br /><br />  Vous trouvez ci dessous toutes les informations pour compléter votre dossier ainsi que les frais de scolarités.<br /><br /> <br />Si vous avez quelque chose 
+                'Bonjour Mr/Mme '.$preinscrit->getPrenom().',<br /> <br /> <br /> nous vous informons que votre inscription à été bien accéptée 
+                <br /><br />  Vous Pouvez se connecter dans votre espace Membre avec les identifiants suivants :<br /><br />Login : '.$preinscrit->getEmail().' <br /><br />Mot De Passe : '.$preinscrit->getNumCinPass().'  <br />Si vous avez quelque chose 
                 à renseigner, merci de nous avoir contacter sur :<br />Email :  iaetunis@gmail.com / contact@iaetunis.com <br /><br />Tél. : 94569697<br /><br />Fax : 71845269 E-mail <br /> <br /> <br /> <br /> <br /> <br />
                 Cordialement','text/html'
             )
@@ -259,6 +261,7 @@ class DefaultController extends Controller
             $password = $donnee->getPassword();
             $email = $donnee->getEmail();
             $roles = 'ROLE_ETUDIANT';
+
             //var_dump($username,$password,$email,$roles);die('Hello');
             $userManager = $this->get('fos_user.user_manager');
             $user = $userManager->createUser();
@@ -269,14 +272,53 @@ class DefaultController extends Controller
             $user->setEnabled(true);
             $user->setRoles(array($roles));
             $userManager->updateUser($user);
-
-                $em->persist($etudiant);
-                $em->flush();
-                return $this->redirect($this->generateUrl('listEtudiant'));
+            
+            $em->persist($etudiant);
+            $em->flush();
+            return $this->redirect($this->generateUrl('listEtudiant'));
         }
         //on rend la vue
         return $this->render('GestionPreinscriptionBundle:Default:ajouterEtudiant.html.twig',array(
             'form'   => $formView));
+    }
+
+    public function verifLoginAction(Request $request)
+    {
+        $pseudo = $request->query->get('pseudo');
+        //var_dump($pseudo,$email);die('Hello');
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        // Pour récupérer la liste de tous les utilisateurs
+        $pseuudo =$userManager->findUserByUsername($pseudo);
+        //var_dump($username);die('Hello');
+        if(Count($pseuudo)>0) {
+            echo "<span style=\"color:#D91E18;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span> est déjà pris.</span>";
+        }
+        else
+        {
+            echo "<span style=\"color:#00d95a;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span>  est disponible.</span>";
+        }
+        exit();
+    }
+
+    public function verifEmailAction(Request $request)
+    {
+        $email =  $request->query->get('mail');
+        //var_dump($pseudo,$email);die('Hello');
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        // Pour récupérer la liste de tous les utilisateurs
+        $Mail =$userManager->findUserBy(array('email' => $email));
+        //var_dump($res);die('Hello');
+
+        if(Count($Mail)>0) {
+            echo "<span style=\"color:#D91E18;\">L'email <span style=\"color:#0000C0;\">$email</span> est déjà pris. </span>";
+        }
+        else
+        {
+            echo "<span style=\"color:#00d95a;\">L'email <span style=\"color:#0000C0;\">$email</span> Disponible.</span></span>";
+        }
+        exit();
     }
 
     public function modifierEtudiantAction($id, Request $request)
@@ -303,6 +345,10 @@ class DefaultController extends Controller
             //var_dump($username,$Old_usr,$roles,$password,$email,$roles);die('Hello');
             $userManager = $this->get('fos_user.user_manager');
             $user = $userManager->findUserByUsername($Old_usr);
+            if ($user instanceof User) {
+                throw new HttpException(409, 'Login déjà utilisé');
+            }
+            else{
             $user->setUsername($username);
             $hash = password_hash($password,PASSWORD_BCRYPT,['cost' => 13]) ;
             $user->setPassword($hash);
@@ -313,6 +359,7 @@ class DefaultController extends Controller
 
             // Inutile de persister ici, Doctrine connait déjà notre annonce
             $em->flush();
+        }
 
             $request->getSession()->getFlashBag()->add('notice', 'Les données de l\'étudiant'.$etudiant->getId().' est bien modifiée.');
 
@@ -325,35 +372,47 @@ class DefaultController extends Controller
         ));
     }
 
-    public function sauvegarderEtudiantAction(Request $request,$id)
+    public function supprimerEtudiantAction(Request $request, $id)
     {
-        $idEtd =  $request->get('idEtud');
-        dump($idEtd);
-        die('Hello !!');
+        $username=$request->get('username');
+        //var_dump($username);die('Hello');
         $em = $this->container->get('doctrine')->getEntityManager();
-        //on crée un nouveau etudiant
-        $etudiant = new Etudiant();
-
-        //on recupere le formulaire
-        $form = $this->createForm(EtudiantType::class,$etudiant);
-
-        //on génère le html du formulaire crée
-        $formView = $form->createView();
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted()){
-            if($form->isValid()){
-                $em->persist($etudiant);
-                $em->flush();
-                return $this->redirect($this->generateUrl('listEtudiant'));
-            }
+        $etudiant= $this->getDoctrine()->getRepository('GestionPreinscriptionBundle:Etudiant')->find($id);
+        if (!$etudiant)
+        {
+            throw new NotFoundHttpException("Etudiant non trouvé");
         }
-        //on rend la vue
-        return $this->render('GestionPreinscriptionBundle:Default:modifierEtudiant.html.twig',array(
-            'form' => $formView) );
+        
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        $usr = $userManager->findUserByUsername($username);
+        $em->remove($usr);
+
+        $em->remove($etudiant);
+        $em->flush();
+        return new RedirectResponse($this->container->get('router')->generate('listEtudiant'));
     }
 
+
+    public function infosEtudiantAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $etudiant= $em->getRepository('GestionPreinscriptionBundle:Etudiant')->find($id);
+        return $this->container->get('templating')->renderResponse('GestionPreinscriptionBundle:Default:infosEtudiant.html.twig',
+            array(
+                'etudiant' => $etudiant
+            ));
+    }
+
+    public function infosPreEtudiantAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $preinscrit= $em->getRepository('GestionPreinscriptionBundle:Preinscrit')->find($id);
+        return $this->container->get('templating')->renderResponse('GestionPreinscriptionBundle:Default:infosPreEtudiant.html.twig',
+            array(
+                'preinscrit' => $preinscrit
+            ));
+    }
 
     public function contactAction(Request $request)
     {
@@ -411,47 +470,11 @@ class DefaultController extends Controller
         return $mailer->send($message);
     }
 
-    public function supprimerEtudiantAction(Request $request, $id)
+    public function validerMailAction()
     {
-        $username=$request->get('username');
-        //var_dump($username);die('Hello');
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $etudiant= $this->getDoctrine()->getRepository('GestionPreinscriptionBundle:Etudiant')->find($id);
-        if (!$etudiant)
-        {
-            throw new NotFoundHttpException("Etudiant non trouvé");
-        }
-        
-        //ajout des paramètres username et password dans la table 'fos_user'
-        $userManager = $this->get('fos_user.user_manager');
-        $usr = $userManager->findUserByUsername($username);
-        $em->remove($usr);
-
-        $em->remove($etudiant);
-        $em->flush();
-        return new RedirectResponse($this->container->get('router')->generate('listEtudiant'));
+        return $this->render('GestionPreinscriptionBundle:Default:reponse.html.twig');
     }
 
-
-    public function infosEtudiantAction($id)
-    {
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $etudiant= $em->getRepository('GestionPreinscriptionBundle:Etudiant')->find($id);
-        return $this->container->get('templating')->renderResponse('GestionPreinscriptionBundle:Default:infosEtudiant.html.twig',
-            array(
-                'etudiant' => $etudiant
-            ));
-    }
-
-    public function infosPreEtudiantAction($id)
-    {
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $preinscrit= $em->getRepository('GestionPreinscriptionBundle:Preinscrit')->find($id);
-        return $this->container->get('templating')->renderResponse('GestionPreinscriptionBundle:Default:infosPreEtudiant.html.twig',
-            array(
-                'preinscrit' => $preinscrit
-            ));
-    }
 
 
 

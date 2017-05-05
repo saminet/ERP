@@ -25,7 +25,7 @@ class ContactType extends AbstractType
         $builder
             ->add('name', TextType::class, array('attr' => array('placeholder' => 'Votre Nom'),
                 'constraints' => array(
-                    new NotBlank(array("message" => "Please provide your name")),
+                    new NotBlank(array("message" => "Veuillez introduire votre nom")),
                 )
             ))
             ->add('subject', TextType::class, array('attr' => array('placeholder' => 'Sujet'),

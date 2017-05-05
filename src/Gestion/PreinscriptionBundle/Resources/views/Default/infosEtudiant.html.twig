@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends "::layoutAdmin.html.twig" %}
 
 {% block body %}
 
@@ -17,12 +17,11 @@
         <tr><td><b>Ville</b></td><td>{{ etudiant.ville }}</td>
         <tr><td><b>Numéro Cin/Pass</b></td><td>{{ etudiant.numCinPass }}</td></tr>
         <tr><td><b>Adresse</b></td><td>{{ etudiant.adresse }}</td></tr>
+        <tr><td><b>Filiere</b></td><td>{{ etudiant.filiere.intitule }}</td></tr>
+        <tr><td><b>Niveau</b></td><td>{{ etudiant.niveau.nomNiveau }}</td></tr>
         <tr><td><b>Téléphone</b></td><td>{{ etudiant.tel }}</td></tr>
         <tr><td><b>Email</b></td><td>{{ etudiant.email }}</td></tr>
         <tr><td><b>Diplome</b></td><td>{{ etudiant.diplome }}</td></tr>
-        <tr><td><b>Etablissement</b></td><td>{{ etudiant.etablissement }}</td></tr>
-        <tr><td><b>Niveau</b></td><td>{{ etudiant.niveau }}</td></tr>
-        <tr><td><b>Formation</b></td><td>{{ etudiant.formation }}</td></tr>
         <tr><td><b>Login</b></td><td>{{ etudiant.login }}</td></tr>
         <tr><td><b>Mot de Passe</b></td><td>{{ etudiant.password }}</td></tr>
         <tr><td><a href="{{ path('modifier_Etudiant',{'id':etudiant.id,'username':etudiant.login}) }}"><button class="btn btn-primary">Modifier</button></a></td></tr>

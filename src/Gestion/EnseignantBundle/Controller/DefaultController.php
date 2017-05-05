@@ -79,6 +79,46 @@ class DefaultController extends Controller
             'form' => $formView) );
     }
 
+    public function verifLoginAction(Request $request)
+    {
+        $pseudo = $request->query->get('pseudo');
+        //var_dump($pseudo,$email);die('Hello');
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        // Pour récupérer la liste de tous les utilisateurs
+        $pseuudo =$userManager->findUserByUsername($pseudo);
+        //var_dump($res);die('Hello');
+        if(Count($pseuudo)>0) {
+            echo "<span style=\"color:#D91E18;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span> est déjà pris.</span>";
+        }
+        else
+        {
+            echo "<span style=\"color:#00d95a;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span>  est disponible.</span>";
+        }
+        exit();
+    }
+
+    public function verifEmailAction(Request $request)
+    {
+        $email =  $request->query->get('mail');
+        //var_dump($pseudo,$email);die('Hello');
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        // Pour récupérer la liste de tous les utilisateurs
+        $Mail =$userManager->findUserBy(array('email' => $email));
+        //var_dump($res);die('Hello');
+
+        if(Count($Mail)>0) {
+            echo "<span style=\"color:#D91E18;\">L'email <span style=\"color:#0000C0;\">$email</span> est déjà pris. </span>";
+        }
+        else
+        {
+            echo "<span style=\"color:#00d95a;\">L'email <span style=\"color:#0000C0;\">$email</span> est disponible.</span></span>";
+        }
+        exit();
+    }
+
+
     public function modifierEnseignantAction($id, Request $request)
     {
         $Old_user=$request->get('username');

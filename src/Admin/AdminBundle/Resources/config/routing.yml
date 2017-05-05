@@ -14,6 +14,10 @@ verifLogin:
     path:     /verifLogin
     defaults: { _controller: AdminAdminBundle:Default:verifLogin}
 
+verifEmail:
+    path:     /verifEmail
+    defaults: { _controller: AdminAdminBundle:Default:verifEmail}
+
 Valider_Membre:
     path:     /membre/valider
     defaults: { _controller: AdminAdminBundle:Default:validerMembre }
@@ -55,7 +59,7 @@ ValiderProfil:
     defaults: { _controller: AdminAdminBundle:Default:AddProfils }
 
 GestionProfilAdmin:
-    path:     /profil
+    path:     /profils
     defaults: { _controller: AdminAdminBundle:Default:gestionProfil }
 
 AddProfil:

@@ -48,13 +48,19 @@ class DefaultController extends Controller
 
     public function ajoutPersonnelAction()
     {
-        // On teste que l'utilisateur dispose bien du rôle ROLE_AUTEUR
+
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $profil = $em->getRepository('AdminAdminBundle:Profil')->findAll();
         $user = $this->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        // On vérifie que l'utilisateur dispose bien du rôle correspondant
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ETUDIANT','ROLE_ADMIN')) {
+            // Sinon on déclenche une exception « Accès interdit »
             throw new AccessDeniedException('Désolé, mais vous n\'etes pas autorisé à accéder à ce service.');
+            //$this->get('session')->getFlashBag()->add('notice', 'Your changes were saved!');
+
         }
 
-        return $this->render('AdminAdminBundle:Default:ajoutPersonnels.html.twig', array('user' => $user));
+        return $this->render('AdminAdminBundle:Default:ajoutpersonnel.html.twig', array('user' => $user, 'profil' => $profil));
     }
 
     public function validerMembreAction(Request $request)
@@ -78,29 +84,17 @@ class DefaultController extends Controller
         $leuxNais=$request->get('leuxNais');
         $nat=$request->get('nat');
         $tel=$request->get('tel');
-        $email=$request->get('Mail');
+        $email=$request->get('mail');
         $adresse=$request->get('adresse');
         $username=$request->get('pseudo');
         $password=$request->get('password');
         //$roles=array();
-        $roles=$request->get('role');
-
+        $roles=$request->get('profil');
+        //var_dump($username);die('Hello');
         //ajout des paramètres username et password dans la table 'fos_user'
         $userManager = $this->get('fos_user.user_manager');
         // Pour récupérer la liste de tous les utilisateurs
-        $pseudo =$userManager->findUserByUsername($username);
-        //var_dump($pseudo);die('Hello');
-        $res= array($pseudo);
-        if(Count($pseudo)>0) {
-            echo "1";
-        }
-        else
-        {
-            echo "0";
-        }
-        die('zzzzzz');
-
-
+        
             $user = $userManager->createUser();
             $user->setUsername($username);
             $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 13]);
@@ -135,28 +129,51 @@ class DefaultController extends Controller
             $em->persist($membre);
             // actually executes the queries (i.e. the INSERT query)
             $em->flush();
+
         return $this->redirect($this->generateUrl('liste_Membre', array('user' => $user)));
     }
 
 
     public function verifLoginAction(Request $request)
     {
-        $pseudo = $request->get('pseudo');
+        $pseudo = $request->query->get('pseudo');
+        //var_dump($pseudo,$email);die('Hello');
         //ajout des paramètres username et password dans la table 'fos_user'
         $userManager = $this->get('fos_user.user_manager');
         // Pour récupérer la liste de tous les utilisateurs
         $pseuudo =$userManager->findUserByUsername($pseudo);
         //var_dump($res);die('Hello');
         if(Count($pseuudo)>0) {
-            echo "1";
+            echo "<span style=\"color:#D91E18;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span> est déjà pris.</span>";
         }
         else
         {
-            echo "0";
+            echo "<span style=\"color:#00d95a;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span>  est disponible.</span>";
         }
-        return new JsonResponse(Count($pseuudo));
+        exit();
     }
 
+    public function verifEmailAction(Request $request)
+    {
+        $email =  $request->query->get('mail');
+        //var_dump($pseudo,$email);die('Hello');
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        // Pour récupérer la liste de tous les utilisateurs
+        $Mail =$userManager->findUserBy(array('email' => $email));
+        //var_dump($res);die('Hello');
+
+        if(Count($Mail)>0) {
+            echo "<span style=\"color:#D91E18;\">L'email <span style=\"color:#0000C0;\">$email</span> est déjà pris. </span>";
+        }
+        else
+        {
+            echo "<span style=\"color:#00d95a;\">L'email <span style=\"color:#0000C0;\">$email</span> est disponible.</span></span>";
+        }
+        exit();
+    }
+
+    
 
     public function listMembreAction()
     {
@@ -184,13 +201,14 @@ class DefaultController extends Controller
     public function editMembreAction($id)
     {
         $em = $this->container->get('doctrine')->getEntityManager();
+        $profil = $em->getRepository('AdminAdminBundle:Profil')->findAll();
         $membre= $em->getRepository('AdminAdminBundle:Membre')->find($id);
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         $user = $this->getUser();
-        return $this->render('AdminAdminBundle:Default:modifierMembre.html.twig', array('user' => $user, 'membre' => $membre ));
+        return $this->render('AdminAdminBundle:Default:modifierMembre.html.twig', array('user' => $user, 'membre' => $membre, 'profil' => $profil));
     }
 
     public function validerEditMembreAction($id, Request $request)
@@ -389,13 +407,12 @@ class DefaultController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-        $module= $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
+        $module = $this->getDoctrine()->getEntityManager()->getRepository('AdminAdminBundle:Module')->findAll();
 
         return $this->render('AdminAdminBundle:Default:profil.html.twig', array(
-            'user' => $user,'module'=>$module
+            'user' => $user, 'module' => $module
         ));
     }
-    //fonction de sauvegarde de formulaire de creation de profil
     public function AddProfilAction(Request $request)
     {
         //insertion des attribut dans la table  profil
@@ -415,7 +432,10 @@ class DefaultController extends Controller
         // actually executes the queries (i.e. the INSERT query)
         $em->flush();
 
-        //fin bloc profilllll
+        //fin bloc profilllllr
+
+
+
         //determiner l'objet module selectionné à partir de nom saisie dans le formulaire
         $nomModuleVar= array();
         $nomModuleVar=$request->get('nomModule');
@@ -426,8 +446,8 @@ class DefaultController extends Controller
             $SelectedModule=$repository1->createQueryBuilder('e')->where('e.nomModule = :nomModuleVarr')->setParameter('nomModuleVarr', $nomModuleVarr)->getQuery()->getResult();
 
             //recherche de l'objet module selon id
-            $module= $this->getDoctrine()->getRepository('AdminAdminBundle:Module')->find($SelectedModule[0]->getId());
 
+            $module= $this->getDoctrine()->getRepository('AdminAdminBundle:Module')->find($SelectedModule[0]->getId());
             //determiner l'id de profil enregistrer apres saisie de la formulaire en haut
             $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:Profil');
             $ProfilEnCours=$repository2->createQueryBuilder('e')->where('e.nomProfil = :nomProfilVarr')->setParameter('nomProfilVarr', $nomProfil)->getQuery()->getResult();
@@ -441,8 +461,8 @@ class DefaultController extends Controller
             $acces = new Acces();
             $acces->setModule($module);
             $acces->setProfil($profill);
-            $em = $this->getDoctrine()->getManager();
-            // tells Doctrine you want to (eventually) save the Product (no queries yet)
+            $em = $this->getDoctrine()->getManager(); !
+                // tells Doctrine you want to (eventually) save the Product (no queries yet)
             $em->persist($acces);
             // actually executes the queries (i.e. the INSERT query)
             $em->flush();
@@ -450,17 +470,17 @@ class DefaultController extends Controller
             $id=$acces->getId();
             //recuperer les droit selectionner pour chaque module
             $nomdroitVar= array();
-            //setParameter('nomModuleVarrr', $nomModuleVarr);
-            $nomdroitVar=$request->get($nomModuleVar);
-            //var_dump($nomdroitVar); die('Hello');
+            $nomdroitVar=$request->get($nomModuleVarr);
+            if (!empty($nomdroitVar)) {
+                echo $nomdroitVar[0];
+            }
             foreach($nomdroitVar as $nomdroiteVarr){
-
                 $repository2=$this->getDoctrine()->getRepository('AdminAdminBundle:DroitAcces');
                 $droitEnCours=$repository2->createQueryBuilder('e')->where('e.nomDroit = :nomDroitVarr')->setParameter('nomDroitVarr', $nomdroiteVarr)->getQuery()->getResult();
 
                 //recherche de l'objet module selon id
                 if (empty($droitEnCours)) {
-                    echo "viveeeeeeeee";
+                    echo "Liste Vide";
                 }
 
 
@@ -491,12 +511,12 @@ class DefaultController extends Controller
             8/*limit per page*/
         );
 
-
         return $this->render('AdminAdminBundle:Default:CrudProfil.html.twig', array(
             'user' => $user,'module'=>$module,'acces'=>$acces,'liaisons'=>$liaison
         ));
 
     }
+
 
     public function CrudProfilAction(Request $request)
     {
@@ -778,4 +798,5 @@ class DefaultController extends Controller
     {
         return $this->render('AdminAdminBundle:Default:ressourceplanningclasses.html.twig');
     }
+
 }

@@ -1,0 +1,198 @@
+{% extends 'base.html.twig' %}
+
+ {% block menu %}
+
+     <!-- BEGIN HEADER MENU -->
+     <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
+         <ul class="nav navbar-nav">
+             <li class="dropdown dropdown-fw dropdown-fw-disabled ">
+                 <a href="javascript:;" class="text-uppercase">
+                     <i class="icon-home"></i> Gestion profil </a>
+                 <ul class="dropdown-menu dropdown-menu-fw">
+                     <li >
+                         <a href="{{ path('GestionProfilAdmin') }}">
+                             <i class="icon-bar-chart"></i> Ajouter Profil  </a>
+                     </li>
+                     <li>
+                         <a href="{{ path('CrudProfil') }}">
+                             <i class="icon-bulb"></i> Crud Profil </a>
+                     </li>
+                 </ul>
+             </li>
+             </li>
+             <li class="dropdown dropdown-fw dropdown-fw-disabled ">
+                 <a href="javascript:;" class="text-uppercase">
+                     <i class="icon-home"></i> Vie Scolaire </a>
+                 <ul class="dropdown-menu dropdown-menu-fw">
+                     <li >
+                         <a href="{{ path('viescolaireGrilleabsences') }}">
+                             <i class="icon-bar-chart"></i> Grille absences et retards  </a>
+                     </li>
+                     <li>
+                         <a href="{{ path('listeabsencesenseignants') }}">
+                             <i class="icon-bulb"></i> Feuille d'appel-enseignants </a>
+                     </li>
+                     <li>
+                         <a href="{{ path('listeabsencesetudiants') }}">
+                             <i class="icon-graph"></i> Liste des absences </a>
+                     </li>
+                     <li>
+                         <a href="{{ path('suiviabsences') }}">
+                             <i class="icon-graph"></i> Suivi des absences </a>
+                     </li>
+                 </ul>
+             </li>
+             <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                 <a href="javascript:;" class="text-uppercase">
+                     <i class="icon-puzzle"></i> Compétences </a>
+                 <ul class="dropdown-menu dropdown-menu-fw">
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="{{ path('competencesajoutevaluation') }}">
+                             <i class="icon-diamond"></i> Saisie des évaluations </a>
+                     </li>
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="{{ path('competenceslistevaluation') }}">
+                             <i class=""></i> Liste des évaluations </a>
+                     </li>
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="javascript:;">
+                             <i class="icon-basket"></i> Cahier de texte </a>
+                         <ul class="dropdown-menu">
+
+                             <li>
+                                 <a href="{{ path('competencescahierdestext') }}">
+                                     <i class="icon-basket"></i> Travail à faire </a>
+                             </li>
+                         </ul>
+                     </li>
+                 </ul>
+             </li>
+             <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                 <a href="javascript:;" class="text-uppercase">
+                     <i class="icon-briefcase"></i> Ressources </a>
+                 <ul class="dropdown-menu dropdown-menu-fw">
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="javascript:;"> Classes/Groupes  </a>
+                         <ul class="dropdown-menu">
+                             <li>
+                                 <a href="{{ path('listEtudiant') }}"> Liste des étudiants </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('ressourcesrelvedesnotes') }}"> Relvé de notes </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('ressourcesTrombinoscopeetudiants') }}"> Trombinoscope </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('ressourcesTrombinoscopeadmin') }}"> Trombinoscope de l'équipe pédagogique </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('ressourcesemploitemps') }}"> Emploi du temps </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('ressourceplanning') }}"> Planning par semaine </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('ressourceplanningclasses') }}"> Planning des Classes/Groupes </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="javascript:;">Professeurs</a>
+                         <ul class="dropdown-menu">
+                             <li>
+                                 <a href="{{ path('Liste_enseignant') }}"> Liste des Professeurs </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('viescolaireGrilleabsences') }}"> Trombinoscope des Professeurs </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('EDTProfesseur') }}"> Emploi du temps des professeurs </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('planingProf') }}"> Planning par Professeurs </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li>
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="javascript:;">Personnels</a>
+                         <ul class="dropdown-menu">
+                             <li>
+                                 <a href="{{ path('listePersonnel') }}"> Liste des Personnels </a>
+                             </li>
+                             <li>
+                                 <a href="table_datatables_colreorder.html"> Trombinoscope des Personnels </a>
+                             </li>
+                             <li>
+                                 <a href="table_datatables_scroller.html"> Liste des Personnels </a>
+                             </li>
+
+                         </ul>
+                     </li>
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="javascript:;"> Salles </a>
+                         <ul class="dropdown-menu">
+                             <li>
+                                 <a href="{{ path('planingSalle') }}"> Planning des Salles </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('listeSalle') }}"> Liste des Salles </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="javascript:;"> Matière </a>
+                         <ul class="dropdown-menu">
+                             <li>
+                                 <a href="{{ path('listeMatiere') }}"> Liste des Matière </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="javascript:;"> U.E </a>
+                         <ul class="dropdown-menu">
+                             <li>
+                                 <a href="{{ path('gererSalle') }}"> Gérer les Salles </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('gererMatiere') }}"> Gérer les Matiéres </a>
+                             </li>
+                             <li>
+                                 <a href="{{ path('gererClasse') }}"> Gérer les Classes/Groupes </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li>
+                         <a href="{{ path('rechercheAvance') }}"> Recherche muti-critéres des matiéres </a>
+                     </li>
+                 </ul>
+             </li>
+             <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                 <a href="javascript:;" class="text-uppercase">
+                     <i class="icon-layers"></i> Communication </a>
+                 <ul class="dropdown-menu dropdown-menu-fw">
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="javascript:;">
+                             <i class="icon-basket"></i> Messegerie </a>
+                         <ul class="dropdown-menu">
+                             <li>
+                                 <a href="{{ path('infoSondage') }}">
+                                     <i class="icon-home"></i> Information & Sondage </a>
+                             </li>
+
+                         </ul>
+                     </li>
+                     <li class="dropdown more-dropdown-sub">
+                         <a href="{{ path('agenda') }}">
+                             <i class="icon-docs"></i> Agenda </a>
+
+                     </li>
+                 </ul>
+             </li>
+         </ul>
+
+     </div>
+     <!-- END HEADER MENU -->
+
+    {% endblock %}

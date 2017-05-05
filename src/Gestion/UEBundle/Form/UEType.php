@@ -29,7 +29,7 @@ class UEType extends AbstractType
             ->add('niveau', EntityType::class, array(
                 'required' => true,
                 'class' => 'GestionNiveauBundle:Niveau',
-                'placeholder' => 'Nom niveau',
+                'placeholder' => '-- Choisir le Niveau --',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.nomNiveau', 'ASC');

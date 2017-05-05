@@ -3,8 +3,7 @@
     <!-- select niveau -->
     <div id="wrapper">
         <div class="demo">
-            <form class="form-group">
-                <form action="{{path('Save_Unites')}}" method="post" id="myFormNiveau" class="form-inline">
+                <form action="{{path('Valider_Ajout')}}" method="post" id="myFormNiveau" class="form-inline">
                     <div class="control-group">
                         <label for="usr">Nom de l'unité:</label>
                         <input type="text" class="form-control" id="usr" name="nomUnite" required>
@@ -44,16 +43,13 @@
                             {% endif %}
                         </select>
                     </div>
+                    <input type="submit" value="Enregistrer" type="button" class="btn btn-success">
                 </form>
 
         <div class="control-group">
-        <form action="{{path('Save_Unites')}}" method="post" id="myFormNiveau" class="form-inline">
-        <input type="submit" value="Enregistrer" type="button" class="btn btn-success">
-        </form>
+
 
     </div>
-
-
 
                 <script>
                     function getValue(obj){

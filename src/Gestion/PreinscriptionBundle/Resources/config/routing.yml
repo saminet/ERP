@@ -63,6 +63,12 @@ email_form:
     path:     /contact
     defaults: { _controller: GestionPreinscriptionBundle:Default:contact  }
 
+email_valide:
+    path:     /contact/sent
+    defaults: { _controller: GestionPreinscriptionBundle:Default:validerMail  }
+
+
+
 
 
 

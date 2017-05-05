@@ -24,7 +24,7 @@ class Profil
     /**
      * @var string
      *
-     * @ORM\Column(name="NomProfil", type="string", length=255, unique=true)
+     * @ORM\Column(name="NomProfil", type="string", length=255)
      */
     private $nomProfil;
 

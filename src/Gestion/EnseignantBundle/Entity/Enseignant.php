@@ -43,13 +43,6 @@ class Enseignant
     private $sexe;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="age", type="integer")
-     */
-    private $age;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="ville", type="text")
@@ -207,30 +200,6 @@ class Enseignant
     public function getSexe()
     {
         return $this->sexe;
-    }
-
-    /**
-     * Set age
-     *
-     * @param integer $age
-     *
-     * @return Enseignant
-     */
-    public function setAge($age)
-    {
-        $this->age = $age;
-
-        return $this;
-    }
-
-    /**
-     * Get age
-     *
-     * @return int
-     */
-    public function getAge()
-    {
-        return $this->age;
     }
 
     /**

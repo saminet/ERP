@@ -2,8 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f93247d8-89e1-4ca9-a2ff-eac0d5f783f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutPersonnels.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/layoutAdmin.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Controller/DefaultController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/DependencyInjection/Configuration.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/DependencyInjection/GestionNoteExtension.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Entity/Note.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Form/NoteType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/GestionNoteBundle.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Repository/NoteRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/config/routing.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/config/services.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/ajouterNote.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/listeNote.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Tests/Controller/DefaultControllerTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Formation.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Repository/FormationRepository.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/views/bases.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutPersonnels.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/ajouterUE.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/ajouter_UE.html.twig" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error403.html.twig" afterPath="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error403.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/LiaisonDroit.php" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/LiaisonDroit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Profil.php" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Profil.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutpersonnel.html.twig" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutpersonnel.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/infosMembre.html.twig" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/infosMembre.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/membre.html.twig" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/membre.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/modifierMembre.html.twig" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/modifierMembre.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/profil.html.twig" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/profil.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Entity/Enseignant.php" afterPath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Entity/Enseignant.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Form/EnseignantType.php" afterPath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Form/EnseignantType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/ajouterEnseignant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/ajouterEnseignant.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/infosEnseignant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/infosEnseignant.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/listeEns.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/listeEns.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/modifierEnseignant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/modifierEnseignant.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Entity/Niveau.php" afterPath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Entity/Niveau.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/ajouterNiveau.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/ajouterNiveau.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/listeNiveaux.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/listeNiveaux.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/modifierNiveau.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/modifierNiveau.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Etudiant.php" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Etudiant.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Preinscrit.php" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Preinscrit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/ContactType.php" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/ContactType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/EtudiantType.php" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/EtudiantType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/accepterPreinscrit.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/accepterPreinscrit.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/ajouterEtudiant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/ajouterEtudiant.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/contact.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/contact.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosEtudiant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosEtudiant.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosPreEtudiant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosPreEtudiant.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listEtd.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listEtd.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listePre.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listePre.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/modifierEtudiant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/modifierEtudiant.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/UEBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Gestion/UEBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/UEBundle/Form/UEType.php" afterPath="$PROJECT_DIR$/src/Gestion/UEBundle/Form/UEType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/ajouter.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/ajouter.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app_dev.php" afterPath="$PROJECT_DIR$/web/app_dev.php" />
     </list>
     <ignored path="ERP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,88 +89,35 @@
     <favorites_list name="ERP" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/config/routing.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="10" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Controller/DefaultController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
-              <folding>
-                <element signature="e#47#96#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajoutPersonnels.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutPersonnels.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="381" column="80" selection-start-line="381" selection-start-column="80" selection-end-line="381" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="listEtd.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listEtd.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="71" column="37" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajoutpersonnel.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutpersonnel.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="437" column="36" selection-start-line="437" selection-start-column="36" selection-end-line="437" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FrameworkCommandLineHistory">
     <commandsHistory>
-      <command text="s cache:clear --env=prod" />
-      <command text="s cache:clear" />
-      <command text="s cache:clear --env=prod" />
-      <command text="s doctrine:generate:entities GestionPreinscritBundle:Etudiant" />
-      <command text="s doctrine:generate:entities GestionPreinscritionBundle:Etudiant" />
+      <command text="s doctrine:schema:update --dump-sql --force " />
       <command text="s doctrine:generate:entities GestionPreinscriptionBundle:Etudiant" />
+      <command text="s doctrine:schema:update --dump-sql --force " />
+      <command text="s doctrine:generate:entities GestionNoteBundle:Note" />
+      <command text="s doctrine:schema:update --dump-sql --force " />
+      <command text="s doctrine:generate:form GestionNoteBundle:Note" />
+      <command text="php bin/console cache:clear" />
+      <command text="s doctrine:generate:entities GestionAbsenceBundle:Classe" />
+      <command text="s doctrine:schema:update --dump-sql  --force " />
+      <command text="s doctrine:generate:entities GestionNoteBundle:Note" />
+      <command text="s cache:clear" />
+      <command text="s doctrine:generate:entity" />
+      <command text="s doctrine:schema:update --dump-sql --force " />
       <command text="s doctrine:schema:update --dump-sql  --force " />
       <command text="s cache:clear" />
-      <command text="s cache:clear --env=prod" />
-      <command text="s cache:clear" />
-      <command text="s doctrine:generate:form GestionPreinscriptionBundle:Etudiant" />
-      <command text="s cache:clear --env=prod" />
+      <command text="s doctrine:schema:update --dump-sql  --force " />
+      <command text="s debug:router " />
+      <command text="s doctrine:schema:update --dump-sql  --force " />
       <command text="s assets:install " />
-      <command text="s cache:clear " />
-      <command text="s doctrine:schema:update" />
       <command text="s doctrine:schema:update --dump-sql  --force " />
-      <command text="s doctrine:generate:entities GestionEnseignantBundle:Enseignant" />
-      <command text="s doctrine:schema:update" />
-      <command text="s doctrine:schema:update --dump-sql  --force " />
-      <command text="s doctrine:generate:entities GestionEtudiantBundle:Etudiant" />
+      <command text="s doctrine:schema:update --dump-sql --force " />
       <command text="s doctrine:generate:entities GestionPreinscriptionBundle:Etudiant" />
-      <command text="s doctrine:schema:update --dump-sql  --force " />
-      <command text="s fos:user:create adminuser admin@gmail.com adminuser" />
-      <command text="s fos:user:promote adminuser --super" />
-      <command text="s doctrine:schema:update --dump-sql  --force " />
+      <command text="s doctrine:schema:update --dump-sql --force " />
+      <command text="s doctrine:generate:entities GestionPreinscriptionBundle:Etudiant" />
+      <command text="s doctrine:schema:update --dump-sql --force " />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
@@ -114,57 +126,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutProfil.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/NoteBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/Gestion/NiveauBundle/Entity/Niveau.php" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Formation.php" />
         <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Preinscrit.php" />
-        <option value="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/ajouterFiliere.html.twig" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Membre.php" />
-        <option value="$PROJECT_DIR$/src/User/UserBundle/Resources/views/Default/roles.html.twig" />
-        <option value="$PROJECT_DIR$/src/User/UserBundle/Form/UserType.php" />
-        <option value="$PROJECT_DIR$/src/User/UserBundle/Resources/views/Default/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/User/UserBundle/Resources/views/Default/edit.html.twig" />
-        <option value="$PROJECT_DIR$/src/User/UserBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/User/UserBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error409.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/config/security.yml" />
-        <option value="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/valider_preinscrit.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/ajouterEtudiant.html.twig" />
-        <option value="$USER_HOME$/AppData/Local/Temp/Rar$DRa0.258/technotemserhani/form.html" />
-        <option value="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/modifierMatiere.html.twig" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutPersonnel.html.twig" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/TestMembre.html.twig" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutenseignant.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/ajouterNote.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/accepterPreinscrit.html.twig" />
         <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/membre.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listEtd.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listePre.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/listeEns.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Entity/Enseignant.php" />
+        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/web/bundles/membre/javascripts/test_form.js" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/ContactType.php" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Task.php" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/contact.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/infosEnseignant.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosPreEtudiant.html.twig" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutPersonnels.html.twig" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/profil.html.twig" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Profil.php" />
+        <option value="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/ajouter.html.twig" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/LiaisonDroit.php" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Membre.php" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/infosMembre.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/NoteBundle/Form/NoteType.php" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosEtudiant.html.twig" />
         <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Etudiant.php" />
         <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/EtudiantType.php" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Profil.php" />
-        <option value="$PROJECT_DIR$/app/config/security.yml" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosPreEtudiant.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listePre.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listEtd.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/modifierEtudiant.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/listeEns.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/infosEnseignant.html.twig" />
         <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Form/EnseignantType.php" />
-        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Entity/Enseignant.php" />
-        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/ajouterEnseignant.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/modifierEnseignant.html.twig" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/modifierMembre.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosEtudiant.html.twig" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/listMembre.html.twig" />
-        <option value="$PROJECT_DIR$/src/User/UserBundle/Entity/User.php" />
-        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/infosMembre.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/layoutAdmin.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutpersonnel.html.twig" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/modifierEnseignant.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/ajouterEnseignant.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/ajouterEtudiant.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/modifierEtudiant.html.twig" />
         <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutPersonnels.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/modifierMembre.html.twig" />
+        <option value="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutpersonnel.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/ajouterNiveau.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/listeNiveaux.html.twig" />
+        <option value="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/modifierNiveau.html.twig" />
       </list>
     </option>
   </component>
@@ -286,6 +298,92 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UEBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UEBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UEBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -305,6 +403,274 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PreinscriptionBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PreinscriptionBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PreinscriptionBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PreinscriptionBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PreinscriptionBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PreinscriptionBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnseignantBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnseignantBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnseignantBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnseignantBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -416,32 +782,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ERP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ERP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdminBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -511,19 +851,19 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ERP\web\bundles\membre\javascripts" />
+      <recent name="C:\xampp\htdocs\ERP\src\Gestion\PreinscriptionBundle\Resources\views" />
+      <recent name="C:\xampp\htdocs\ERP\app\Resources\views" />
+      <recent name="C:\xampp\htdocs\ERP\src\Admin\AdminBundle\Resources\views" />
+      <recent name="C:\xampp\htdocs\ERP\src\Gestion\NoteBundle\Resources\views\Default" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ERP\src\Gestion\PreinscriptionBundle\Resources\views" />
+      <recent name="C:\xampp\htdocs\ERP\src\Gestion\PreinscriptionBundle\Resources\views\Default" />
       <recent name="C:\xampp\htdocs\ERP\web\bundles\gestionue" />
       <recent name="C:\xampp\htdocs\ERP\web\bundles" />
       <recent name="C:\xampp\htdocs\ERP\web\calendar layout" />
-      <recent name="C:\xampp\htdocs\ERP\app\Resources\views" />
-      <recent name="C:\xampp\htdocs\ERP\app\Resources\views\default" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\ERP\src\Admin\AdminBundle\Resources\views\Default" />
-      <recent name="C:\xampp\htdocs\ERP\web\bundles\membre\javascripts" />
-      <recent name="C:\xampp\htdocs\ERP\web\bundles\membre" />
-      <recent name="C:\xampp\htdocs\ERP\app\Resources\TwigBundle\views\Exception" />
-      <recent name="C:\xampp\htdocs\ERP\web\bundles\erpenseignant\assets\js" />
     </key>
   </component>
   <component name="RunManager">
@@ -601,7 +941,19 @@
       <workItem from="1493187165413" duration="6526000" />
       <workItem from="1493274706464" duration="26158000" />
       <workItem from="1493320861262" duration="7348000" />
-      <workItem from="1493359445750" duration="12216000" />
+      <workItem from="1493359445750" duration="13442000" />
+      <workItem from="1493566567960" duration="15795000" />
+      <workItem from="1493630086318" duration="5995000" />
+      <workItem from="1493668592142" duration="7998000" />
+      <workItem from="1493705627676" duration="21315000" />
+      <workItem from="1493735304281" duration="108000" />
+      <workItem from="1493748221421" duration="13960000" />
+      <workItem from="1493795768793" duration="22270000" />
+      <workItem from="1493830093905" duration="18366000" />
+      <workItem from="1493879921827" duration="14553000" />
+      <workItem from="1493899040442" duration="9122000" />
+      <workItem from="1493918238583" duration="14403000" />
+      <workItem from="1493966841183" duration="10109000" />
     </task>
     <task id="LOCAL-00001" summary="Fixing matiers list with jquery">
       <created>1492414128624</created>
@@ -631,30 +983,37 @@
       <option name="project" value="LOCAL" />
       <updated>1493374491245</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Including fos_user accounts">
+      <created>1493374703493</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1493374703493</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313470000" />
+    <option name="totallyTimeSpent" value="468690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24670571" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24158126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13500784" sideWeight="0.5058565" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14128728" sideWeight="0.5087848" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07692308" sideWeight="0.4941435" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08634223" sideWeight="0.49121523" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -679,357 +1038,400 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="Fixing matiers list with jquery" />
     <MESSAGE value="Including fos_user accounts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Including fos_user accounts" />
+    <MESSAGE value="Fixing Forms of Student, Personel and Enseignant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing Forms of Student, Personel and Enseignant" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/bundles/membre/javascripts/formToWizard.js" />
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/TestMembre.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/SalleBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+        <state relative-caret-position="68">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/CrudMembre.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutProfil.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutEnseignant.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/membree.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajouterEnseignant.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajouterProfil.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/membre.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Task.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="39" column="89" selection-start-line="39" selection-start-column="89" selection-end-line="39" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/UEBundle/Form/UEType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Profil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+        <state relative-caret-position="486">
+          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/editMembre.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/gererSalle.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/ContactType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8990">
-          <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
+        <state relative-caret-position="183">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/listeFiliere.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/contact.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="82" column="47" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/reponse.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/modifierProfil.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/validerMail.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/infosEnseignant.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="241" column="32" selection-start-line="241" selection-start-column="32" selection-end-line="241" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosPreEtudiant.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="82" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listePre.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+        <state relative-caret-position="264">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutenseignant.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listePre.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="425">
+          <caret line="25" column="137" selection-start-line="25" selection-start-column="137" selection-end-line="25" selection-end-column="183" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Form/EnseignantType.php">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosPreEtudiant.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
-          <folding />
+        <state relative-caret-position="325">
+          <caret line="28" column="70" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Entity/Enseignant.php">
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/profil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="101" column="18" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="173">
+          <caret line="1051" column="57" selection-start-line="1051" selection-start-column="57" selection-end-line="1051" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/ajouterEnseignant.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutPersonnels.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/gererMatiere.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="76" column="28" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/listeEns.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-3432">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/modifierEtudiant.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/TestMembre.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Acces.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="84" column="10" selection-start-line="84" selection-start-column="10" selection-end-line="84" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/modifierEnseignant.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/infosEnseignant.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/modifierMembre.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="105" column="31" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/CrudProfil.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="440" column="38" selection-start-line="440" selection-start-column="38" selection-end-line="440" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/listMembre.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosEtudiant.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="67" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-177">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/storage-validation/orm.xml">
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Entity/DroitAcces.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        <state relative-caret-position="-427">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/User/UserBundle/Entity/User.php">
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Entity/LiaisonDroit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding>
-            <element signature="e#75#117#0#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="442">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Profil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="34" column="22" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="22" />
+        <state relative-caret-position="387">
+          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Entity/Membre.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="91" column="12" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/infosMembre.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="68" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+        <state relative-caret-position="374">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/config/routing.yml">
+    <entry file="file://$PROJECT_DIR$/src/ERP/EnseignantBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/NoteBundle/Form/NoteType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/UEBundle/Entity/UE.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="49" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/NiveauBundle/Entity/Niveau.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/ajouter.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="144" column="5" selection-start-line="125" selection-start-column="4" selection-end-line="144" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Etudiant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="209" column="15" selection-start-line="209" selection-start-column="11" selection-end-line="209" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/EtudiantType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-          <folding>
-            <element signature="e#53#87#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4165">
-          <caret line="254" column="31" selection-start-line="254" selection-start-column="31" selection-end-line="254" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="898">
-          <caret line="96" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="987" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/listeMatiere.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="40" column="47" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/listePersonnel.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="10" />
-          <folding />
+        <state relative-caret-position="374">
+          <caret line="22" column="24" selection-start-line="10" selection-start-column="20" selection-end-line="22" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Gestion/UEBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="198" column="8" selection-start-line="198" selection-start-column="8" selection-end-line="198" selection-end-column="41" />
+        <state relative-caret-position="342">
+          <caret line="37" column="80" selection-start-line="37" selection-start-column="80" selection-end-line="37" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/UEBundle/Form/UEType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="40" column="14" selection-start-line="28" selection-start-column="11" selection-end-line="40" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/FiliereBundle/Entity/Filiere.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutpersonnel.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/listeUE.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="437" column="36" selection-start-line="437" selection-start-column="36" selection-end-line="437" selection-end-column="51" />
+        <state relative-caret-position="221">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listEtd.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="71" column="37" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="82" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutPersonnels.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosEtudiant.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="381" column="80" selection-start-line="381" selection-start-column="80" selection-end-line="381" selection-end-column="80" />
+        <state relative-caret-position="340">
+          <caret line="20" column="79" selection-start-line="20" selection-start-column="79" selection-end-line="20" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Etudiant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="322" column="27" selection-start-line="322" selection-start-column="27" selection-end-line="322" selection-end-column="27" />
+          <folding>
+            <element signature="e#55#87#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/EtudiantType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="41" />
+          <folding>
+            <element signature="e#53#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Form/EnseignantType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding>
+            <element signature="e#49#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="306" column="16" selection-start-line="306" selection-start-column="16" selection-end-line="306" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/layoutAdmin.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/ajouterEnseignant.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/modifierEtudiant.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="183" column="73" selection-start-line="183" selection-start-column="73" selection-end-line="183" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1459">
+          <caret line="286" column="46" selection-start-line="286" selection-start-column="46" selection-end-line="286" selection-end-column="46" />
+          <folding>
+            <element signature="e#58#109#0#PHP" expanded="true" />
+            <marker date="1493973489156" expanded="true" signature="13562:13576" placeholder="..." />
+            <marker date="1493973489156" expanded="true" signature="13603:13617" placeholder="..." />
+            <marker date="1493973489156" expanded="true" signature="13724:13738" placeholder="..." />
+            <marker date="1493973489156" expanded="true" signature="13765:13779" placeholder="..." />
+            <marker date="1493973489156" expanded="true" signature="14379:14393" placeholder="..." />
+            <marker date="1493973489156" expanded="true" signature="14418:14432" placeholder="..." />
+            <marker date="1493973489156" expanded="true" signature="14539:14553" placeholder="..." />
+            <marker date="1493973489156" expanded="true" signature="14578:14592" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="156" column="33" selection-start-line="156" selection-start-column="33" selection-end-line="156" selection-end-column="33" />
+        <state relative-caret-position="76">
+          <caret line="138" column="44" selection-start-line="138" selection-start-column="44" selection-end-line="138" selection-end-column="44" />
           <folding>
-            <element signature="e#47#96#0#PHP" expanded="true" />
+            <marker date="1493892570602" expanded="true" signature="6313:6327" placeholder="..." />
+            <marker date="1493892570602" expanded="true" signature="6354:6368" placeholder="..." />
+            <marker date="1493892570602" expanded="true" signature="6475:6489" placeholder="..." />
+            <marker date="1493892570602" expanded="true" signature="6516:6530" placeholder="..." />
+            <marker date="1493892570602" expanded="true" signature="7130:7144" placeholder="..." />
+            <marker date="1493892570602" expanded="true" signature="7169:7183" placeholder="..." />
+            <marker date="1493892570602" expanded="true" signature="7290:7304" placeholder="..." />
+            <marker date="1493892570602" expanded="true" signature="7329:7343" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/ajoutpersonnel.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1656">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/modifierMembre.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/ajouterEtudiant.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/ajouterNiveau.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/listeNiveaux.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/modifierNiveau.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/modifierEnseignant.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>

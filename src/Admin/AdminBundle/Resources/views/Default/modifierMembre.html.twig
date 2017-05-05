@@ -1,4 +1,100 @@
-{% extends '::base.html.twig' %}
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+        function checkname()
+        {
+            var name=document.getElementById( "UserName" ).value;
+            var pseudo = $("#UserName").val();
+
+            if(name)
+            {
+                $.ajax({
+                    type: 'post',
+                    url: "{{ url('verifLogin') }}?pseudo=" + pseudo,
+                    data: {
+                        pseudo:pseudo,
+                    },
+                    success: function (response) {
+                        $( '#name_status' ).html(response);
+                        if(response=="OK")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                });
+            }
+            else
+            {
+                $( '#name_status' ).html("");
+                return false;
+            }
+        }
+
+        function checkemail()
+        {
+            var email=document.getElementById( "UserEmail" ).value;
+            var email = $("#UserEmail").val();
+
+            if(email)
+            {
+                $.ajax({
+                    type: 'post',
+                    url: "{{ url('verifEmail') }}?mail=" + email,
+                    data: {
+                        user_email:email,
+                    },
+                    success: function (response) {
+                        $( '#email_status' ).html(response);
+                        if(response=="OK")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                });
+            }
+            else
+            {
+                $( '#email_status' ).html("");
+                return false;
+            }
+        }
+
+        function checkall()
+        {
+            var namehtml=document.getElementById("name_status").innerHTML;
+            var emailhtml=document.getElementById("email_status").innerHTML;
+
+            if((namehtml && emailhtml)=="OK")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+    </script>
+
+    <script>
+        function same()
+        {
+            document.getElementById( "UserName" ).value=document.getElementById( "UserEmail" ).value;
+            document.getElementById( "Password" ).value=document.getElementById( "cin" ).value;
+        }
+    </script>
+
+{% endblock %}
 
 {% block body %}
 
@@ -45,17 +141,14 @@
             <input name="adresse" id="adresse" value={{ membre.adresse }} type="text" required="required" />
 
             <label for="cin">CIN</label>
-            <input name="cin" id="cin" value={{ membre.cin }} type="number" required="required" />
+            <input name="cin" id="cin" value={{ membre.cin }} type="number" onkeyup="same();" required="required" />
 
             <label for="rib">RIB</label>
             <input name="rib" id="rib" value={{ membre.rib }} type="number" required="required"/>
 
             <label for="sexe">Sexe</label>
-            <select name="sexe" class="form-control input-inline input-sm input-small">
-                <option value="" selected>-- Choix -- </option>
-                <option value="Homme">Homme</option>
-                <option value="Femme">Femme</option>
-            </select>
+            <input type="radio" name="sexe" value="Homme" checked />  <strong>Homme</strong>
+            <input type="radio" name="sexe" value="Femme" />  <strong>Femme</strong>
 
             <label for="ville">Ville</label>
             <input name="ville" id="ville" value={{ membre.ville }} type="text" required="required"/>
@@ -70,15 +163,17 @@
             <input name="tel" id="tel" value={{ membre.tel }} type="number" required="required"/>
 
             <label for="Email">Email</label>
-            <input name="Mail" id="Mail" value={{ membre.email }} type="email" required="required" />
+            <input name="Mail" id="UserEmail" value={{ membre.email }} type="email" required="required" onkeyup="checkemail(),same();" /><br>
+            <span id="email_status"></span>
 
             </fieldset>
 
             <fieldset>
                 <legend>Informations d'Authentification</legend>
 
-                <label for="login">Login</label>
-                <input name="login" id="login" value={{ membre.login }} type="text" required="required"/>
+                <label for="UserName">Login</label>
+                <input name="login" id="UserName" value={{ membre.login }} type="text" required="required" onkeyup="checkname()"; /><br>
+                <span id="name_status"></span>
 
                 <label for="Password">Password</label>
                 <input name="password" id="Password" type="password" required="required"/>
@@ -88,15 +183,14 @@
             <fieldset>
                 <legend>Role à affecter</legend>
 
-                <label for="role">Role</label>
+                <label for="role">Profil</label>
                 <select name="role" id="role" class="form-control input-inline input-sm input-small">
-                    <option value="" selected>-- Choisir le role --</option>
-                    <option value="ROLE_ADMIN">Administrateur</option>
-                    <option value="ROLE_VALIDATEUR">Validateur</option>
-                    <option value="ROLE_AGENT_DE_SAISIE">Agent de Saisie</option>
-                    <option value="ROLE_ENSEIGNANT">Enseignant</option>
-                    <option value="ROLE_ETUDIANT">Etudiant</option>
-                    <option value="ROLE_ETUDIANT">Parent</option>
+                    <option value="" selected>-- Choisir le Profil --</option>
+                    {% if profil is not empty %}
+                        {% for pro in profil %}
+                            <option value={{pro.posteProfil}}>{{pro.nomProfil}}</option>
+                        {% endfor %}
+                    {% endif %}
                 </select>
 
             </fieldset>

@@ -80,6 +80,13 @@ class Preinscrit
     /**
      * @var string
      *
+     * @ORM\Column(name="formation", type="string", length=255)
+     */
+    private $formation;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adresse", type="text")
      */
     private $adresse;
@@ -132,13 +139,6 @@ class Preinscrit
      * @ORM\Column(name="niveau", type="string", length=255)
      */
     private $niveau;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="formation", type="string", length=255)
-     */
-    private $formation;
 
     /**
      * Get id

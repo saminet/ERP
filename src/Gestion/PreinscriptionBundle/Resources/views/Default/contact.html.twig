@@ -1,32 +1,33 @@
 {# contact.html.twig #}
-{% extends '::base.html.twig' %}
+{% extends "layoutAdmin.html.twig" %}
 
 {% block body %}
+
 {{ form_start(form) }}
 
-<div>
-    {{ form_widget(form.subject) }}
-    {{ form_errors(form.subject) }}
-</div>
-<div>
-    {{ form_widget(form.name) }}
-    {{ form_errors(form.name) }}
-</div>
-<div>
-    {{ form_widget(form.email) }}
-    {{ form_errors(form.email) }}
-</div>
-<div>
-    {{ form_widget(form.message) }}
-    {{ form_errors(form.message) }}
-</div>
+    <div class="form-group">
+        <label for="contact_subject">{{ form_label(form.subject) }}</label><br>
+        {{ form_widget(form.subject) }}
+    </div>
 
-{# Render CSRF token etc .#}
-<div style="display:none">
+    <div class="form-group">
+        <label for="contact_name">{{ form_label(form.name) }}</label><br>
+        {{ form_widget(form.name) }}
+    </div>
+
+    <div class="form-group">
+        <label for="contact_email">{{ form_label(form.email) }}</label><br>
+        {{ form_widget(form.email) }}
+    </div>
+
+    <div class="form-group">
+        <label for="contact_message">{{ form_label(form.message) }}</label><br>
+        {{ form_widget(form.message) }}
+    </div>
+
     {{ form_rest(form) }}
-</div>
 
-<input type="submit" value="Submit">
+<input type="submit" class="btn btn-success value="Envoyer">
 
 {{ form_end(form) }}
 

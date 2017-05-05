@@ -29,7 +29,7 @@ class Niveau
      */
     private $nomNiveau;
 	
-	        public function __toString()
+    public function __toString()
     {
         return $this->nomNiveau;
     }
@@ -37,7 +37,7 @@ class Niveau
 
     /**
      *@ORM\ManyToOne(targetEntity="Gestion\FiliereBundle\Entity\Filiere")
-     *@ORM\joinColumn(onDelete="SET NULL")
+     *@ORM\JoinColumn(onDelete="SET NULL")
      */
     private $filiere;
 
