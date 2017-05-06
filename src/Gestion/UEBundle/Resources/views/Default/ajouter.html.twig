@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends '::layoutAdmin.html.twig' %}
 {% block body %}
     <!-- select niveau -->
     <div id="wrapper">
@@ -51,10 +51,7 @@
 
     </div>
 
-                <script>
-                    function getValue(obj){
-                        $('#myFormNiveau').submit();}
-                </script>
+
                 <!-- filtrer la liste des filières selon le niveau séléctionnée -->
                 <script type="text/javascript">
                     (function($) {

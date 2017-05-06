@@ -3,18 +3,30 @@
 namespace Gestion\PreinscriptionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gestion\AbsenceBundle\Entity\Classe;
-use Gestion\PreinscriptionBundle\Entity\Formation;
-use Gestion\NiveauBundle\Entity\Niveau;
-use Gestion\FiliereBundle\Entity\Filiere;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
- * etudiant
+ * Parents
  *
- * @ORM\Table(name="etudiant")
- * @ORM\Entity(repositoryClass="Gestion\PreinscriptionBundle\Repository\EtudiantRepository")
+ * @ORM\Table(name="parents")
+ * @ORM\Entity(repositoryClass="Gestion\PreinscriptionBundle\Repository\ParentsRepository")
  */
-class Etudiant
+class Parents
 {
     /**
      * @var int
@@ -91,7 +103,7 @@ class Etudiant
     /**
      * @var int
      *
-     * @ORM\Column(name="tel", type="integer")
+     * @ORM\Column(name="tel", type="string")
      */
     private $tel;
 
@@ -101,37 +113,6 @@ class Etudiant
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="diplome", type="string", length=255)
-     */
-    private $diplome;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="etablissement", type="string", length=255)
-     */
-    private $etablissement;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="annee_obtention", type="date")
-     */
-    private $anneeObtention;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Gestion\NiveauBundle\Entity\Niveau", cascade={"persist"})
-     */
-    private $niveau = 'pas encore définit';
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Gestion\FiliereBundle\Entity\Filiere", cascade={"persist"})
-     */
-    private $filiere = 'pas encore définit';
 
     /**
      * @var string
@@ -150,7 +131,7 @@ class Etudiant
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -162,7 +143,7 @@ class Etudiant
      *
      * @param string $nom
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setNom($nom)
     {
@@ -186,7 +167,7 @@ class Etudiant
      *
      * @param string $prenom
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setPrenom($prenom)
     {
@@ -210,7 +191,7 @@ class Etudiant
      *
      * @param \DateTime $dateNaissance
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setDateNaissance($dateNaissance)
     {
@@ -234,7 +215,7 @@ class Etudiant
      *
      * @param string $lieuNaissance
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setLieuNaissance($lieuNaissance)
     {
@@ -258,7 +239,7 @@ class Etudiant
      *
      * @param string $nationalite
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setNationalite($nationalite)
     {
@@ -282,7 +263,7 @@ class Etudiant
      *
      * @param string $ville
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setVille($ville)
     {
@@ -306,7 +287,7 @@ class Etudiant
      *
      * @param integer $numCinPass
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setNumCinPass($numCinPass)
     {
@@ -318,7 +299,7 @@ class Etudiant
     /**
      * Get numCinPass
      *
-     * @return int
+     * @return integer
      */
     public function getNumCinPass()
     {
@@ -330,7 +311,7 @@ class Etudiant
      *
      * @param string $sexe
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setSexe($sexe)
     {
@@ -354,7 +335,7 @@ class Etudiant
      *
      * @param string $adresse
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setAdresse($adresse)
     {
@@ -378,7 +359,7 @@ class Etudiant
      *
      * @param integer $tel
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setTel($tel)
     {
@@ -390,7 +371,7 @@ class Etudiant
     /**
      * Get tel
      *
-     * @return int
+     * @return integer
      */
     public function getTel()
     {
@@ -402,7 +383,7 @@ class Etudiant
      *
      * @param string $email
      *
-     * @return etudiant
+     * @return Parents
      */
     public function setEmail($email)
     {
@@ -422,83 +403,11 @@ class Etudiant
     }
 
     /**
-     * Set diplome
-     *
-     * @param string $diplome
-     *
-     * @return etudiant
-     */
-    public function setDiplome($diplome)
-    {
-        $this->diplome = $diplome;
-
-        return $this;
-    }
-
-    /**
-     * Get diplome
-     *
-     * @return string
-     */
-    public function getDiplome()
-    {
-        return $this->diplome;
-    }
-
-    /**
-     * Set etablissement
-     *
-     * @param string $etablissement
-     *
-     * @return etudiant
-     */
-    public function setEtablissement($etablissement)
-    {
-        $this->etablissement = $etablissement;
-
-        return $this;
-    }
-
-    /**
-     * Get etablissement
-     *
-     * @return string
-     */
-    public function getEtablissement()
-    {
-        return $this->etablissement;
-    }
-
-    /**
-     * Set anneeObtention
-     *
-     * @param \DateTime $anneeObtention
-     *
-     * @return etudiant
-     */
-    public function setAnneeObtention($anneeObtention)
-    {
-        $this->anneeObtention = $anneeObtention;
-
-        return $this;
-    }
-
-    /**
-     * Get anneeObtention
-     *
-     * @return \DateTime
-     */
-    public function getAnneeObtention()
-    {
-        return $this->anneeObtention;
-    }
-
-    /**
      * Set login
      *
      * @param string $login
      *
-     * @return Etudiant
+     * @return Parents
      */
     public function setLogin($login)
     {
@@ -522,7 +431,7 @@ class Etudiant
      *
      * @param string $password
      *
-     * @return Etudiant
+     * @return Parents
      */
     public function setPassword($password)
     {
@@ -539,53 +448,5 @@ class Etudiant
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Set niveau
-     *
-     * @param \Gestion\NiveauBundle\Entity\Niveau $niveau
-     *
-     * @return Etudiant
-     */
-    public function setNiveau(\Gestion\NiveauBundle\Entity\Niveau $niveau = null)
-    {
-        $this->niveau = $niveau;
-
-        return $this;
-    }
-
-    /**
-     * Get niveau
-     *
-     * @return \Gestion\NiveauBundle\Entity\Niveau
-     */
-    public function getNiveau()
-    {
-        return $this->niveau;
-    }
-
-    /**
-     * Set filiere
-     *
-     * @param \Gestion\FiliereBundle\Entity\Filiere $filiere
-     *
-     * @return Etudiant
-     */
-    public function setFiliere(\Gestion\FiliereBundle\Entity\Filiere $filiere = null)
-    {
-        $this->filiere = $filiere;
-
-        return $this;
-    }
-
-    /**
-     * Get filiere
-     *
-     * @return \Gestion\FiliereBundle\Entity\Filiere
-     */
-    public function getFiliere()
-    {
-        return $this->filiere;
     }
 }

@@ -1,0 +1,28 @@
+{% extends "::layoutAdmin.html.twig" %}
+
+{% block body %}
+
+    <h1>Information sur l'étudiant(e) : <b>{{ parent.nom }}</b> </h1>
+    <a href="{{path('listParent')}}">Revenir à la liste des parents</a>
+    <table class="table">
+
+    <tbody>
+
+
+
+        <tr><td><b>Nom</b></td><td>{{ parent.nom }}</td></tr>
+        <tr><td><b>Prenom</b></td><td>{{ parent.prenom }}</td></tr>
+        <tr><td><b>Sexe</b></td><td>{{ parent.sexe }}</td></tr>
+        <tr><td><b>LieuNaissance</b></td><td>{{ parent.nationalite }}</td></tr>
+        <tr><td><b>Ville</b></td><td>{{ parent.ville }}</td>
+        <tr><td><b>Numéro Cin/Pass</b></td><td>{{ parent.numCinPass }}</td></tr>
+        <tr><td><b>Adresse</b></td><td>{{ parent.adresse }}</td></tr>
+        <tr><td><b>Téléphone</b></td><td>{{ parent.tel }}</td></tr>
+        <tr><td><b>Email</b></td><td>{{ parent.email }}</td></tr>
+        <tr><td><b>Login</b></td><td>{{ parent.login }}</td></tr>
+        <tr><td><b>Mot de Passe</b></td><td>{{ parent.password }}</td></tr>
+        <tr><td><a href="{{ path('modifier_Parent',{'id':parent.id,'username':parent.login}) }}"><button class="btn btn-primary">Modifier</button></a></td></tr>
+
+    </tbody>
+
+{% endblock %}

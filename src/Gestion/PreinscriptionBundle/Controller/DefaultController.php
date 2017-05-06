@@ -3,16 +3,19 @@
 namespace Gestion\PreinscriptionBundle\Controller;
 use Gestion\PreinscriptionBundle\Entity\Preinscrit;
 use Gestion\PreinscriptionBundle\Entity\Etudiant;
+use Gestion\PreinscriptionBundle\Entity\Parents;
 use Gestion\NiveauBundle\Entity\Niveau;
 use Gestion\FiliereBundle\Entity\Filiere;
 use Gestion\PreinscriptionBundle\Entity\Task;
 use Gestion\PreinscriptionBundle\Form\EtudiantForm;
 use Gestion\PreinscriptionBundle\Form\EtudiantType;
+use Gestion\PreinscriptionBundle\Form\ParentsType;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DefaultController extends Controller
 {
 
@@ -26,7 +29,7 @@ class DefaultController extends Controller
         $em = $this->container->get('doctrine')->getEntityManager();
 
         $preinscrit1 = new Preinscrit();
-        $preinscrit1->setNom('Simone');
+        $preinscrit1->setNom('Davide');
         $preinscrit1->setPrenom('Crockett');
         $preinscrit1->setDateNaissance(new \DateTime("2011-07-23 06:12:33"));
         $preinscrit1->setLieuNaissance('Paris');
@@ -36,7 +39,7 @@ class DefaultController extends Controller
         $preinscrit1->setSexe('Masculain');
         $preinscrit1->setAdresse('Paris');
         $preinscrit1->setTel('123456');
-        $preinscrit1->setEmail('Alain@gmail.com');
+        $preinscrit1->setEmail('david2000@gmail.com');
         $preinscrit1->setDiplome('Metrise');
         $preinscrit1->setEtablissement('Sorbon');
         $preinscrit1->setAnneeObtention(new \DateTime("2011-07-23 06:12:33"));
@@ -476,8 +479,137 @@ class DefaultController extends Controller
     }
 
 
+    public function listParentAction()
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $parent = $em->getRepository('GestionPreinscriptionBundle:Parents')->findAll();
+
+        return $this->container->get('templating')->renderResponse('GestionPreinscriptionBundle:Default:listParents.html.twig', array(
+                'parent' => $parent)
+        );
+
+    }
+
+        public function infosParentAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $parent= $em->getRepository('GestionPreinscriptionBundle:Parents')->find($id);
+        return $this->container->get('templating')->renderResponse('GestionPreinscriptionBundle:Default:infosParents.html.twig',
+            array(
+                'parent' => $parent
+            ));
+    }
+
+    public function ajouterParentAction(Request $request)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        //on crée un nouveau etudiant
+        $parent = new Parents();
+        //on recupere le formulaire
+        $form = $this->createForm(ParentsType::class,$parent);
+
+        //on génère le html du formulaire crée
+        $formView = $form->createView();
+        // Refill the fields in case the form is not valid.
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $donnee = $form->getData();
+            $username = $donnee->getLogin();
+            //var_dump($username);die('Hello');
+            $password = $donnee->getPassword();
+            $email = $donnee->getEmail();
+            $roles = 'ROLE_PARENT';
+
+            //var_dump($username,$password,$email,$roles);die('Hello');
+            $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->createUser();
+            $user->setUsername($username);
+            $hash = password_hash($password,PASSWORD_BCRYPT,['cost' => 13]) ;
+            $user->setPassword($hash);
+            $user->setEmail($email);
+            $user->setEnabled(true);
+            $user->setRoles(array($roles));
+            $userManager->updateUser($user);
+
+            $em->persist($parent);
+            $em->flush();
+            return $this->redirect($this->generateUrl('listParent'));
+        }
+        //on rend la vue
+        return $this->render('GestionPreinscriptionBundle:Default:ajouterParent.html.twig',array(
+            'form'   => $formView));
+    }
 
 
+    public function modifierParentAction($id, Request $request)
+    {
+        $Old_user=$request->get('username');
+        $Old_usr=$request->get('idEtud');
+        //var_dump($Old_user);die('Hello');
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $parent= $em->getRepository('GestionPreinscriptionBundle:Parents')->find($id);
+        if (null === $parent) {
+            throw new NotFoundHttpException("Le parent d'id ".$id." n'existe pas.");
+        }
+        //on recupere le formulaire
+        $form = $this->createForm(ParentsType::class, $parent);
+        //on génère le html du formulaire crée
+        $formView = $form->createView();
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+            $donnee = $form->getData();
+            $username = $donnee->getLogin();
+            $password = $donnee->getPassword();
+            $email = $donnee->getEmail();
+            $roles = 'ROLE_PARENTS';
+            //var_dump($username,$Old_usr,$password,$email,$roles);die('Hello');
+            $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->findUserByUsername($Old_usr);
+            if ($user instanceof User) {
+                throw new HttpException(409, 'Login déjà utilisé');
+            }
+            else{
+                $user->setUsername($username);
+                $hash = password_hash($password,PASSWORD_BCRYPT,['cost' => 13]) ;
+                $user->setPassword($hash);
+                $user->setEmail($email);
+                $user->setEnabled(true);
+                $user->setRoles(array($roles));
+                $userManager->updateUser($user);
+
+                // Inutile de persister ici, Doctrine connait déjà notre annonce
+                $em->flush();
+            }
+
+            return $this->redirectToRoute('listParent', array('id' => $parent->getId()));
+        }
+
+        return $this->render('GestionPreinscriptionBundle:Default:modifierParent.html.twig', array(
+            'parent' => $parent,
+            'form' => $formView, 'oldUser' => $Old_user,
+        ));
+    }
+
+    public function supprimerParentAction(Request $request, $id)
+    {
+        $username=$request->get('username');
+        //var_dump($username);die('Hello');
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $etudiant= $this->getDoctrine()->getRepository('GestionPreinscriptionBundle:Parents')->find($id);
+        if (!$etudiant)
+        {
+            throw new NotFoundHttpException("Parent non trouvé");
+        }
+
+        //ajout des paramètres username et password dans la table 'fos_user'
+        $userManager = $this->get('fos_user.user_manager');
+        $usr = $userManager->findUserByUsername($username);
+        $em->remove($usr);
+
+        $em->remove($etudiant);
+        $em->flush();
+        return new RedirectResponse($this->get('router')->generate('listParent'));
+    }
 
 
 

@@ -8,6 +8,8 @@ use Gestion\EnseignantBundle\Entity\Enseignant;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -38,6 +40,7 @@ class DefaultController extends Controller
 
     public function ajouterEnseignantAction(Request $request)
     {
+
         $em = $this->container->get('doctrine')->getEntityManager();
         //on crée un nouveau etudiant
         $enseignant = new Enseignant();
@@ -57,7 +60,7 @@ class DefaultController extends Controller
                 $password = $donnee->getPassword();
                 $email = $donnee->getEmail();
                 $roles = 'ROLE_ENSEIGNANT';
-                //var_dump($roles);die('Hello');
+                //var_dump($username,$password,$email,$roles);die('Hello');
                 //créer un compte pour l'enseignant
                 $userManager = $this->get('fos_user.user_manager');
                 $user = $userManager->createUser();
@@ -67,7 +70,8 @@ class DefaultController extends Controller
                 $user->setEmail($email);
                 $user->setEnabled(true);
                 $user->setRoles(array($roles));
-                $userManager->updateUser($user);
+                $userManager->updateUser($user, false);
+                $this->getDoctrine()->getManager()->flush();
 
                 $em->persist($enseignant);
                 $em->flush();
@@ -139,20 +143,19 @@ class DefaultController extends Controller
             $username = $donnee->getLogin();
             $password = $donnee->getPassword();
             $email = $donnee->getEmail();
-            //var_dump($username,$Old_usr,$roles,$password,$email,$roles);die('Hello');
+            //var_dump($username,$Old_usr,$password,$email,$Old_user);die('Hello');
+            //ajout des paramètres username et password dans la table 'fos_user'
             $userManager = $this->get('fos_user.user_manager');
-            $user = $userManager->findUserByUsername($Old_usr);
-            $user->setUsername($username);
+            $usr = $userManager->findUserByUsername($Old_usr);
+            $usr->setUsername($username);
             $hash = password_hash($password,PASSWORD_BCRYPT,['cost' => 13]) ;
-            $user->setPassword($hash);
-            $user->setEmail($email);
-            $user->setEnabled(true);
-            $userManager->updateUser($user);
+            $usr->setPassword($hash);
+            $usr->setEmail($email);
+            $usr->setEnabled(true);
+            $userManager->updateUser($usr);
 
             // Inutile de persister ici, Doctrine connait déjà notre annonce
             $em->flush();
-
-            $request->getSession()->getFlashBag()->add('notice', 'Les données de l\'enseignant'.$enseignant->getId().' sont bien modifiées.');
 
             return $this->redirectToRoute('Liste_enseignant', array('id' => $enseignant->getId()));
         }

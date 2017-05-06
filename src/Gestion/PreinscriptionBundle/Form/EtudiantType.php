@@ -29,7 +29,7 @@ class EtudiantType extends AbstractType
             ->add('dateNaissance',DateType::class, array(
              // render as a single text box
              'widget' => 'single_text'))
-            ->add('sexe',ChoiceType::class, array('placeholder'=>'Choisir le sexe','choices' => array('Féminin'=>'Féminin','Masculin'=>'Masculin'),
+            ->add('sexe',ChoiceType::class, array('placeholder'=>'Choisir le sexe','choices' => array('Masculin'=>'Masculin','Féminin'=>'Féminin'),
                 'expanded' => true,
                 'multiple' => false))
             ->add('adresse',TextareaType::class, array('attr' => array('placeholder'=>'Adresse de l\'étudiant','class'=>'form-control')))

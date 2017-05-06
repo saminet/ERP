@@ -115,7 +115,7 @@ class Enseignant
     /**
      * @var int
      *
-     * @ORM\Column(name="rib", type="integer")
+     * @ORM\Column(name="rib", type="string")
      */
     private $rib;
 
