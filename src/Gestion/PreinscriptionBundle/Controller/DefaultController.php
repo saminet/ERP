@@ -6,8 +6,6 @@ use Gestion\PreinscriptionBundle\Entity\Etudiant;
 use Gestion\PreinscriptionBundle\Entity\Parents;
 use Gestion\NiveauBundle\Entity\Niveau;
 use Gestion\FiliereBundle\Entity\Filiere;
-use Gestion\PreinscriptionBundle\Entity\Task;
-use Gestion\PreinscriptionBundle\Form\EtudiantForm;
 use Gestion\PreinscriptionBundle\Form\EtudiantType;
 use Gestion\PreinscriptionBundle\Form\ParentsType;
 use Symfony\Component\DependencyInjection\ContainerAware;
@@ -44,7 +42,7 @@ class DefaultController extends Controller
         $preinscrit1->setEtablissement('Sorbon');
         $preinscrit1->setAnneeObtention(new \DateTime("2011-07-23 06:12:33"));
         $preinscrit1->setMessage('Bonjour');
-        $preinscrit1->setNiveau('Master');
+        $preinscrit1->setNiveau('1 ère année');
         $preinscrit1->setFormation('Licence Fondamentale en Management');
         $em->persist($preinscrit1);
 
@@ -131,43 +129,6 @@ class DefaultController extends Controller
     }
 
 
-    public function suprimerPreinscritAction($id)
-    {
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $preinscrit= $this->getDoctrine()->getRepository('GestionPreinscriptionBundle:Preinscrit')->find($id);
-        if (!$preinscrit)
-        {
-            throw new NotFoundHttpException("Aucune préinscrit trouvé");
-        }
-        $em->remove($preinscrit);
-        $em->flush();
-
-        $message = \Swift_Message::newInstance()
-            ->setContentType("text/html")
-            ->setSubject('Préinscription IAE')
-            ->setFrom('jeap37208@gmail.com')
-            ->setTo(''.$preinscrit->getEmail().'')
-            ->setBody(
-                'Bonjour Mr/Mme '.$preinscrit->getNom().',<br /> <br /> <br />
-                Nous vous remercions de l’intérêt que vous avez manifesté vis-à-vis de notre université.<br /> <br />
-                Après un examen attentif de votre dossier, nous avons le regret de vous informer que nous ne 
-                pouvons pas retenir votre candidature <br />car votre profil ne répond pas aux critères exigés. 
-                <br /><br />Nous sommes toujours ouvert à acceuillir votre candidature en cas d\'évolution de votre dossier  <br /><br />
-                <br />Pour toutes informations, merci de nous contacter sur : <br /><br />
-                Email :  iaetunis@gmail.com / contact@iaetunis.com <br /><br />
-                Tél. : 94569697<br /><br />Fax : 71845269 E-mail <br /> <br /> <br /> <br /> <br /><br />
-                Cordialement','text/html'
-            );
-
-        $type = $message->getHeaders()->get('Content-Type');
-        $type->setParameter('charset', 'utf-8');
-
-        $this->get('mailer')->send($message);
-
-        return new RedirectResponse($this->container->get('router')->generate('Liste_preinscrits'));
-    }
-
-
     public function validerPreinscritAction($id)
     {
         $em = $this->container->get('doctrine')->getEntityManager();
@@ -190,7 +151,8 @@ class DefaultController extends Controller
         $etudiant->setEtablissement($preinscrit->getEtablissement());
         $etudiant->setAnneeObtention($preinscrit->getAnneeObtention());
         $etudiant->setNiveau($preinscrit->getNiveau());
-        $etudiant->setFormation($preinscrit->getFormation());
+        $etudiant->setFiliere($preinscrit->getFormation());
+        $etudiant->setClasse($preinscrit->getNiveau().' '.$preinscrit->getFormation());
         $etudiant->setLogin($preinscrit->getEmail());
         $etudiant->setPassword($preinscrit->getNumCinPass());
 
@@ -239,7 +201,6 @@ class DefaultController extends Controller
     {
         $em = $this->container->get('doctrine')->getEntityManager();
         $etudiants = $em->getRepository('GestionPreinscriptionBundle:Etudiant')->findAll();
-
         return $this->container->get('templating')->renderResponse('GestionPreinscriptionBundle:Default:listEtd.html.twig',array(
                 'etudiants' => $etudiants)
         );
@@ -260,6 +221,8 @@ class DefaultController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $donnee = $form->getData();
             $username = $donnee->getLogin();
+            $niveau = $donnee->getNiveau();
+            $filiere = $donnee->getFiliere();
             //var_dump($username);die('Hello');
             $password = $donnee->getPassword();
             $email = $donnee->getEmail();
@@ -275,6 +238,8 @@ class DefaultController extends Controller
             $user->setEnabled(true);
             $user->setRoles(array($roles));
             $userManager->updateUser($user);
+
+            $etudiant->setClasse($niveau.' '.$filiere);
             
             $em->persist($etudiant);
             $em->flush();
@@ -341,9 +306,12 @@ class DefaultController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
             $donnee = $form->getData();
+            $niveau = $donnee->getNiveau();
+            $filiere = $donnee->getFiliere();
             $username = $donnee->getLogin();
             $password = $donnee->getPassword();
             $email = $donnee->getEmail();
+            $etudiant->setClasse($niveau.' '.$filiere);
             $roles = 'ROLE_ETUDIANT';
             //var_dump($username,$Old_usr,$roles,$password,$email,$roles);die('Hello');
             $userManager = $this->get('fos_user.user_manager');
@@ -394,6 +362,41 @@ class DefaultController extends Controller
         $em->remove($etudiant);
         $em->flush();
         return new RedirectResponse($this->container->get('router')->generate('listEtudiant'));
+    }
+
+    public function rechercherAction(Request $request)
+    {
+        if($request->isXmlHttpRequest())
+        {
+            $motcle = '';
+            $motcle = $request->get('motcle');
+
+            $em = $this->container->get('doctrine')->getEntityManager();
+
+            if($motcle != '')
+            {
+                $qb = $em->createQueryBuilder();
+
+                $qb->select('a')
+                    ->from('GestionPreinscriptionBundle:Etudiant', 'a')
+                    ->where("a.nom LIKE :motcle OR a.prenom LIKE :motcle")
+                    ->orderBy('a.nom', 'ASC')
+                    ->setParameter('motcle', '%'.$motcle.'%');
+
+                $query = $qb->getQuery();
+                $etudiants = $query->getResult();
+            }
+            else {
+                $etudiants = $em->getRepository('GestionPreinscriptionBundle:Etudiant')->findAll();
+            }
+
+            return $this->container->get('templating')->renderResponse('GestionPreinscriptionBundle:Default:listEtd.html.twig', array(
+                'etudiants' => $etudiants
+            ));
+        }
+        else {
+            return $this->listEtudiantAction();
+        }
     }
 
 

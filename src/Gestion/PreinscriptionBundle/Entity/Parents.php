@@ -80,9 +80,9 @@ class Parents
     private $ville;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="num_cin_pass", type="integer")
+     * @ORM\Column(name="num_cin_pass", type="string")
      */
     private $numCinPass;
 

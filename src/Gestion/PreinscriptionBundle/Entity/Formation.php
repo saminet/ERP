@@ -68,4 +68,3 @@ class Formation
         return $this->intitule;
     }
 }
-

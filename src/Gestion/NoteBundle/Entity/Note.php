@@ -57,16 +57,27 @@ class Note
     private $session;
 
     /**
-     *@ORM\ManyToOne(targetEntity="Gestion\AbsenceBundle\Entity\Classe")
-     *@ORM\JoinColumn(onDelete="SET NULL")
+     * @var string
+     *
+     * @ORM\Column(name="classe", type="string", length=255)
      */
     private $classe;
+
+
+    /**
+     * @var groupe
+     *
+     * @ORM\Column(name="groupe", type="string", length=255)
+     */
+    private $groupe;
+
 
     /**
      * Get id
      *
      * @return int
      */
+
     public function getId()
     {
         return $this->id;
@@ -191,25 +202,54 @@ class Note
     {
         return $this->note;
     }
+    
+    /**
+     * Set groupe
+     *
+     * @param string $groupe
+     *
+     * @return Note
+     */
+    public function setGroupe($groupe)
+    {
+        $this->groupe = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * Get groupe
+     *
+     * @return string
+     */
+    public function getGroupe()
+    {
+        return $this->groupe;
+    }
 
     /**
      * Set classe
      *
-     * @param \Gestion\AbsenceBundle\Entity\Classe $classe
+     * @param string $classe
      *
      * @return Note
      */
-    public function setClasse(\Gestion\AbsenceBundle\Entity\Classe $classe = null)
+    public function setClasse($classe)
     {
         $this->classe = $classe;
 
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->classe;
+    }
+
     /**
      * Get classe
      *
-     * @return \Gestion\AbsenceBundle\Entity\Classe
+     * @return string
      */
     public function getClasse()
     {

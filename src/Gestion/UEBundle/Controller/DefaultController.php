@@ -49,8 +49,8 @@ class DefaultController extends Controller
         $unite = new UE();
         $nomUnite=$request->get('nomUnite');
         $niveau=$request->get('NameNiveau');
-        $coef=$request->get('NameNiveau');
-        $credit=$request->get('NameNiveau');
+        $coef='';
+        $credit='';
         $matiere= array();
 
         $matiere=$request->get('matieres');
@@ -60,11 +60,12 @@ class DefaultController extends Controller
                 $matiere=$request->get('matieres');
                 $repository2=$this->getDoctrine()->getRepository('GestionMatiereBundle:Matiere');
                 $Selectedmatiere=$repository2->createQueryBuilder('e')->where('e.id = :idMat')->setParameter('idMat', $matiere)->getQuery()->getResult();
-
+                $coef= $this->getDoctrine()->getRepository('GestionMatiereBundle:Matiere')->find($Selectedmatiere[0]->getId());
+                $credit= $this->getDoctrine()->getRepository('GestionMatiereBundle:Matiere')->find($Selectedmatiere[0]->getId());
             }
         }
 
-        var_dump($nomUnite,$coef,$credit,$matiere,$niveau);die('hello !!');
+        var_dump($nomUnite,$niveau,$matiere,$coef,$credit);die('hello !!');
 
         $em = $this->getDoctrine()->getManager();
 

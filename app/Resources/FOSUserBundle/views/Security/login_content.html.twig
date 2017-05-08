@@ -9,7 +9,9 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <link href="../assets/style.css" rel="stylesheet" type="text/css" />
 
-</head>{% trans_default_domain 'FOSUserBundle' %}
+</head>
+
+{% trans_default_domain 'FOSUserBundle' %}
 
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>

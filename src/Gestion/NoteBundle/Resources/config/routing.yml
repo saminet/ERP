@@ -2,13 +2,21 @@ gestion_note_homepage:
     path:     /
     defaults: { _controller: GestionNoteBundle:Default:index }
 
-gestion_note:
+list_note:
     path:     /note
     defaults: { _controller: GestionNoteBundle:Default:listeNote }
 
-ajouter_note:
+ajout_note:
     path:     /note/ajouter
     defaults: { _controller: GestionNoteBundle:Default:ajouterNote }
+
+Valider_Ajout_Note:
+    path:     /note/valider
+    defaults: { _controller: GestionNoteBundle:Default:validerNote }
+
+groupe_list_ajax_call:
+    path:     /ajax/groupe_list
+    defaults: { _controller: GestionNoteBundle:Default:ajaxGetGroupe }
 
 etudiant_list_ajax_call:
     path:     /ajax/etudiant_list

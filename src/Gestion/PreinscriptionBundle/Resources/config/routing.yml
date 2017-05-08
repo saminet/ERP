@@ -85,6 +85,12 @@ email_valide:
     path:     /contact/sent
     defaults: { _controller: GestionPreinscriptionBundle:Default:validerMail  }
 
+etudiant_rechercher:
+    path: /etudiant/rechercher
+    defaults: { _controller: GestionPreinscriptionBundle:Default:rechercher }
+    requirements:
+        _method: POST
+
 
 
 

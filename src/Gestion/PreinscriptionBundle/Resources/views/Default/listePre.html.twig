@@ -23,7 +23,7 @@
             <td>{{ pre.lieuNaissance }}</td>
             <td>{{ pre.ville }}</td>
             <td>{{ pre.sexe }}</td>
-            <td><a href="{{ path('valider_preinscrit',{ 'id': pre.id }) }}"><button class="btn btn-success">Valider</button></a><a href="{{ path('suprimerPreinscrit',{'id':pre.id}) }}"><button class="btn btn-danger">Supprimer</button></a>
+            <td><a href="{{ path('valider_preinscrit',{ 'id': pre.id }) }}"><button class="btn btn-success">Valider</button></a><a href="{{ path('refuserPreinscrit',{'id':pre.id}) }}"><button class="btn btn-danger">Supprimer</button></a>
         </tr>
 {% else %}
     <p>Aucune préinscrit n'a été trouvée.</p>

@@ -1,7 +1,7 @@
 <?php
 
 namespace Gestion\AbsenceBundle\Controller;
-use Absence\GestionAbsenceBundle\Entity\AbsenceRetard;
+use Gestion\AbsenceBundle\Entity\AbsenceRetard;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

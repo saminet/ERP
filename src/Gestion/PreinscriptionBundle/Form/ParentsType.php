@@ -41,7 +41,7 @@ class ParentsType extends AbstractType
             ->add('lieuNaissance',TextType::class, array('attr' => array('placeholder'=>'Lieu de Naissance du Parent','class'=>'form-control')))
             ->add('nationalite',TextType::class, array('attr' => array('placeholder'=>'Nationalité du Parent','class'=>'form-control')))
             ->add('ville',TextType::class, array('attr' => array('placeholder'=>'Ville du Parent','class'=>'form-control')))
-            ->add('numCinPass',IntegerType::class, array('attr' => array('placeholder'=>'Numéro CIN/Passeport','class'=>'form-control')))
+            ->add('numCinPass',TextType::class, array('attr' => array('placeholder'=>'Numéro CIN/Passeport','class'=>'form-control')))
             ->add('tel',TextType::class, array('attr' => array('placeholder'=>'Téléphone du Parent','class'=>'form-control')))
             ->add('email',EmailType::class, array('attr' => array('placeholder'=>'Email du Parent', 'min' => 8,
                 'max' => 50, 'class'=>'form-control')))

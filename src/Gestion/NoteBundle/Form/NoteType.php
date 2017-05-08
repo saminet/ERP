@@ -39,6 +39,20 @@ class NoteType extends AbstractType
                 ),
             ))
 
+            ->add('groupe', EntityType::class, array(
+                'required' => true,
+                'class' => 'GestionAbsenceBundle:Groupe',
+                'placeholder' => 'Nom du Groupe',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.classe', 'ASC');
+                },
+                'choice_label' => 'classe',
+                'attr' => array(
+                    'class'     => 'form-control',
+                ),
+            ))
+
             ->add('etudiant', EntityType::class, array(
                 'required' => true,
                 'class' => 'GestionPreinscriptionBundle:Etudiant',

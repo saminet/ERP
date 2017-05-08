@@ -1,7 +1,7 @@
 {% extends '::layoutAdmin.html.twig' %}
 
 {% block javascripts %}
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
     <script type="text/javascript">
         function checkname()
         {
@@ -94,6 +94,87 @@
         }
     </script>
 
+    <script>
+
+        (function($) {
+            $.fn.formToWizard = function(options) {
+                options = $.extend({
+                    submitButton: ""
+                }, options);
+
+                var element = this;
+
+                var steps = $(element).find("fieldset");
+                var count = steps.size();
+                var submmitButtonName = "#" + options.submitButton;
+                $(submmitButtonName).hide();
+
+                // 2
+                $(element).before("<ul id='steps'></ul>");
+
+                steps.each(function(i) {
+                    $(this).wrap("<div id='step" + i + "'></div>");
+                    $(this).append("<p id='step" + i + "commands'></p>");
+
+                    // 2
+                    var name = $(this).find("legend").html();
+                    $("#steps").append("<li id='stepDesc" + i + "'>Etape " + (i + 1) + "<span>" + name + "</span></li>");
+
+                    if (i == 0) {
+                        createNextButton(i);
+                        selectStep(i);
+                    }
+                    else if (i == count - 1) {
+                        $("#step" + i).hide();
+                        createPrevButton(i);
+                    }
+                    else {
+                        $("#step" + i).hide();
+                        createPrevButton(i);
+                        createNextButton(i);
+                    }
+                });
+
+                function createPrevButton(i) {
+                    var stepName = "step" + i;
+                    $("#" + stepName + "commands").append("<a href='#' id='" + stepName + "Prev' class='prev'>< Précédent</a>");
+
+                    $("#" + stepName + "Prev").bind("click", function(e) {
+                        $("#" + stepName).hide();
+                        $("#step" + (i - 1)).show();
+                        $(submmitButtonName).hide();
+                        selectStep(i - 1);
+                    });
+                }
+
+                function createNextButton(i) {
+                    var stepName = "step" + i;
+                    $("#" + stepName + "commands").append("<a href='#' id='" + stepName + "Next' class='next'>Suivant ></a>");
+
+                    $("#" + stepName + "Next").bind("click", function(e) {
+                        $("#" + stepName).hide();
+                        $("#step" + (i + 1)).show();
+                        if (i + 2 == count)
+                            $(submmitButtonName).show();
+                        selectStep(i + 1);
+                    });
+                }
+
+                function selectStep(i) {
+                    $("#steps li").removeClass("current");
+                    $("#stepDesc" + i).addClass("current");
+                }
+
+            }
+        })(jQuery);
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#SignupForm").formToWizard({ submitButton: 'SaveAccount' })
+        });
+    </script>
+
 {% endblock %}
 
             {% block body %}
@@ -122,48 +203,47 @@
                 <h1>Ajouter un Personnel</h1>
 
                 <div id="main">
-                    <form action="{{path('Valider_Membre')}}" method="POST" id="Form">
+                    <form id="SignupForm" action="{{path('Valider_Membre')}}" method="POST" >
+                        <fieldset>
+                            <legend>Information du Compte</legend>
 
-                        <legend>Information du Compte</legend>
+                            <label for="nom">Nom</label>
+                            <input name="nom" id="Nom" type="text" required="required" />
 
-                        <label for="nom">Nom</label>
-                        <input name="nom" id="Nom" type="text" required="required" />
+                            <label for="Prenom">Prénom</label>
+                            <input name="prenom" id="Prenom" type="text" required="required" />
 
-                        <label for="Prenom">Prénom</label>
-                        <input name="prenom" id="Prenom" type="text" required="required" />
+                            <!-- <label for="date_naissance">Date de Naissance</label>
+                            <input name="date_naissance" id="date_naissance" type="date" required="required"/> -->
 
-                        <!-- <label for="date_naissance">Date de Naissance</label>
-                        <input name="date_naissance" id="date_naissance" type="date" required="required"/> -->
+                            <label for="adresse">Adresse</label>
+                            <input name="adresse" id="adresse" type="text" required="required" />
 
-                        <label for="adresse">Adresse</label>
-                        <input name="adresse" id="adresse" type="text" required="required" />
+                            <label for="cin">CIN</label>
+                            <input name="cin" id="cin" type="text" onkeyup="same();" required="required" />
 
-                        <label for="cin">CIN</label>
-                        <input name="cin" id="cin" type="number" onkeyup="same();" required="required" />
+                            <label for="rib">RIB</label>
+                            <input name="rib" id="rib" type="text" required="required"/>
 
-                        <label for="rib">RIB</label>
-                        <input name="rib" id="rib" type="text" required="required"/>
+                            <label for="sexe">Sexe</label>
+                            <input type="radio" name="sexe" value="Homme" checked />  <strong>Homme</strong>
+                            <input type="radio" name="sexe" value="Femme" />  <strong>Femme</strong>
 
-                        <label for="sexe">Sexe</label>
-                        <input type="radio" name="sexe" value="Homme" checked />  <strong>Homme</strong>
-                        <input type="radio" name="sexe" value="Femme" />  <strong>Femme</strong>
+                            <label for="ville">Ville</label>
+                            <input name="ville" id="ville" type="text" required="required"/>
 
-                        <label for="ville">Ville</label>
-                        <input name="ville" id="ville" type="text" required="required"/>
+                            <label for="lieuxNaissance">lieuxNaissance</label>
+                            <input name="leuxNais" id="lieuxNaissance" type="text" required="required"/>
 
-                        <label for="lieuxNaissance">lieuxNaissance</label>
-                        <input name="leuxNais" id="lieuxNaissance" type="text" required="required"/>
+                            <label for="nationalite">Nationalite</label>
+                            <input name="nat" id="nationalite" type="text" required="required" />
 
-                        <label for="nationalite">Nationalite</label>
-                        <input name="nat" id="nationalite" type="text" required="required" />
+                            <label for="tel">Téléphone</label>
+                            <input name="tel" id="tel" type="number" required="required"/>
 
-                        <label for="tel">Téléphone</label>
-                        <input name="tel" id="tel" type="number" required="required"/>
-
-                        <label for="UserEmail">Email</label>
-                        <input name="mail" id="UserEmail" type="email" onkeyup="checkemail(),same();" required="required" />
-                        <span id="email_status"></span>
-
+                            <label for="UserEmail">Email</label>
+                            <input name="mail" id="UserEmail" type="email" onkeyup="checkemail(),same();" required="required" />
+                            <span id="email_status"></span>
                         </fieldset>
 
                         <fieldset>
@@ -186,16 +266,17 @@
                             <select name="profil" id="role" class="form-control input-inline input-sm input-small">
                                 <option value="" selected>-- Choisir le Profil --</option>
                                 {% if profil is not empty %}
-                                {% for pro in profil %}
-                                    <option value={{pro.posteProfil}}>{{pro.nomProfil}}</option>
-                                {% endfor %}
+                                    {% for pro in profil %}
+                                        <option value={{pro.posteProfil}}>{{pro.nomProfil}}</option>
+                                    {% endfor %}
                                 {% endif %}
                             </select>
 
                         </fieldset>
-                        <br>
 
-                        <input id="SaveAccount" type="submit" class="btn btn-success" value="Sauvegarder" />
+                        <p>
+                            <input id="SaveAccount" type="submit" class="btn btn-success" value="Sauvegarder" />
+                        </p>
                     </form>
                 </div>
 

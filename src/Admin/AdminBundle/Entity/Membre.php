@@ -99,9 +99,9 @@ class Membre
     private $password;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="cin", type="integer")
+     * @ORM\Column(name="cin", type="string")
      */
     private $cin;
 

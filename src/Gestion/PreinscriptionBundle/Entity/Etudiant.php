@@ -3,10 +3,6 @@
 namespace Gestion\PreinscriptionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gestion\AbsenceBundle\Entity\Classe;
-use Gestion\PreinscriptionBundle\Entity\Formation;
-use Gestion\NiveauBundle\Entity\Niveau;
-use Gestion\FiliereBundle\Entity\Filiere;
 
 /**
  * etudiant
@@ -68,9 +64,9 @@ class Etudiant
     private $ville;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="num_cin_pass", type="integer")
+     * @ORM\Column(name="num_cin_pass", type="string")
      */
     private $numCinPass;
 
@@ -124,14 +120,23 @@ class Etudiant
     private $anneeObtention;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Gestion\NiveauBundle\Entity\Niveau", cascade={"persist"})
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", length=255)
      */
-    private $niveau = 'pas encore définit';
+    private $niveau;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Gestion\FiliereBundle\Entity\Filiere", cascade={"persist"})
+     * @var string
+     *
+     * @ORM\Column(name="filiere", type="string", length=255)
      */
-    private $filiere = 'pas encore définit';
+    private $filiere;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="Gestion\AbsenceBundle\Entity\Groupe", cascade={"persist"})
+     */
+    private $groupe;
 
     /**
      * @var string
@@ -544,11 +549,11 @@ class Etudiant
     /**
      * Set niveau
      *
-     * @param \Gestion\NiveauBundle\Entity\Niveau $niveau
+     * @param string $niveau
      *
      * @return Etudiant
      */
-    public function setNiveau(\Gestion\NiveauBundle\Entity\Niveau $niveau = null)
+    public function setNiveau($niveau)
     {
         $this->niveau = $niveau;
 
@@ -558,7 +563,7 @@ class Etudiant
     /**
      * Get niveau
      *
-     * @return \Gestion\NiveauBundle\Entity\Niveau
+     * @return string
      */
     public function getNiveau()
     {
@@ -568,11 +573,11 @@ class Etudiant
     /**
      * Set filiere
      *
-     * @param \Gestion\FiliereBundle\Entity\Filiere $filiere
+     * @param string $filiere
      *
      * @return Etudiant
      */
-    public function setFiliere(\Gestion\FiliereBundle\Entity\Filiere $filiere = null)
+    public function setFiliere($filiere)
     {
         $this->filiere = $filiere;
 
@@ -582,10 +587,34 @@ class Etudiant
     /**
      * Get filiere
      *
-     * @return \Gestion\FiliereBundle\Entity\Filiere
+     * @return string
      */
     public function getFiliere()
     {
         return $this->filiere;
+    }
+
+    /**
+     * Set groupe
+     *
+     * @param \Gestion\AbsenceBundle\Entity\Groupe $groupe
+     *
+     * @return Etudiant
+     */
+    public function setGroupe(\Gestion\AbsenceBundle\Entity\Groupe $groupe = null)
+    {
+        $this->groupe = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * Get groupe
+     *
+     * @return \Gestion\AbsenceBundle\Entity\Groupe
+     */
+    public function getGroupe()
+    {
+        return $this->groupe;
     }
 }

@@ -1,6 +1,37 @@
 {% extends "::layoutAdmin.html.twig" %}
 
-            {% block body %}
+{% block javascript %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+
+    <script>
+        $(".loading").hide();
+        $("#form_recherche").submit(function(){
+            $(".loading").show();
+            var motcle = $("#motCle").val();
+            var DATA = 'motcle=' + motcle;
+            $.ajax({
+                type: "POST",
+                url: "{{ path('etudiant_rechercher')}}",
+                data: DATA,
+                cache: false,
+                success: function(data){
+                    $('#resultats_recherche').html(data);
+                    $(".loading").hide();
+                }
+            });
+            return false;
+        });
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    <form id="form_recherche" action="{{ path('etudiant_rechercher') }}" method="post">
+        <input type="text" id="motCle" class="form-control" name="motcle" placeholder="Chercher un(e) étudiant(e)  . . .">
+        <input type="submit" value="Rechercher" />
+    </form>
+
 
                 <h1>Liste des étudiants :</h1>
                 <a href="{{path('ajouter_Etudiant')}}"><button class="btn btn-success">Ajouter Etudiant</button></a>

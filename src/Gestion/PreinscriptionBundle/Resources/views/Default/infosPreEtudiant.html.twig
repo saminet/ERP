@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
 
@@ -26,7 +26,7 @@
 
         <tr><td>
                 <a href="{{ path('acepterPreinscrit',{ 'id': preinscrit.id }) }}"><button class="btn btn-success">Accepter</button></a>
-                <a href="{{ path('suprimerPreinscrit',{'id':preinscrit.id}) }}"><button class="btn btn-danger">Refuser</button></a>
+                <a href="{{ path('refuserPreinscrit',{'id':preinscrit.id}) }}"><button class="btn btn-danger">Refuser</button></a>
             </td>
         </tr>
 
