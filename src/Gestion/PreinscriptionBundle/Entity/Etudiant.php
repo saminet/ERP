@@ -141,7 +141,7 @@ class Etudiant
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=255)
+     * @ORM\Column(name="login", type="string", length=255, options={"default":0})
      */
     private $login;
 

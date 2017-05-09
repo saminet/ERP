@@ -569,7 +569,7 @@ class DefaultController extends Controller
 
         $accesObjet= $this->getDoctrine()->getRepository('AdminAdminBundle:Acces')->find($SelectedAcces[0]->getId());
 
-//determiner l'objet liaison selon objet acces selected
+        //determiner l'objet liaison selon objet acces selected
         $repository1=$this->getDoctrine()->getRepository('AdminAdminBundle:LiaisonDroit');
         $SelectedLiaison=$repository1->createQueryBuilder('e')->where('e.acces = :accesObjet')->setParameter('accesObjet', $accesObjet)->getQuery()->getResult();
 

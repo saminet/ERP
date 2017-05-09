@@ -1,48 +1,10 @@
 {% extends '::layoutAdmin.html.twig' %}
 {% block body %}
-    <!-- select Class -->
+    <h1>Modifier le note de l'étudiant(e) : <b>{{ notes.etudiant }}</b></h1>
+
     <div id="wrapper">
     <div class="demo">
-    <form action="{{path('Valider_Ajout_Note')}}" method="post" id="myFormNiveau" class="form-inline">
-        <!-- select Class -->
-        <div class="control-group">
-            <label for="class_selectbox">Classe:</label>
-            <select name="NameClasse" id="class_selectbox">
-                <option value="">Choisir la Classe</option>
-                {% if classe is not empty %}
-                    {% for clas in classe %}
-                        <option value={{clas.id}}>{{clas.intitule}}</option>
-                    {% endfor %}
-                {% endif %}
-            </select>
-        </div>
-        <br>
-        <!-- select Groupe -->
-        <div class="control-group">
-            <label for="groupe_list">Groupe:</label>
-            <select name="NameGroupe" id="groupe_list">
-                <option value=""></option>
-                {% if groupe is not empty %}
-                    {% for group in groupe %}
-                        <option value={{group.id}}>{{group.intitule}}</option>
-                    {% endfor %}
-                {% endif %}
-            </select>
-        </div>
-        <br>
-        <!-- select Etudiant -->
-        <div class="control-group">
-            <label for="etudiant_list">Etudiant:</label>
-            <select name="NameEtudiant" id="etudiant_list" class="demo-default">
-                <option value=""></option>
-                {% if etudiant is not empty %}
-                    {% for etud in etudiant %}
-                        <option value={{etud.nom}}>{{etud.nom}}</option>
-                    {% endfor %}
-                {% endif %}
-            </select>
-        </div>
-        <br>
+    <form action="{{ path('Valider_Modif_Note',{'id':notes.id}) }}" method="post" id="myFormNiveau" class="form-inline">
         <!-- select Matière -->
         <div class="control-group">
             <select id="select-matieres" multiple name="matiere" class="demo-default" style="width:50%">
@@ -57,8 +19,7 @@
         <br>
         <!-- saisir note -->
         <div class="control-group">
-            <label for="note">Note</label>
-            <input type="text" name="note" placeholder="note à affecter">
+            <input type="text"  name="note" placeholder="note à affecter" value="{{ notes.note }}">
         </div>
         <br>
         <!-- saisir type d'examen -->
@@ -74,11 +35,13 @@
         <br>
         <!-- saisir session d'examen -->
         <div class="control-group">
-            <label for="session">Session du devoir</label>
-            <input type="radio" name="session" value="Principale" checked />  <strong>Principale</strong>
-            <input type="radio" name="session" value="" />  <strong>Contrôle</strong>
+        <label for="session">Session du devoir</label>
+        <input type="radio" name="session" value="Principale" checked />  <strong>Principale</strong>
+        <input type="radio" name="session" value="{{ notes.session }}" />  <strong>Contrôle</strong>
         </div>
+
         <br>
+        <input type="hidden" name="nomEtudiant"  value="{{ notes.etudiant }}" >
         <input type="submit" value="Enregistrer" type="button" class="btn btn-success">
     </form>
 
@@ -154,19 +117,5 @@
             onInitialize    : eventHandler('onInitialize'),
         });
     </script>
-
-    <!-- <optgroup label="Liscence">
-         <option value="1 ère année Liscence">1 ère année Liscence</option>
-         <option value="2 ème année Liscence">2 ème année Liscence</option>
-         <option value="3 ème année Liscence">3 ème année Liscence</option>
-     </optgroup>
-     <optgroup label="Master Professionnel">
-         <option value="1 ère année Master Profesionnel">1 ère année Master Profesionnel</option>
-         <option value="2 ème année Master Profesionnel">2 ème année Master Profesionnel</option>
-     </optgroup>
-     <optgroup label="Master de Recherche">
-         <option value="1 ère année Master de Recherche">1 ère année Master de Recherche</option>
-         <option value="2 ème année Master de Recherche">2 ème année Master de Recherche</option>
-     </optgroup> -->
 
 {% endblock %}

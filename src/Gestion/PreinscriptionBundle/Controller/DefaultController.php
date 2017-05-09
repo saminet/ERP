@@ -152,7 +152,8 @@ class DefaultController extends Controller
         $etudiant->setAnneeObtention($preinscrit->getAnneeObtention());
         $etudiant->setNiveau($preinscrit->getNiveau());
         $etudiant->setFiliere($preinscrit->getFormation());
-        $etudiant->setClasse($preinscrit->getNiveau().' '.$preinscrit->getFormation());
+        //$etudiant->setClasse($preinscrit->getNiveau().' '.$preinscrit->getFormation());
+        //$etudiant->setGroupe('Groupe 1');
         $etudiant->setLogin($preinscrit->getEmail());
         $etudiant->setPassword($preinscrit->getNumCinPass());
 
@@ -221,8 +222,6 @@ class DefaultController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $donnee = $form->getData();
             $username = $donnee->getLogin();
-            $niveau = $donnee->getNiveau();
-            $filiere = $donnee->getFiliere();
             //var_dump($username);die('Hello');
             $password = $donnee->getPassword();
             $email = $donnee->getEmail();
@@ -238,8 +237,6 @@ class DefaultController extends Controller
             $user->setEnabled(true);
             $user->setRoles(array($roles));
             $userManager->updateUser($user);
-
-            $etudiant->setClasse($niveau.' '.$filiere);
             
             $em->persist($etudiant);
             $em->flush();
@@ -311,7 +308,6 @@ class DefaultController extends Controller
             $username = $donnee->getLogin();
             $password = $donnee->getPassword();
             $email = $donnee->getEmail();
-            $etudiant->setClasse($niveau.' '.$filiere);
             $roles = 'ROLE_ETUDIANT';
             //var_dump($username,$Old_usr,$roles,$password,$email,$roles);die('Hello');
             $userManager = $this->get('fos_user.user_manager');

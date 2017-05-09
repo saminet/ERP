@@ -24,14 +24,16 @@ class Note
     private $id;
 
     /**
-     *@ORM\ManyToOne(targetEntity="Gestion\PreinscriptionBundle\Entity\Etudiant")
-     *@ORM\JoinColumn(onDelete="SET NULL")
+     * @var string
+     *
+     * @ORM\Column(name="etudiant", type="string", length=255)
      */
     private $etudiant;
 
     /**
-     *@ORM\ManyToOne(targetEntity="Gestion\MatiereBundle\Entity\Matiere")
-     *@ORM\JoinColumn(onDelete="SET NULL")
+     * @var string
+     *
+     * @ORM\Column(name="matiere", type="string", length=255)
      */
     private $matiere;
 
@@ -55,22 +57,6 @@ class Note
      * @ORM\Column(name="session", type="string", length=255)
      */
     private $session;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="classe", type="string", length=255)
-     */
-    private $classe;
-
-
-    /**
-     * @var groupe
-     *
-     * @ORM\Column(name="groupe", type="string", length=255)
-     */
-    private $groupe;
-
 
     /**
      * Get id
@@ -132,54 +118,6 @@ class Note
     }
 
     /**
-     * Set etudiant
-     *
-     * @param \Gestion\PreinscriptionBundle\Entity\Etudiant $etudiant
-     *
-     * @return Note
-     */
-    public function setEtudiant(\Gestion\PreinscriptionBundle\Entity\Etudiant $etudiant = null)
-    {
-        $this->etudiant = $etudiant;
-
-        return $this;
-    }
-
-    /**
-     * Get etudiant
-     *
-     * @return \Gestion\PreinscriptionBundle\Entity\Etudiant
-     */
-    public function getEtudiant()
-    {
-        return $this->etudiant;
-    }
-
-    /**
-     * Set matiere
-     *
-     * @param \Gestion\MatiereBundle\Entity\Matiere $matiere
-     *
-     * @return Note
-     */
-    public function setMatiere(\Gestion\MatiereBundle\Entity\Matiere $matiere = null)
-    {
-        $this->matiere = $matiere;
-
-        return $this;
-    }
-
-    /**
-     * Get matiere
-     *
-     * @return \Gestion\MatiereBundle\Entity\Matiere
-     */
-    public function getMatiere()
-    {
-        return $this->matiere;
-    }
-
-    /**
      * Set note
      *
      * @param float $note
@@ -202,57 +140,52 @@ class Note
     {
         return $this->note;
     }
-    
+
     /**
-     * Set groupe
+     * Set matiere
      *
-     * @param string $groupe
+     * @param string $matiere
      *
      * @return Note
      */
-    public function setGroupe($groupe)
+    public function setMatiere($matiere)
     {
-        $this->groupe = $groupe;
+        $this->matiere = $matiere;
 
         return $this;
     }
 
     /**
-     * Get groupe
+     * Get matiere
      *
      * @return string
      */
-    public function getGroupe()
+    public function getMatiere()
     {
-        return $this->groupe;
+        return $this->matiere;
     }
 
     /**
-     * Set classe
+     * Set etudiant
      *
-     * @param string $classe
+     * @param string $etudiant
      *
      * @return Note
      */
-    public function setClasse($classe)
+    public function setEtudiant($etudiant)
     {
-        $this->classe = $classe;
+        $this->etudiant = $etudiant;
 
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->classe;
-    }
-
     /**
-     * Get classe
+     * Get etudiant
      *
      * @return string
      */
-    public function getClasse()
+    public function getEtudiant()
     {
-        return $this->classe;
+        return $this->etudiant;
     }
 }

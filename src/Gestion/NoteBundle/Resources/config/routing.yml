@@ -14,6 +14,18 @@ Valider_Ajout_Note:
     path:     /note/valider
     defaults: { _controller: GestionNoteBundle:Default:validerNote }
 
+modifier_Note:
+    path: /note/modifier/{id}
+    defaults: { _controller: GestionNoteBundle:Default:modifierNote }
+
+Valider_Modif_Note:
+    path: /note/valider/{id}
+    defaults: { _controller: GestionNoteBundle:Default:validerModifNote }
+
+Supprimer_Note:
+    path: /note/delete/{id}
+    defaults: { _controller: GestionNoteBundle:Default:deleteNote }
+
 groupe_list_ajax_call:
     path:     /ajax/groupe_list
     defaults: { _controller: GestionNoteBundle:Default:ajaxGetGroupe }

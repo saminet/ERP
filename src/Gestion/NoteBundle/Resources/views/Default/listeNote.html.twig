@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends '::layoutAdmin.html.twig' %}
 
 {% block body %}
     <h1>Liste des notes :</h1>
@@ -17,12 +17,12 @@
 {% for note in notes %}
         <tbody>
         <tr>
-            <td>{{ note.etudiant.nom }}</td>
-            <td>{{ note.matiere.nomMatiere }}</td>
+            <td>{{ note.etudiant }}</td>
+            <td>{{ note.matiere }}</td>
             <td>{{ note.note }}</td>
             <td>{{ note.type }}</td>
             <td>{{ note.session }}</td>
-            <td><a href=""><button class="btn btn-success">Modifier</button></a><a href=""><button class="btn btn-danger">Supprimer</button></a>
+            <td><a href="{{ path('modifier_Note',{'id':note.id}) }}"><button class="btn btn-success">Modifier</button></a><a href="{{ path('Supprimer_Note',{'id':note.id}) }}"><button class="btn btn-danger">Supprimer</button></a>
         </tr>
 {% else %}
     <p>Aucune note n'a été trouvée.</p>

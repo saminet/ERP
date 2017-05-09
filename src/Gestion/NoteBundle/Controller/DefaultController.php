@@ -3,12 +3,16 @@
 namespace Gestion\NoteBundle\Controller;
 
 use Gestion\NoteBundle\Entity\Note;
+use Gestion\PreinscriptionBundle\Entity\Etudiant;
+use Gestion\AbsenceBundle\Entity\Classe;
+use Gestion\AbsenceBundle\Entity\Groupe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Gestion\NoteBundle\Form\NoteType;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
@@ -26,58 +30,91 @@ class DefaultController extends Controller
         return $this->container->get('templating')->renderResponse('GestionNoteBundle:Default:listeNote.html.twig', array(
                 'notes' => $note)
         );
-
     }
 
      public function ajouterNoteAction(Request $request)
     {
         $groupe=null;
         $etudiant=null;
-        $classe= $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Classe')->findAll();
         $matiere= $this->getDoctrine()->getEntityManager()->getRepository('GestionMatiereBundle:Matiere')->findAll();
+        $classe= $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Classe')->findAll();
         //on rend la vue
         return $this->render('GestionNoteBundle:Default:ajouterNote.html.twig',array('classe'=>$classe, 'groupe'=>$groupe, 'etudiant'=>$etudiant, 'matiere'=>$matiere,));
     }
 
     public function validerNoteAction(Request $request)
     {
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $note= $em->getRepository('GestionNoteBundle:Note')->findAll();
         //on crée un nouvelle unité
-        $note = new Note();
-        $classe=$request->get('NameClasse');
-        $class ='';
-        $groupe=$request->get('NameGroupe');
         $etudiant=$request->get('NameEtudiant');
         $matiere=$request->get('matiere');
         $note=$request->get('note');
         $type=$request->get('type');
-        $session=$request->get('sesion');
+        $session=$request->get('session');
 
-        if (is_array($classe) || is_object($classe || $classe instanceof Traversable))
-        {
-            foreach ($classe as $clas) {
-                $class = $clas.";";
-            }
-        }
+        //var_dump($etudiant,$matiere,$note,$type,$session);die('hello !!');
 
-        var_dump($classe,$class,$groupe,$etudiant,$matiere,$note,$type,$session);die('hello !!');
-
-        $em = $this->getDoctrine()->getManager();
-
-        $note->setClasse($classe);
-        $note->setGroupe($groupe);
-        $note->setEtudiant($etudiant);
-        $note->addMatiere($matiere);
-        $note->setNote($note);
-        $note->setType($type);
-        $note->setSession($session);
-        $em->persist($note);
+        //$em = $this->getDoctrine()->getManager();
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $notes = new Note();
+        $notes->setMatiere($matiere);
+        $notes->setEtudiant($etudiant);
+        $notes->setNote($note);
+        $notes->setType($type);
+        $notes->setSession($session);
+        $em->persist($notes);
         $em->flush();
         //on rend la vue
-        return $this->container->get('templating')->renderResponse('GestionNoteBundle:Default:listeNote.html.twig', array(
-                'notes' => $note)
-        );
+        return new RedirectResponse($this->container->get('router')->generate('list_note'));
+    }
+
+    public function modifierNoteAction($id, Request $request)
+    {
+        $groupe=null;
+        $etudiant=null;
+        $matiere= $this->getDoctrine()->getEntityManager()->getRepository('GestionMatiereBundle:Matiere')->findAll();
+        $classe= $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Classe')->findAll();
+        $notes= $this->getDoctrine()->getRepository('GestionNoteBundle:Note')->find($id);
+        if (null === $notes) {
+            throw new NotFoundHttpException("Pas de note d'id ".$id.".");
+        }
+        //on rend la vue
+        return $this->render('GestionNoteBundle:Default:modifierNote.html.twig',array('notes'=>$notes, 'classe'=>$classe, 'groupe'=>$groupe, 'etudiant'=>$etudiant, 'matiere'=>$matiere,));
+    }
+
+    public function validerModifNoteAction($id, Request $request)
+    {
+        //on crée un nouvelle unité
+        $etudiant=$request->get('nomEtudiant');
+        $matiere=$request->get('matiere');
+        $note=$request->get('note');
+        $type=$request->get('type');
+        $session=$request->get('session');
+
+        //var_dump($etudiant,$matiere,$note,$type,$session);die('hello !!');
+
+        //$em = $this->getDoctrine()->getManager();
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $notes = $em->getRepository('GestionNoteBundle:Note')->find($id);
+        //$notes= $this->getDoctrine()->getRepository('GestionNoteBundle:Note')->find($id);
+        $notes->setMatiere($matiere);
+        $notes->setEtudiant($etudiant);
+        $notes->setNote($note);
+        $notes->setType($type);
+        $notes->setSession($session);
+        $em->persist($notes);
+        $em->flush();
+        //on rend la vue
+        return new RedirectResponse($this->container->get('router')->generate('list_note'));
+    }
+
+    public function deleteNoteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $note = $em->getRepository('GestionNoteBundle:Note')->find($id);
+        $em->remove($note);
+        $em->flush();
+        //on rend la vue
+        return new RedirectResponse($this->container->get('router')->generate('list_note'));
     }
 
     public function ajaxGetGroupeAction(Request $request) {
@@ -101,7 +138,7 @@ class DefaultController extends Controller
         $repo1 = $this->getDoctrine()->getEntityManager()->getRepository('GestionPreinscriptionBundle:Etudiant');
         $etudiant = $repo1->findBy(array('groupe' => $idClasse), array('nom' => 'asc'));
         foreach ($etudiant as $etud) {
-            $result[$etud->getNom()] = $etud->getId();
+            $result[$etud->getNom()] = $etud->getNom();
         }
         return new JsonResponse($result);
     }
