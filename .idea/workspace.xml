@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f93247d8-89e1-4ca9-a2ff-eac0d5f783f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Controller/ClasseController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/views/Classe/ajoutClasse.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/views/Classe/listClasses.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/views/Classe/modifierClasse.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/listMatiere.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/CrudMatiere.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/ajoutMatiere.html.twig" />
+    <list default="true" id="f93247d8-89e1-4ca9-a2ff-eac0d5f783f2" name="Default" comment="Creating NoteBundle and their Cruds and adding attribute  student as a foreign key">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Entity/Matiere.php" afterPath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Entity/Matiere.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/modifierMatiere.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/modifierMatiere.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Entity/Note.php" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Entity/Note.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/ajouterNote.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/ajouterNote.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/listeNote.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/listeNote.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/modifierNote.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/modifierNote.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/UEBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Gestion/UEBundle/Controller/DefaultController.php" />
     </list>
     <ignored path="ERP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,7 +44,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Gestion/NoteBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="261">
@@ -70,6 +52,16 @@
               <folding>
                 <element signature="e#49#84#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Gestion/AbsenceBundle/Controller/DefaultController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="29" column="80" selection-start-line="29" selection-start-column="80" selection-end-line="29" selection-end-column="85" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -516,6 +508,54 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AbsenceBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gestion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AbsenceBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Admin" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -648,7 +688,7 @@
       <workItem from="1494269502161" duration="10997000" />
       <workItem from="1494311214642" duration="17231000" />
       <workItem from="1494352247245" duration="6984000" />
-      <workItem from="1494396709777" duration="17682000" />
+      <workItem from="1494396709777" duration="18525000" />
     </task>
     <task id="LOCAL-00001" summary="Fixing matiers list with jquery">
       <created>1492414128624</created>
@@ -713,18 +753,26 @@
       <option name="project" value="LOCAL" />
       <updated>1494316656162</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Creating NoteBundle and their Cruds and adding attribute  student as a foreign key">
+      <created>1494418084726</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1494418084726</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="609105000" />
+    <option name="totallyTimeSpent" value="609948000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24158126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24158126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.511713" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10989011" sideWeight="0.48828697" order="11" side_tool="false" content_ui="tabs" />
@@ -733,7 +781,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -765,7 +812,8 @@
     <MESSAGE value="Fixing Forms of Student, Personel and Enseignant and Parent Form" />
     <MESSAGE value="Fixing Forms of Student, Personel and Enseignant and Parent Form and UEBundle" />
     <MESSAGE value="Creating NoteBundle and their Cruds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating NoteBundle and their Cruds" />
+    <MESSAGE value="Creating NoteBundle and their Cruds and adding attribute  student as a foreign key" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating NoteBundle and their Cruds and adding attribute  student as a foreign key" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -954,13 +1002,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/CrudMatiere.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Gestion/AbsenceBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Gestion/AbsenceBundle/Controller/consulterAbsenceRetardController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -974,6 +1015,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
           <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -981,6 +1023,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -988,6 +1031,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="72" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -995,6 +1039,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,6 +1047,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
           <caret line="107" column="5" selection-start-line="93" selection-start-column="4" selection-end-line="107" selection-end-column="5" />
+          <folding>
+            <element signature="e#52#109#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,6 +1057,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1016,6 +1065,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,6 +1081,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,6 +1089,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="57" column="12" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1045,6 +1097,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
           <caret line="89" column="31" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+          <folding>
+            <element signature="e#52#109#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1130,6 +1185,14 @@
           <folding>
             <element signature="e#49#84#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestion/AbsenceBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="29" column="80" selection-start-line="29" selection-start-column="80" selection-end-line="29" selection-end-column="85" />
+          <folding />
         </state>
       </provider>
     </entry>
