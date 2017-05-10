@@ -24,7 +24,7 @@ class Matiere
     /**
      * @var string
      *
-     * @ORM\Column(name="NomMatiere", type="string", length=255, unique=true)
+     * @ORM\Column(name="NomMatiere", type="string", length=255)
      */
     private $nomMatiere;
 
@@ -41,6 +41,13 @@ class Matiere
      * @ORM\Column(name="Credit", type="float")
      */
     private $credit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="classe", type="string", length=255)
+     */
+    private $classe;
 
 
     /**
@@ -123,5 +130,29 @@ class Matiere
     public function getCredit()
     {
         return $this->credit;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param string $classe
+     *
+     * @return Matiere
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
     }
 }

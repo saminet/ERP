@@ -3,32 +3,40 @@
 {% block body %}
     <h1>Liste des notes :</h1>
     <a href="{{path('ajout_note')}}"><button class="btn btn-success">Ajouter Nouvelle Note</button></a>
-<table class="table">
-<thead>
-<tr>
-    <th>Etudiant</th>
-    <th>Matière</th>
-    <th>Note</th>
-    <th>Type d'épreuve</th>
-    <th>Session</th>
-    <th>Action</th>
-</tr>
-</thead>
-{% for note in notes %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Etudiant</th>
+            <th>Matière</th>
+            <th>Controle Continue</th>
+            <th>Devoir Surveillé</th>
+            <th>Examen</th>
+            <th>Etat</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        {% for note in notes %}
         <tbody>
         <tr>
-            <td>{{ note.etudiant }}</td>
+            <td>{{ note.etudiant.nom }} {{ note.etudiant.prenom }}</td>
             <td>{{ note.matiere }}</td>
-            <td>{{ note.note }}</td>
-            <td>{{ note.type }}</td>
-            <td>{{ note.session }}</td>
-            <td><a href="{{ path('modifier_Note',{'id':note.id}) }}"><button class="btn btn-success">Modifier</button></a><a href="{{ path('Supprimer_Note',{'id':note.id}) }}"><button class="btn btn-danger">Supprimer</button></a>
+            <td>{{ note.cc }}</td>
+            <td>{{ note.ds }}</td>
+            <td>{{ note.examen }}</td>
+            <td>{{ note.etat }}</td>
+            <td><a href="{{ path('modifier_Note',{'id':note.id}) }}">
+                    <button class="btn btn-primary">Modifier</button></a>
+                <a href="{{ path('Valider_Note',{'id':note.id}) }}">
+                    <button class="btn btn-success">Valider</button></a>
+                <a href="{{ path('Supprimer_Note',{'id':note.id}) }}">
+                    <button class="btn btn-danger">Supprimer</button></a>
+            </td>
         </tr>
-{% else %}
-    <p>Aucune note n'a été trouvée.</p>
-{% endfor %}
+        {% else %}
+            <p>Aucune note n'a été trouvée.</p>
+        {% endfor %}
         </tbody>
-</table>
+    </table>
 
 {% endblock %}
 

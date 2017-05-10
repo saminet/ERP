@@ -1,47 +1,29 @@
 {% extends '::layoutAdmin.html.twig' %}
 {% block body %}
-    <h1>Modifier le note de l'étudiant(e) : <b>{{ notes.etudiant }}</b></h1>
+    <h3>Modifier le note en <b>{{ notes.matiere }}</b> pour l'étudiant(e) : <b>{{ notes.etudiant.nom }} {{ notes.etudiant.prenom }}</b></h3><br>
 
     <div id="wrapper">
     <div class="demo">
     <form action="{{ path('Valider_Modif_Note',{'id':notes.id}) }}" method="post" id="myFormNiveau" class="form-inline">
-        <!-- select Matière -->
+        <!-- saisir note cc -->
         <div class="control-group">
-            <select id="select-matieres" multiple name="matiere" class="demo-default" style="width:50%">
-                <option value="">Choisir la matière...</option>
-                {% if matiere is not empty %}
-                    {% for mat in matiere %}
-                        <option value={{mat.nomMatiere}}>{{mat.nomMatiere}}</option>
-                    {% endfor %}
-                {% endif %}
-            </select>
+            <label for="cc">Note C.C</label>
+            <input type="text" name="cc" value="{{ notes.cc }}" placeholder="&nbsp;&nbsp;&nbsp;Controle Continue">
         </div>
         <br>
-        <!-- saisir note -->
+        <!-- saisir note ds -->
         <div class="control-group">
-            <input type="text"  name="note" placeholder="note à affecter" value="{{ notes.note }}">
+            <label for="ds">Note D.S</label>
+            <input type="text" name="ds" value="{{ notes.ds }}" placeholder="&nbsp;&nbsp;&nbsp;devoir Surveillé">
         </div>
         <br>
-        <!-- saisir type d'examen -->
+        <!-- saisir note examen -->
         <div class="control-group">
-            <label for="session">Type du devoir</label><br>
-            <select name="type">
-                <option value="">Choisir le type du devoir...</option>
-                <option value="Devoir Surveillé">Devoir Surveillé</option>
-                <option value="Controle Continue">Controle Continue</option>
-                <option value="Examen Principal">Examen Principal</option>
-            </select>
-        </div>
-        <br>
-        <!-- saisir session d'examen -->
-        <div class="control-group">
-        <label for="session">Session du devoir</label>
-        <input type="radio" name="session" value="Principale" checked />  <strong>Principale</strong>
-        <input type="radio" name="session" value="{{ notes.session }}" />  <strong>Contrôle</strong>
+            <label for="exam">Examen</label>
+            <input type="text" name="exam" value="{{ notes.examen }}" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Examen Principal">
         </div>
 
         <br>
-        <input type="hidden" name="nomEtudiant"  value="{{ notes.etudiant }}" >
         <input type="submit" value="Enregistrer" type="button" class="btn btn-success">
     </form>
 

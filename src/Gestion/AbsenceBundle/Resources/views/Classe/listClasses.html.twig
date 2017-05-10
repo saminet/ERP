@@ -1,0 +1,30 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Liste des classes :</h1>
+    <a href="{{ path('AjoutClasse') }}">Ajouter Nouvelle Classe</a>
+<div>
+<table class="table table-striped">
+   <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom Classe</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+    {% for classe in classes %}
+      <tr>
+      <td>{{classe.id}}</td>
+      <td>{{classe.intitule}}</td>
+        
+        <td><a href="{{ path('ModifierClasse', { 'id': classe.id }) }}"><button type="button" class="btn btn-success">Modifier</button></a><a href="{{ path('deleteClasse', { 'id': classe.id }) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+{% endblock %}
+
+

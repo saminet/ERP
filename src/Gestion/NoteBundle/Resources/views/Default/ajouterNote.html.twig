@@ -37,7 +37,7 @@
                 <option value=""></option>
                 {% if etudiant is not empty %}
                     {% for etud in etudiant %}
-                        <option value={{etud.nom}}>{{etud.nom}}</option>
+                        <option value={{etud.id}}>{{etud.nom}}{{etud.prenom}}</option>
                     {% endfor %}
                 {% endif %}
             </select>
@@ -55,38 +55,26 @@
             </select>
         </div>
         <br>
-        <!-- saisir note -->
+        <!-- saisir note cc -->
         <div class="control-group">
-            <label for="note">Note</label>
-            <input type="text" name="note" placeholder="note à affecter">
+            <label for="cc">Note C.C</label>
+            <input type="text" name="cc" placeholder="&nbsp;&nbsp;&nbsp;Controle Continue">
         </div>
         <br>
-        <!-- saisir type d'examen -->
+        <!-- saisir note ds -->
         <div class="control-group">
-            <label for="session">Type du devoir</label><br>
-            <select name="type">
-                <option value="">Choisir le type du devoir...</option>
-                <option value="Devoir Surveillé">Devoir Surveillé</option>
-                <option value="Controle Continue">Controle Continue</option>
-                <option value="Examen Principal">Examen Principal</option>
-            </select>
+            <label for="ds">Note D.S</label>
+            <input type="text" name="ds" placeholder="&nbsp;&nbsp;&nbsp;devoir Surveillé">
         </div>
         <br>
-        <!-- saisir session d'examen -->
+        <!-- saisir note examen -->
         <div class="control-group">
-            <label for="session">Session du devoir</label>
-            <input type="radio" name="session" value="Principale" checked />  <strong>Principale</strong>
-            <input type="radio" name="session" value="" />  <strong>Contrôle</strong>
+            <label for="exam">Examen</label>
+            <input type="text" name="exam" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Examen Principal">
         </div>
         <br>
         <input type="submit" value="Enregistrer" type="button" class="btn btn-success">
     </form>
-
-    <div class="control-group">
-
-
-    </div>
-
 
     <!-- filtrer la liste des groupe selon la classe séléctionnée -->
     <script type="text/javascript">

@@ -34,3 +34,27 @@ ListAbsence:
 SaveAbsenceMatiereConsu:
     path: /SaveAbsenceMatiereConsu
     defaults: { _controller: GestionAbsenceBundle:consulterAbsenceRetard:SaveAbsenceMatiereConsu }
+
+listClasse:
+    path:     /classe
+    defaults: { _controller: GestionAbsenceBundle:Classe:listClasse }
+
+AjoutClasse:
+    path:     /classe/ajouter
+    defaults: { _controller: GestionAbsenceBundle:Classe:AjoutClasse }
+
+ValiderAjoutClasse:
+    path:     /classe/valider
+    defaults: { _controller: GestionAbsenceBundle:Classe:validerAjoutClasse }
+
+ModifierClasse:
+    path:     /classe/modifier/{id}
+    defaults: { _controller: GestionAbsenceBundle:Classe:modifierClasse }
+
+ValiderModifClasse:
+    path:     /classe/valider/{id}
+    defaults: { _controller: GestionAbsenceBundle:Classe:validerModifClasse }
+
+deleteClasse:
+    path:     /classe/delete/{id}
+    defaults: { _controller: GestionAbsenceBundle:Classe:deleteClasse }

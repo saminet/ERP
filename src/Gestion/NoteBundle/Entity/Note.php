@@ -24,9 +24,7 @@ class Note
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="etudiant", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Gestion\PreinscriptionBundle\Entity\Etudiant", cascade={"persist"})
      */
     private $etudiant;
 
@@ -40,23 +38,30 @@ class Note
     /**
      * @var float
      *
-     * @ORM\Column(name="note", type="float")
+     * @ORM\Column(name="cc", type="float")
      */
-    private $note;
+    private $cc;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="ds", type="float")
+     */
+    private $ds;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="examen", type="float")
+     */
+    private $examen;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="etat", type="string", length=255)
      */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="session", type="string", length=255)
-     */
-    private $session;
+    private $etat;
 
     /**
      * Get id
@@ -118,30 +123,6 @@ class Note
     }
 
     /**
-     * Set note
-     *
-     * @param float $note
-     *
-     * @return Note
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
-     * Get note
-     *
-     * @return float
-     */
-    public function getNote()
-    {
-        return $this->note;
-    }
-
-    /**
      * Set matiere
      *
      * @param string $matiere
@@ -166,13 +147,109 @@ class Note
     }
 
     /**
-     * Set etudiant
+     * Set etat
      *
-     * @param string $etudiant
+     * @param string $etat
      *
      * @return Note
      */
-    public function setEtudiant($etudiant)
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set cc
+     *
+     * @param float $cc
+     *
+     * @return Note
+     */
+    public function setCc($cc)
+    {
+        $this->cc = $cc;
+
+        return $this;
+    }
+
+    /**
+     * Get cc
+     *
+     * @return float
+     */
+    public function getCc()
+    {
+        return $this->cc;
+    }
+
+    /**
+     * Set ds
+     *
+     * @param float $ds
+     *
+     * @return Note
+     */
+    public function setDs($ds)
+    {
+        $this->ds = $ds;
+
+        return $this;
+    }
+
+    /**
+     * Get ds
+     *
+     * @return float
+     */
+    public function getDs()
+    {
+        return $this->ds;
+    }
+
+    /**
+     * Set examen
+     *
+     * @param float $examen
+     *
+     * @return Note
+     */
+    public function setExamen($examen)
+    {
+        $this->examen = $examen;
+
+        return $this;
+    }
+
+    /**
+     * Get examen
+     *
+     * @return float
+     */
+    public function getExamen()
+    {
+        return $this->examen;
+    }
+
+    /**
+     * Set etudiant
+     *
+     * @param \Gestion\PreinscriptionBundle\Entity\Etudiant $etudiant
+     *
+     * @return Note
+     */
+    public function setEtudiant(\Gestion\PreinscriptionBundle\Entity\Etudiant $etudiant = null)
     {
         $this->etudiant = $etudiant;
 
@@ -182,7 +259,7 @@ class Note
     /**
      * Get etudiant
      *
-     * @return string
+     * @return \Gestion\PreinscriptionBundle\Entity\Etudiant
      */
     public function getEtudiant()
     {

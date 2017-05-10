@@ -58,11 +58,9 @@ class DefaultController extends Controller
         if(!is_null($matiere)){
             foreach($matiere as $matiere) {
                 $matiere=$request->get('matieres');
-                $repository2=$this->getDoctrine()->getRepository('GestionMatiereBundle:Matiere');
-                $Selectedmatiere=$repository2->createQueryBuilder('e')->where('e.id = :idMat')->setParameter('idMat', $matiere)->getQuery()->getResult();
-                $coef= $this->getDoctrine()->getRepository('GestionMatiereBundle:Matiere')->find($Selectedmatiere[0]->getId());
-                $credit= $this->getDoctrine()->getRepository('GestionMatiereBundle:Matiere')->find($Selectedmatiere[0]->getId());
-            }
+                $credit=$request->get('Credit');
+                $coef=$request->get('Coef');
+               }
         }
 
         var_dump($nomUnite,$niveau,$matiere,$coef,$credit);die('hello !!');

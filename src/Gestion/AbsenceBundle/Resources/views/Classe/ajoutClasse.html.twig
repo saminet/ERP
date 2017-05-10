@@ -1,0 +1,33 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <div>
+        <form action="{{ path('ValiderAjoutClasse') }}" method="POST" id="MyForm">
+            <div class="control-group">
+                <select name="niveau" class="form-control">
+                    <option value="">Choisir le Niveau...</option>
+                    {% if niveau is not empty %}
+                        {% for niv in niveau %}
+                            <option value="{{niv.nomNiveau}}">{{niv.nomNiveau}}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div><br>
+            <div class="control-group">
+                <select name="filiere" class="form-control">
+                    <option value="">Choisir la Filière...</option>
+                    {% if filiere is not empty %}
+                        {% for fil in filiere %}
+                            <option value="{{fil.intitule}}">{{fil.intitule}}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div><br>
+            <center><input type="submit" value="Submit" type="button" class="btn btn-success"></center>
+
+
+        </form>
+    </div>
+{% endblock %}
+
+

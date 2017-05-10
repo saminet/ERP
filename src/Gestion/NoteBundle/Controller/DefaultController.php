@@ -32,7 +32,7 @@ class DefaultController extends Controller
         );
     }
 
-     public function ajouterNoteAction(Request $request)
+     public function ajouterNoteAction()
     {
         $groupe=null;
         $etudiant=null;
@@ -47,20 +47,32 @@ class DefaultController extends Controller
         //on crée un nouvelle unité
         $etudiant=$request->get('NameEtudiant');
         $matiere=$request->get('matiere');
-        $note=$request->get('note');
-        $type=$request->get('type');
-        $session=$request->get('session');
+        $cc=$request->get('cc');
+        $ds=$request->get('ds');
+        $exam=$request->get('exam');
 
-        //var_dump($etudiant,$matiere,$note,$type,$session);die('hello !!');
+        //var_dump($etudiant,$matiere,$cc,$ds,$exam);die('hello !!');
 
         //$em = $this->getDoctrine()->getManager();
         $em = $this->container->get('doctrine')->getEntityManager();
         $notes = new Note();
         $notes->setMatiere($matiere);
         $notes->setEtudiant($etudiant);
-        $notes->setNote($note);
-        $notes->setType($type);
-        $notes->setSession($session);
+        $notes->setCc($cc);
+        $notes->setDs($ds);
+        $notes->setExamen($exam);
+        $notes->setEtat('En attente');
+        $em->persist($notes);
+        $em->flush();
+        //on rend la vue
+        return new RedirectResponse($this->container->get('router')->generate('list_note'));
+    }
+
+    public function verifierNoteAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $notes = $em->getRepository('GestionNoteBundle:Note')->find($id);
+        $notes->setEtat('Validé');
         $em->persist($notes);
         $em->flush();
         //on rend la vue
@@ -69,38 +81,37 @@ class DefaultController extends Controller
 
     public function modifierNoteAction($id, Request $request)
     {
-        $groupe=null;
-        $etudiant=null;
-        $matiere= $this->getDoctrine()->getEntityManager()->getRepository('GestionMatiereBundle:Matiere')->findAll();
+        $cc=$request->get('cc');
+        $ds=$request->get('ds');
+        $exam=$request->get('exam');
+        $matieres= $this->getDoctrine()->getEntityManager()->getRepository('GestionMatiereBundle:Matiere')->findAll();
         $classe= $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Classe')->findAll();
         $notes= $this->getDoctrine()->getRepository('GestionNoteBundle:Note')->find($id);
         if (null === $notes) {
             throw new NotFoundHttpException("Pas de note d'id ".$id.".");
         }
         //on rend la vue
-        return $this->render('GestionNoteBundle:Default:modifierNote.html.twig',array('notes'=>$notes, 'classe'=>$classe, 'groupe'=>$groupe, 'etudiant'=>$etudiant, 'matiere'=>$matiere,));
+        return $this->render('GestionNoteBundle:Default:modifierNote.html.twig',array('notes'=>$notes, 'matiere'=>$matieres,));
     }
 
     public function validerModifNoteAction($id, Request $request)
     {
-        //on crée un nouvelle unité
-        $etudiant=$request->get('nomEtudiant');
-        $matiere=$request->get('matiere');
-        $note=$request->get('note');
-        $type=$request->get('type');
-        $session=$request->get('session');
+        //récupération des données
+        $cc=$request->get('cc');
+        $ds=$request->get('ds');
+        $exam=$request->get('exam');
 
-        //var_dump($etudiant,$matiere,$note,$type,$session);die('hello !!');
+        //var_dump($etudiant,$matiere,$cc,$ds,$exam);die('hello !!');
 
         //$em = $this->getDoctrine()->getManager();
         $em = $this->container->get('doctrine')->getEntityManager();
         $notes = $em->getRepository('GestionNoteBundle:Note')->find($id);
         //$notes= $this->getDoctrine()->getRepository('GestionNoteBundle:Note')->find($id);
-        $notes->setMatiere($matiere);
-        $notes->setEtudiant($etudiant);
-        $notes->setNote($note);
-        $notes->setType($type);
-        $notes->setSession($session);
+        //$notes->setMatiere($matiere);
+        //$notes->setEtudiant($etudiant);
+        $notes->setCc($cc);
+        $notes->setDs($ds);
+        $notes->setExamen($exam);
         $em->persist($notes);
         $em->flush();
         //on rend la vue
@@ -132,13 +143,13 @@ class DefaultController extends Controller
 
     public function ajaxGetEtudiantAction(Request $request) {
         // Get the Group ID
-        $idClasse = $request->query->get('groupe_id');
+        $idGroupe = $request->query->get('groupe_id');
         $result = array();
         // Return a list of groups, based on the selected class
         $repo1 = $this->getDoctrine()->getEntityManager()->getRepository('GestionPreinscriptionBundle:Etudiant');
-        $etudiant = $repo1->findBy(array('groupe' => $idClasse), array('nom' => 'asc'));
+        $etudiant = $repo1->findBy(array('groupe' => $idGroupe), array('nom' => 'asc'));
         foreach ($etudiant as $etud) {
-            $result[$etud->getNom()] = $etud->getNom();
+            $result[$etud->getNom().' '.$etud->getPrenom()] = $etud->getId();
         }
         return new JsonResponse($result);
     }

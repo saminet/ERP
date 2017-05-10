@@ -1,0 +1,38 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+     <div>
+    <form action="{{ path('ValiderAjoutMatiere') }}" method="POST" id="MyForm">
+    <br>
+       <div class="form-group">
+       <label for="usr">Nom de matiere:</label>
+       <input type="text" class="form-control" id="usr" name="nomMatiere" required>
+       </div>
+       <div class="form-group">
+       <label for="usr">Coefficient:</label>
+       <input type="text" class="form-control" id="usr" name="coefficient" required>
+       </div>
+      <!-- parcour de la table module pour l'affichage des module present dans la table -->
+      <div class="form-group">
+       <label for="usr">Credit:</label>
+       <input type="text" class="form-control" id="usr" name="credit" required>
+       </div>
+
+        <div class="control-group">
+            <select name="classe" class="form-control">
+                <option value="">Choisir la classe...</option>
+                {% if classe is not empty %}
+                    {% for clas in classe %}
+                        <option value="{{clas.intitule}}">{{clas.intitule}}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+        </div><br>
+       <center><input type="submit" value="Submit" type="button" class="btn btn-success"></center>
+        
+    
+    </form>
+</div>
+{% endblock %}
+
+

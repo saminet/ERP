@@ -1,0 +1,36 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Liste des matières :</h1>
+    <a href="{{ path('AjoutMatiere') }}">Ajouter Nouvelle Matière</a>
+<div>
+<table class="table table-striped">
+   <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom Matiere</th>
+        <th>Coefficient Matiere</th>
+        <th>Credit matiere</th>
+        <th>Classe</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+    {% for matiere in matieres %}
+      <tr>
+      <td>{{matiere.id}}</td>
+      <td>{{matiere.nomMatiere}}</td> 
+      <td>{{matiere.coefficient}}</td>
+      <td>{{matiere.credit}}</td>
+      <td>{{matiere.classe}}</td>
+        
+        <td><a href="{{ path('modifierMatiere', { 'id': matiere.id }) }}"><button type="button" class="btn btn-success">Modifier</button></a><a href="{{ path('deleteMatiere', { 'id': matiere.id })}}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+{% endblock %}
+
+

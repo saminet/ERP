@@ -14,6 +14,10 @@ Valider_Ajout_Note:
     path:     /note/valider
     defaults: { _controller: GestionNoteBundle:Default:validerNote }
 
+Valider_Note:
+    path:     /note/verifier/{id}
+    defaults: { _controller: GestionNoteBundle:Default:verifierNote }
+
 modifier_Note:
     path: /note/modifier/{id}
     defaults: { _controller: GestionNoteBundle:Default:modifierNote }
