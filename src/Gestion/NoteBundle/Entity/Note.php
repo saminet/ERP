@@ -64,6 +64,13 @@ class Note
     private $etat;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="semestre", type="string", length=255)
+     */
+    private $semestre;
+
+    /**
      * Get id
      *
      * @return int
@@ -264,5 +271,29 @@ class Note
     public function getEtudiant()
     {
         return $this->etudiant;
+    }
+
+    /**
+     * Set semestre
+     *
+     * @param string $semestre
+     *
+     * @return Note
+     */
+    public function setSemestre($semestre)
+    {
+        $this->semestre = $semestre;
+
+        return $this;
+    }
+
+    /**
+     * Get semestre
+     *
+     * @return string
+     */
+    public function getSemestre()
+    {
+        return $this->semestre;
     }
 }

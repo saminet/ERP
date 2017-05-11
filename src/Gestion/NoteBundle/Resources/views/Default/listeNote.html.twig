@@ -1,43 +1,64 @@
 {% extends '::layoutAdmin.html.twig' %}
 
-{% block body %}
-    <h1>Liste des notes :</h1>
-    <a href="{{path('ajout_note')}}"><button class="btn btn-success">Ajouter Nouvelle Note</button></a>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Etudiant</th>
-            <th>Matière</th>
-            <th>Controle Continue</th>
-            <th>Devoir Surveillé</th>
-            <th>Examen</th>
-            <th>Etat</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        {% for note in notes %}
-        <tbody>
-        <tr>
-            <td>{{ note.etudiant.nom }} {{ note.etudiant.prenom }}</td>
-            <td>{{ note.matiere }}</td>
-            <td>{{ note.cc }}</td>
-            <td>{{ note.ds }}</td>
-            <td>{{ note.examen }}</td>
-            <td>{{ note.etat }}</td>
-            <td><a href="{{ path('modifier_Note',{'id':note.id}) }}">
-                    <button class="btn btn-primary">Modifier</button></a>
-                <a href="{{ path('Valider_Note',{'id':note.id}) }}">
-                    <button class="btn btn-success">Valider</button></a>
-                <a href="{{ path('Supprimer_Note',{'id':note.id}) }}">
-                    <button class="btn btn-danger">Supprimer</button></a>
-            </td>
-        </tr>
-        {% else %}
-            <p>Aucune note n'a été trouvée.</p>
-        {% endfor %}
-        </tbody>
-    </table>
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                columnDefs: [ {
+                    targets: [ 0 ],
+                    orderData: [ 0, 1 ]
+                }, {
+                    targets: [ 1 ],
+                    orderData: [ 1, 0 ]
+                }, {
+                    targets: [ 4 ],
+                    orderData: [ 4, 0 ]
+                } ]
+            } );
+        } );
+    </script>
 
 {% endblock %}
 
-
+{% block body %}
+    <h1>Liste des notes :</h1>
+    <div>
+        <table class="table"  cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
+            <thead>
+            <tr>
+                <th>Etudiant</th>
+                <th>Matière</th>
+                <th>Controle Continue</th>
+                <th>Devoir Surveillé</th>
+                <th>Examen</th>
+                <th>Semestre</th>
+                <th>Etat</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{path('ajout_note')}}">Nouvelle Note</a></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for note in notes %}
+            <tr>
+                <td><a href="{{ path('Chercher_Note',{'idEtud':note.etudiant.id, 'nom':note.etudiant.nom, 'prenom':note.etudiant.prenom, 'semestre':note.semestre }) }}">
+                        {{ note.etudiant.nom }} {{ note.etudiant.prenom }}</button></a></td>
+                <td>{{ note.matiere }}</td>
+                <td>{{ note.cc }}</td>
+                <td>{{ note.ds }}</td>
+                <td>{{ note.examen }}</td>
+                <td>{{ note.semestre }}</td>
+                <td>{{ note.etat }}</td>
+                <td><a href="{{ path('modifier_Note',{'id':note.id}) }}">
+                        <button class="btn btn-primary">Modifier</button></a>
+                    <a href="{{ path('Valider_Note',{'id':note.id}) }}">
+                        <button class="btn btn-success">Valider</button></a>
+                    <a href="{{ path('Supprimer_Note',{'id':note.id}) }}">
+                        <button class="btn btn-danger">Supprimer</button></a>
+                </td>
+            </tr>
+            {% else %}
+                <p>Aucune note n'a été trouvée.</p>
+            {% endfor %}
+            </tbody>
+        </table>   </div>
+{% endblock %}

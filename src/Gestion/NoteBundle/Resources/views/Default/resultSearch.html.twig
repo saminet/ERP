@@ -1,0 +1,34 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h3>Liste des notes de Mr/Mme: <b>{{ nomPrenom }}</h3></b>
+    <h3>Type de Semestre: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>{{ semestre }}</h3></b>
+    <div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Matière</th>
+            <th>Controle Continue</th>
+            <th>Devoir Surveillé</th>
+            <th>Examen</th>
+            <th>Etat</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ path('Imprimer_Releve',{'idEtud':idEtud, 'nomPrenom':nomPrenom, 'semestre':semestre }) }}">Imprimer</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for etud in EtudiantID %}
+        <tr>
+            <td>{{ etud.matiere }}</td>
+            <td>{{ etud.cc }}</td>
+            <td>{{ etud.ds }}</td>
+            <td>{{ etud.examen }}</td>
+            <td>{{ etud.etat }}</td>
+        </tr>
+        {% else %}
+            <p>Aucune note n'a été trouvée.</p>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+{% endblock %}

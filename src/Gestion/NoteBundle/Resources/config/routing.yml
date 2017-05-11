@@ -30,6 +30,14 @@ Supprimer_Note:
     path: /note/delete/{id}
     defaults: { _controller: GestionNoteBundle:Default:deleteNote }
 
+Chercher_Note:
+    path: /note/search
+    defaults: { _controller: GestionNoteBundle:Default:searchNote }
+
+Imprimer_Releve:
+    path: /note/print
+    defaults: { _controller: GestionNoteBundle:Default:imprimerReleve }
+
 groupe_list_ajax_call:
     path:     /ajax/groupe_list
     defaults: { _controller: GestionNoteBundle:Default:ajaxGetGroupe }
@@ -37,3 +45,7 @@ groupe_list_ajax_call:
 etudiant_list_ajax_call:
     path:     /ajax/etudiant_list
     defaults: { _controller: GestionNoteBundle:Default:ajaxGetEtudiant }
+
+note_etudiant_list_ajax_call:
+    path:     /ajax/note_etudiant_list
+    defaults: { _controller: GestionNoteBundle:Default:ajaxGetNoteEtudiant }

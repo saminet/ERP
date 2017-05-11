@@ -36,10 +36,11 @@ class DefaultController extends Controller
     {
         $groupe=null;
         $etudiant=null;
+        $MAT=null;
         $matiere= $this->getDoctrine()->getEntityManager()->getRepository('GestionMatiereBundle:Matiere')->findAll();
         $classe= $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Classe')->findAll();
         //on rend la vue
-        return $this->render('GestionNoteBundle:Default:ajouterNote.html.twig',array('classe'=>$classe, 'groupe'=>$groupe, 'etudiant'=>$etudiant, 'matiere'=>$matiere,));
+        return $this->render('GestionNoteBundle:Default:ajouterNote.html.twig',array('mat'=>$MAT, 'classe'=>$classe, 'groupe'=>$groupe, 'etudiant'=>$etudiant, 'matiere'=>$matiere,));
     }
 
     public function validerNoteAction(Request $request)
@@ -50,6 +51,7 @@ class DefaultController extends Controller
         $cc=$request->get('cc');
         $ds=$request->get('ds');
         $exam=$request->get('exam');
+        $semestre=$request->get('semestre');
 
         //var_dump($etudiant,$matiere,$cc,$ds,$exam);die('hello !!');
 
@@ -61,6 +63,7 @@ class DefaultController extends Controller
         $notes->setCc($cc);
         $notes->setDs($ds);
         $notes->setExamen($exam);
+        $notes->setSemestre($semestre);
         $notes->setEtat('En attente');
         $em->persist($notes);
         $em->flush();
@@ -126,6 +129,36 @@ class DefaultController extends Controller
         $em->flush();
         //on rend la vue
         return new RedirectResponse($this->container->get('router')->generate('list_note'));
+    }
+
+    public function searchNoteAction(Request $request)
+    {
+        $selectedIdEtudiant=$request->get('idEtud');
+        $Nom=$request->get('nom');
+        $Prenom=$request->get('prenom');
+        $NomPrenom=$request->get('nom').' '.$request->get('prenom');
+        $Semestre=$request->get('semestre');
+
+        //var_dump($selectedIdEtudiant, $Semestre);die('Hello');
+        $repository1=$this->getDoctrine()->getRepository('GestionNoteBundle:Note');
+        $SelectedEtud=$repository1->createQueryBuilder('e')->where('e.etudiant = :idEtudiant')->setParameter('idEtudiant', $selectedIdEtudiant)->getQuery()->getResult();
+        $user = $this->getUser();
+        return $this->render('GestionNoteBundle:Default:resultSearch.html.twig', array(
+            'user' => $user,'EtudiantID'=>$SelectedEtud,'idEtud'=>$selectedIdEtudiant, 'nomPrenom'=>$NomPrenom, 'semestre'=>$Semestre));
+    }
+
+    public function imprimerReleveAction(Request $request)
+    {
+        $selectedIdEtudiant=$request->get('idEtud');
+        $NomPrenom=$request->get('nomPrenom');
+        $Semestre=$request->get('semestre');
+
+        //var_dump($selectedIdEtudiant, $Semestre, $NomPrenom);die('Hello');
+        $repository1=$this->getDoctrine()->getRepository('GestionNoteBundle:Note');
+        $SelectedEtud=$repository1->createQueryBuilder('e')->where('e.etudiant = :idEtudiant')->setParameter('idEtudiant', $selectedIdEtudiant)->getQuery()->getResult();
+        $user = $this->getUser();
+        return $this->render('GestionNoteBundle:Default:imprimerReleve.html.twig', array(
+            'user' => $user,'EtudiantID'=>$SelectedEtud,'idEtud'=>$selectedIdEtudiant, 'nomPrenom'=>$NomPrenom, 'semestre'=>$Semestre));
     }
 
     public function ajaxGetGroupeAction(Request $request) {

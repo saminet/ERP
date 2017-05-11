@@ -1,8 +1,7 @@
 {% extends '::layoutAdmin.html.twig' %}
 {% block body %}
     <!-- select Class -->
-    <div id="wrapper">
-    <div class="demo">
+    <div>
     <form action="{{path('Valider_Ajout_Note')}}" method="post" id="myFormNiveau" class="form-inline">
         <!-- select Class -->
         <div class="control-group">
@@ -43,9 +42,18 @@
             </select>
         </div>
         <br>
+        <!-- select Semestre -->
+        <div class="control-group">
+            <label for="cc">Semestre</label>
+            <select name="semestre">
+                <option value="">Semestre 1</option>
+                <option value="">Semestre 2</option>
+            </select>
+        </div>
+        <br>
         <!-- select Matière -->
         <div class="control-group">
-            <select id="select-matieres" multiple name="matiere" class="demo-default" style="width:50%">
+            <select id="select-matieres" name="matiere" class="demo-default" style="width:50%">
                 <option value="">Choisir la matière...</option>
                 {% if matiere is not empty %}
                     {% for mat in matiere %}
@@ -75,7 +83,7 @@
         <br>
         <input type="submit" value="Enregistrer" type="button" class="btn btn-success">
     </form>
-
+    </div>
     <!-- filtrer la liste des groupe selon la classe séléctionnée -->
     <script type="text/javascript">
         (function($) {
@@ -97,7 +105,7 @@
         })(jQuery);
     </script>
 
-    <!-- filtrer la liste des étudiants selon la classe séléctionnée -->
+    <!-- filtrer la liste des étudiants selon le groupe séléctionné -->
     <script type="text/javascript">
         (function($) {
             $('#groupe_list').change(function(){
@@ -117,7 +125,6 @@
             });
         })(jQuery);
     </script>
-
     <!-- script permettant la séléction multiple des matières -->
 
     <script>

@@ -1,0 +1,36 @@
+
+    <div>
+    <h3>Liste des notes de Mr/Mme: <b>{{ nomPrenom }}</h3></b>
+    <h3>Type de Semestre: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>{{ semestre }}</h3></b>
+        <table class="table"  cellpadding="5" cellspacing="1" border="1" class="display" width="100%">
+            <thead>
+            <tr>
+                <th>Matière</th>
+                <th>Controle Continue</th>
+                <th>Devoir Surveillé</th>
+                <th>Examen</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for etud in EtudiantID %}
+                <tr>
+                    <td>{{ etud.matiere }}</td>
+                    <td>{{ etud.cc }}</td>
+                    <td>{{ etud.ds }}</td>
+                    <td>{{ etud.examen }}</td>
+                </tr>
+            {% else %}
+                <p>Aucune note n'a été trouvée.</p>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div>
+    <a href="javascript:window.print()">Imprimer</a>
+    </div>
+    <br>
+    <div>
+        <a href="{{ path('list_note') }}">Retour</a>
+    </div>
