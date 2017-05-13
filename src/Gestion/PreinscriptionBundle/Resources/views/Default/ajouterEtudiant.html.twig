@@ -179,19 +179,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="etudiant_filiere">{{ form_label(form.filiere) }}</label>
-                    {{ form_widget(form.filiere) }}
-                </div>
-
-                <div class="form-group">
-                    <label for="etudiant_niveau">{{ form_label(form.niveau) }}</label>
-                    {{ form_widget(form.niveau) }}
-                </div>
-
-                <div class="form-group">
                     <label for="etudiant_login">{{ form_label(form.login) }}</label>
                     {{ form_widget(form.login, { 'attr': { 'onkeyup': 'checkname()'  } } ) }}
                     <span id="name_status"></span>
+                </div>
+
+                <div class="form-group">
+                <label for="etudiant_classe">{{ form_label(form.classe) }}</label>
+                 {{ form_widget(form.classe) }}
+                </div>
+
+                <div class="form-group">
+                <label for="etudiant_groupe">{{ form_label(form.groupe) }}</label>
+                {{ form_widget(form.groupe) }}
                 </div>
 
                 <div class="form-group">
@@ -199,6 +199,32 @@
                     {{ form_widget(form.password) }}
                 </div>
 
+                <div class="form-group">
+                <label for="etudiant_etat">{{ form_label(form.etat) }}</label>
+                 {{ form_widget(form.etat) }}
+                </div>
+
                 {{ form_end(form) }}
+
+     <!-- filtrer la liste des groupe selon la classe séléctionnée -->
+     <script type="text/javascript">
+         (function($) {
+             $('#etudiant_classe').change(function(){
+                 var idClasse = $(this).val();
+                 $.ajax({
+                     type: "POST",
+                     url: "{{ url('groupe_list_ajax_call') }}?classe_id=" + idClasse,
+                     success: function(data) {
+                         // Remove current options
+                         $('#etudiant_groupe').html('');
+                         $.each(data, function(k, v) {
+                             $('#etudiant_groupe').append('<option value="' + v + '">' + k + '</option>');
+                         });
+                     }
+                 });
+                 return false;
+             });
+         })(jQuery);
+     </script>
 
             {% endblock %}

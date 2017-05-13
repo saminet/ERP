@@ -44,24 +44,26 @@ class EtudiantType extends AbstractType
             ->add('anneeObtention',DateType::class, array(
                 'years' => range(1950, date('Y'))))
 
-            ->add('niveau', EntityType::class, array(
+            ->add('classe', EntityType::class, array(
                 'required' => true,
-                'class' => 'GestionNiveauBundle:Niveau',
-                'placeholder' => '-- Choisir le Niveau --',
+                'class' => 'GestionAbsenceBundle:Classe',
+                'placeholder' => '-- Choisir la Classe --',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
-                        ->orderBy('u.nomNiveau', 'ASC');
+                        // ->join('u.niveau','n')
+                        ->orderBy('u.intitule', 'ASC');
                 },
-                'choice_label' => 'nomNiveau',
+                'choice_label' => 'intitule',
                 'attr' => array(
                     'class'     => 'form-control',
+                    'property' => "libCategory", 'multiple' => false, 'expanded' => true
                 ),
             ))
 
-            ->add('filiere', EntityType::class, array(
+            ->add('groupe', EntityType::class, array(
                 'required' => true,
-                'class' => 'GestionFiliereBundle:Filiere',
-                'placeholder' => '-- Filière Souhaitée --',
+                'class' => 'GestionAbsenceBundle:Groupe',
+                'placeholder' => '-- Choisir le Groupe --',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.intitule', 'ASC');
@@ -71,8 +73,13 @@ class EtudiantType extends AbstractType
                     'class'     => 'form-control',
                 ),
             ))
+
+
             ->add('login',TextType::class, array('attr' => array('placeholder'=>'choisir un nom d\'utilisateur','class'=>'form-control')))
             ->add('password',PasswordType::class, array('attr' => array('placeholder'=>'Choisir un mot de Passe','class'=>'form-control')))
+            ->add('etat',ChoiceType::class, array('placeholder'=>'Choisir son état','choices' => array('Actif'=>'Actif', 'Inactif'=>'Inactif'),
+                'expanded' => true,
+                'multiple' => false))
             ->add('submit',SubmitType::class, array('attr' => array('class'=>'btn btn-success')))
         ;
     }

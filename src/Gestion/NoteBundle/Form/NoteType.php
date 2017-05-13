@@ -5,17 +5,20 @@ namespace Gestion\NoteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\FloatType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class NoteType extends AbstractType
 {
@@ -25,33 +28,6 @@ class NoteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('classe', EntityType::class, array(
-                'required' => true,
-                'class' => 'GestionAbsenceBundle:Classe',
-                'placeholder' => 'Nom de la Classe',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.intitule', 'ASC');
-                },
-                'choice_label' => 'intitule',
-                'attr' => array(
-                    'class'     => 'form-control',
-                ),
-            ))
-
-            ->add('groupe', EntityType::class, array(
-                'required' => true,
-                'class' => 'GestionAbsenceBundle:Groupe',
-                'placeholder' => 'Nom du Groupe',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.classe', 'ASC');
-                },
-                'choice_label' => 'classe',
-                'attr' => array(
-                    'class'     => 'form-control',
-                ),
-            ))
 
             ->add('etudiant', EntityType::class, array(
                 'required' => true,
@@ -64,13 +40,31 @@ class NoteType extends AbstractType
                 'choice_label' => 'nom',
                 'attr' => array(
                     'class'     => 'form-control',
+                    'property' => "libCategory", 'multiple' => false, 'expanded' => true
                 ),
             ))
 
-            ->add('matiere',TextType::class, array('attr' => array('placeholder'=>'Nom de la matière','class'=>'form-control')))
-            ->add('note',integerType::class, array('attr' => array('placeholder'=>'Note','class'=>'form-control')))
-            ->add('type',TextType::class, array('attr' => array('placeholder'=>'Type du devoir','class'=>'form-control')))
-            ->add('session',TextType::class, array('attr' => array('placeholder'=>'Nom de l\'étudiant','class'=>'form-control')))
+            ->add('matiere', EntityType::class, array(
+                'required' => true,
+                'class' => 'GestionMatiereBundle:Matiere',
+                'placeholder' => '-- Choisir la matière --',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.nomMatiere', 'ASC');
+                },
+                'choice_label' => 'nomMatiere',
+                'attr' => array(
+                    'class'     => 'form-control',
+                    'property' => "libCategory", 'multiple' => false, 'expanded' => true
+                ),
+            ))
+
+            ->add('cc',TextType::class, array('attr' => array('placeholder'=>'Controle Continue','class'=>'form-control')))
+            ->add('ds',TextType::class, array('attr' => array('placeholder'=>'Devoir Surveillé','class'=>'form-control')))
+            ->add('examen',TextType::class, array('attr' => array('placeholder'=>'Note Examen','class'=>'form-control')))
+            ->add('semestre',ChoiceType::class, array('placeholder'=>'Choisir le semestre','choices' => array('Semestre 1'=>'Semestre 1','Semestre 2'=>'Semestre 2'),
+                'expanded' => true,
+                'multiple' => false))
             ->add('submit',SubmitType::class, array('attr' => array('class'=>'btn btn-success')))
         ;
     }

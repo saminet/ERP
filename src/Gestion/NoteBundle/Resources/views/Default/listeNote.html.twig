@@ -34,14 +34,14 @@
                 <th>Examen</th>
                 <th>Semestre</th>
                 <th>Etat</th>
-                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{path('ajout_note')}}">Nouvelle Note</a></th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{path('ajout_note')}}">+Nouvelle Note</a></th>
             </tr>
             </thead>
             <tbody>
             {% for note in notes %}
             <tr>
                 <td><a href="{{ path('Chercher_Note',{'idEtud':note.etudiant.id, 'nom':note.etudiant.nom, 'prenom':note.etudiant.prenom, 'semestre':note.semestre }) }}">
-                        {{ note.etudiant.nom }} {{ note.etudiant.prenom }}</button></a></td>
+                        {{ note.etudiant.nom }} {{ note.etudiant.prenom }}</a></td>
                 <td>{{ note.matiere }}</td>
                 <td>{{ note.cc }}</td>
                 <td>{{ note.ds }}</td>

@@ -1,8 +1,29 @@
 {% extends "layoutAdmin.html.twig" %}
 
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                columnDefs: [ {
+                    targets: [ 0 ],
+                    orderData: [ 0, 1 ]
+                }, {
+                    targets: [ 1 ],
+                    orderData: [ 1, 0 ]
+                }, {
+                    targets: [ 4 ],
+                    orderData: [ 4, 0 ]
+                } ]
+            } );
+        } );
+    </script>
+
+{% endblock %}
+
 {% block body %}
-    <h1>Liste des préinscrits :</h1>
-<table class="table">
+<h1>Liste des préinscrits :</h1>
+<table class="table"  cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
 <thead>
 <tr>
     <th>Nom</th>
@@ -14,8 +35,8 @@
     <th>Action</th>
 </tr>
 </thead>
-{% for pre in preinscrits %}
         <tbody>
+        {% for pre in preinscrits %}
         <tr>
             <td><a href="{{ path('infosPreEtudiant', { 'id': pre.id }) }}">{{ pre.nom }}</a></td>
             <td>{{ pre.prenom }}</td>

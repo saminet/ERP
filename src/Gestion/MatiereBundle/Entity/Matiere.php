@@ -28,6 +28,11 @@ class Matiere
      */
     private $nomMatiere;
 
+    public function __toString()
+    {
+        return $this->nomMatiere;
+    }
+
     /**
      * @var float
      *

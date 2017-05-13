@@ -3,11 +3,11 @@
 namespace Gestion\NoteBundle\Controller;
 
 use Gestion\NoteBundle\Entity\Note;
+use Gestion\NoteBundle\Form\NoteType;
 use Gestion\PreinscriptionBundle\Entity\Etudiant;
 use Gestion\AbsenceBundle\Entity\Classe;
 use Gestion\AbsenceBundle\Entity\Groupe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Gestion\NoteBundle\Form\NoteType;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,43 +32,33 @@ class DefaultController extends Controller
         );
     }
 
-     public function ajouterNoteAction()
+     public function ajouterNoteAction(Request $request)
     {
         $groupe=null;
         $etudiant=null;
-        $MAT=null;
-        $matiere= $this->getDoctrine()->getEntityManager()->getRepository('GestionMatiereBundle:Matiere')->findAll();
+        $MAAT=null;
+        $matierssse= $this->getDoctrine()->getEntityManager()->getRepository('GestionMatiereBundle:Matiere')->findAll();
         $classe= $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Classe')->findAll();
-        //on rend la vue
-        return $this->render('GestionNoteBundle:Default:ajouterNote.html.twig',array('mat'=>$MAT, 'classe'=>$classe, 'groupe'=>$groupe, 'etudiant'=>$etudiant, 'matiere'=>$matiere,));
-    }
 
-    public function validerNoteAction(Request $request)
-    {
-        //on crée un nouvelle unité
-        $etudiant=$request->get('NameEtudiant');
-        $matiere=$request->get('matiere');
-        $cc=$request->get('cc');
-        $ds=$request->get('ds');
-        $exam=$request->get('exam');
-        $semestre=$request->get('semestre');
-
-        //var_dump($etudiant,$matiere,$cc,$ds,$exam);die('hello !!');
-
-        //$em = $this->getDoctrine()->getManager();
         $em = $this->container->get('doctrine')->getEntityManager();
-        $notes = new Note();
-        $notes->setMatiere($matiere);
-        $notes->setEtudiant($etudiant);
-        $notes->setCc($cc);
-        $notes->setDs($ds);
-        $notes->setExamen($exam);
-        $notes->setSemestre($semestre);
-        $notes->setEtat('En attente');
-        $em->persist($notes);
-        $em->flush();
+        //on crée un nouveau etudiant
+        $note = new Note();
+        //on recupere le formulaire
+        $form = $this->createForm(NoteType::class,$note);
+
+        //on génère le html du formulaire crée
+        $formView = $form->createView();
+        // Refill the fields in case the form is not valid.
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $donnee = $form->getData();
+            $note->setEtat('En attente');
+            $em->persist($note);
+            $em->flush();
+            return $this->redirect($this->generateUrl('list_note'));
+        }
         //on rend la vue
-        return new RedirectResponse($this->container->get('router')->generate('list_note'));
+        return $this->render('GestionNoteBundle:Default:ajouterNote.html.twig',array('form' => $formView, 'classe'=>$classe, 'groupe'=>$groupe, 'etudiant'=>$etudiant));
     }
 
     public function verifierNoteAction($id)
@@ -84,17 +74,30 @@ class DefaultController extends Controller
 
     public function modifierNoteAction($id, Request $request)
     {
-        $cc=$request->get('cc');
-        $ds=$request->get('ds');
-        $exam=$request->get('exam');
-        $matieres= $this->getDoctrine()->getEntityManager()->getRepository('GestionMatiereBundle:Matiere')->findAll();
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $groupe=null;
+        $etudiant=null;
         $classe= $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Classe')->findAll();
+
         $notes= $this->getDoctrine()->getRepository('GestionNoteBundle:Note')->find($id);
         if (null === $notes) {
             throw new NotFoundHttpException("Pas de note d'id ".$id.".");
         }
+        //on recupere le formulaire
+        $form = $this->createForm(NoteType::class,$notes);
+        //on génère le html du formulaire crée
+        $formView = $form->createView();
+        // Refill the fields in case the form is not valid.
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $donnee = $form->getData();
+            $notes->setEtat('En attente');
+            $em->persist($notes);
+            $em->flush();
+            return $this->redirect($this->generateUrl('list_note'));
+        }
         //on rend la vue
-        return $this->render('GestionNoteBundle:Default:modifierNote.html.twig',array('notes'=>$notes, 'matiere'=>$matieres,));
+        return $this->render('GestionNoteBundle:Default:modifierNote.html.twig',array('form' => $formView, 'classe'=>$classe, 'groupe'=>$groupe, 'etudiant'=>$etudiant, 'notes'=>$notes));
     }
 
     public function validerModifNoteAction($id, Request $request)

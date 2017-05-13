@@ -144,11 +144,11 @@ class DefaultController extends Controller
         $pseuudo =$userManager->findUserByUsername($pseudo);
         //var_dump($res);die('Hello');
         if(Count($pseuudo)>0) {
-            echo "<span style=\"color:#D91E18;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span> est déjà pris.</span>";
+            echo "<br><span style=\"color:#D91E18;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span> est déjà pris.</span>";
         }
         else
         {
-            echo "<span style=\"color:#00d95a;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span>  est disponible.</span>";
+            echo "<br><span style=\"color:#00d95a;\">Le pseudo <span style=\"color:#0000C0;\">$pseudo</span>  est disponible.</span>";
         }
         exit();
     }
@@ -164,11 +164,11 @@ class DefaultController extends Controller
         //var_dump($res);die('Hello');
 
         if(Count($Mail)>0) {
-            echo "<span style=\"color:#D91E18;\">L'email <span style=\"color:#0000C0;\">$email</span> est déjà pris. </span>";
+            echo "<br><span style=\"color:#D91E18;\">L'email <span style=\"color:#0000C0;\">$email</span> est déjà pris. </span>";
         }
         else
         {
-            echo "<span style=\"color:#00d95a;\">L'email <span style=\"color:#0000C0;\">$email</span> est disponible.</span></span>";
+            echo "<br><span style=\"color:#00d95a;\">L'email <span style=\"color:#0000C0;\">$email</span> est disponible.</span></span>";
         }
         exit();
     }

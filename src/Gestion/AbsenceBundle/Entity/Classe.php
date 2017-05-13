@@ -28,6 +28,11 @@ class Classe
      */
     private $intitule;
 
+    public function __toString()
+    {
+        return $this->intitule;
+    }
+
 
     /**
      * Get id

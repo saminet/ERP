@@ -1,22 +1,42 @@
 {% extends "::layoutAdmin.html.twig" %}
 
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                columnDefs: [ {
+                    targets: [ 0 ],
+                    orderData: [ 0, 1 ]
+                }, {
+                    targets: [ 1 ],
+                    orderData: [ 1, 0 ]
+                }, {
+                    targets: [ 4 ],
+                    orderData: [ 4, 0 ]
+                } ]
+            } );
+        } );
+    </script>
+
+{% endblock %}
+
 {% block body %}
     <h1>Liste des enseignants :</h1>
-    <a href="{{path('ajouter_Enseignant')}}"><button class="btn btn-success">Ajouter Enseignant</button></a>
-<table class="table">
-<thead>
-<tr>
+    <table class="table"  cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
+    <thead>
+    <tr>
     <th>Nom</th>
     <th>Prenom</th>
     <th>DateNaissance</th>
     <th>LieuNaissance</th>
     <th>Ville</th>
     <th>Sexe</th>
-    <th>Action</th>
-</tr>
-</thead>
-{% for ens in enseignant %}
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{path('ajouter_Enseignant')}}">+Nouveau Enseignant</a></th>
+    </tr>
+    </thead>
         <tbody>
+        {% for ens in enseignant %}
         <tr>
             <td><a href="{{ path('infos_Enseignant',{ 'id': ens.id }) }}">{{ ens.nom }}</a></td>
             <td>{{ ens.prenom }}</td>

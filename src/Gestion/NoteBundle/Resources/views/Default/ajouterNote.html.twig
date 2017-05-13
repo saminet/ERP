@@ -2,9 +2,9 @@
 {% block body %}
     <!-- select Class -->
     <div>
-    <form action="{{path('Valider_Ajout_Note')}}" method="post" id="myFormNiveau" class="form-inline">
+        {{ form_start(form,{'attr':{'action':path('ajout_note')}}) }}
         <!-- select Class -->
-        <div class="control-group">
+        <div class="form-group">
             <label for="class_selectbox">Classe:</label>
             <select name="NameClasse" id="class_selectbox">
                 <option value="">Choisir la Classe</option>
@@ -17,7 +17,7 @@
         </div>
         <br>
         <!-- select Groupe -->
-        <div class="control-group">
+        <div class="form-group">
             <label for="groupe_list">Groupe:</label>
             <select name="NameGroupe" id="groupe_list">
                 <option value=""></option>
@@ -30,59 +30,44 @@
         </div>
         <br>
         <!-- select Etudiant -->
-        <div class="control-group">
-            <label for="etudiant_list">Etudiant:</label>
-            <select name="NameEtudiant" id="etudiant_list" class="demo-default">
-                <option value=""></option>
-                {% if etudiant is not empty %}
-                    {% for etud in etudiant %}
-                        <option value={{etud.id}}>{{etud.nom}}{{etud.prenom}}</option>
-                    {% endfor %}
-                {% endif %}
-            </select>
+
+        <div class="form-group">
+            <label for="gestion_notebundle_note_etudiant">{{ form_label(form.etudiant) }}</label>
+            {{ form_widget(form.etudiant) }}
         </div>
         <br>
         <!-- select Semestre -->
-        <div class="control-group">
-            <label for="cc">Semestre</label>
-            <select name="semestre">
-                <option value="">Semestre 1</option>
-                <option value="">Semestre 2</option>
-            </select>
+        <div class="form-group">
+            <label for="groupe_semestre">{{ form_label(form.semestre) }}</label>
+            {{ form_widget(form.semestre) }}
         </div>
         <br>
         <!-- select Matière -->
-        <div class="control-group">
-            <select id="select-matieres" name="matiere" class="demo-default" style="width:50%">
-                <option value="">Choisir la matière...</option>
-                {% if matiere is not empty %}
-                    {% for mat in matiere %}
-                        <option value={{mat.nomMatiere}}>{{mat.nomMatiere}}</option>
-                    {% endfor %}
-                {% endif %}
-            </select>
+        <div class="form-group">
+            <label for="gestion_notebundle_note_matiere">{{ form_label(form.matiere) }}</label>
+            {{ form_widget(form.matiere) }}
         </div>
         <br>
         <!-- saisir note cc -->
-        <div class="control-group">
-            <label for="cc">Note C.C</label>
-            <input type="text" name="cc" placeholder="&nbsp;&nbsp;&nbsp;Controle Continue">
+        <div class="form-group">
+            <label for="groupe_cc">{{ form_label(form.cc) }}</label>
+            {{ form_widget(form.cc) }}
         </div>
         <br>
         <!-- saisir note ds -->
-        <div class="control-group">
-            <label for="ds">Note D.S</label>
-            <input type="text" name="ds" placeholder="&nbsp;&nbsp;&nbsp;devoir Surveillé">
+        <div class="form-group">
+            <label for="groupe_ds">{{ form_label(form.ds) }}</label>
+            {{ form_widget(form.ds) }}
         </div>
         <br>
         <!-- saisir note examen -->
-        <div class="control-group">
-            <label for="exam">Examen</label>
-            <input type="text" name="exam" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Examen Principal">
+        <div class="form-group">
+            <label for="groupe_examen">{{ form_label(form.examen) }}</label>
+            {{ form_widget(form.examen) }}
         </div>
         <br>
-        <input type="submit" value="Enregistrer" type="button" class="btn btn-success">
-    </form>
+
+        {{ form_end(form) }}
     </div>
     <!-- filtrer la liste des groupe selon la classe séléctionnée -->
     <script type="text/javascript">
@@ -115,9 +100,9 @@
                     url: "{{ url('etudiant_list_ajax_call') }}?groupe_id=" + idGroupe,
                     success: function(data) {
                         // Remove current options
-                        $('#etudiant_list').html('');
+                        $('#gestion_notebundle_note_etudiant').html('');
                         $.each(data, function(k, v) {
-                            $('#etudiant_list').append('<option value="' + v + '">' + k + '</option>');
+                            $('#gestion_notebundle_note_etudiant').append('<option value="' + v + '">' + k + '</option>');
                         });
                     }
                 });
@@ -125,43 +110,4 @@
             });
         })(jQuery);
     </script>
-    <!-- script permettant la séléction multiple des matières -->
-
-    <script>
-        var eventHandler = function(name) {
-            return function() {
-                console.log(name, arguments);
-                $('#log').append('<div><span class="name">' + name + '</span></div>');
-            };
-        };
-        var $select = $('#select-matieres').selectize({
-            create          : false,
-            plugins: ['remove_button'],
-            onChange        : eventHandler('onChange'),
-            onItemAdd       : eventHandler('onItemAdd'),
-            onItemRemove    : eventHandler('onItemRemove'),
-            onOptionAdd     : eventHandler('onOptionAdd'),
-            onOptionRemove  : eventHandler('onOptionRemove'),
-            onDropdownOpen  : eventHandler('onDropdownOpen'),
-            onDropdownClose : eventHandler('onDropdownClose'),
-            onFocus         : eventHandler('onFocus'),
-            onBlur          : eventHandler('onBlur'),
-            onInitialize    : eventHandler('onInitialize'),
-        });
-    </script>
-
-    <!-- <optgroup label="Liscence">
-         <option value="1 ère année Liscence">1 ère année Liscence</option>
-         <option value="2 ème année Liscence">2 ème année Liscence</option>
-         <option value="3 ème année Liscence">3 ème année Liscence</option>
-     </optgroup>
-     <optgroup label="Master Professionnel">
-         <option value="1 ère année Master Profesionnel">1 ère année Master Profesionnel</option>
-         <option value="2 ème année Master Profesionnel">2 ème année Master Profesionnel</option>
-     </optgroup>
-     <optgroup label="Master de Recherche">
-         <option value="1 ère année Master de Recherche">1 ère année Master de Recherche</option>
-         <option value="2 ème année Master de Recherche">2 ème année Master de Recherche</option>
-     </optgroup> -->
-
 {% endblock %}

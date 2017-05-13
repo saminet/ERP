@@ -1,31 +1,85 @@
 {% extends '::layoutAdmin.html.twig' %}
+
 {% block body %}
-    <h3>Modifier le note en <b>{{ notes.matiere }}</b> pour l'étudiant(e) : <b>{{ notes.etudiant.nom }} {{ notes.etudiant.prenom }}</b></h3><br>
+
+    <h3>Modifier le note en : <b>{{ notes.matiere }}</b> <br><br>
+    pour l'étudiant(e) : <b>{{ notes.etudiant.nom }} {{ notes.etudiant.prenom }}</b><br><br>
+    Semestre : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{ notes.semestre }}</b></h3><br>
 
     <div id="wrapper">
     <div class="demo">
-    <form action="{{ path('Valider_Modif_Note',{'id':notes.id}) }}" method="post" id="myFormNiveau" class="form-inline">
-        <!-- saisir note cc -->
-        <div class="control-group">
-            <label for="cc">Note C.C</label>
-            <input type="text" name="cc" value="{{ notes.cc }}" placeholder="&nbsp;&nbsp;&nbsp;Controle Continue">
-        </div>
-        <br>
-        <!-- saisir note ds -->
-        <div class="control-group">
-            <label for="ds">Note D.S</label>
-            <input type="text" name="ds" value="{{ notes.ds }}" placeholder="&nbsp;&nbsp;&nbsp;devoir Surveillé">
-        </div>
-        <br>
-        <!-- saisir note examen -->
-        <div class="control-group">
-            <label for="exam">Examen</label>
-            <input type="text" name="exam" value="{{ notes.examen }}" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Examen Principal">
-        </div>
+    {{ form_start(form,{'attr':{'action':path('modifier_Note', { 'id': notes.id })}}) }}
 
+    <div id="cacher">
+
+    <!-- select Class -->
+    <div class="form-group">
+        <label for="class_selectbox">Classe:</label>
+        <select name="NameClasse" id="class_selectbox">
+            <option value="">Choisir la Classe</option>
+            {% if classe is not empty %}
+                {% for clas in classe %}
+                    <option value={{clas.id}}>{{clas.intitule}}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
+    </div>
+    <br>
+    <!-- select Groupe -->
+    <div class="form-group">
+        <label for="groupe_list">Groupe:</label>
+        <select name="NameGroupe" id="groupe_list">
+            <option value=""></option>
+            {% if groupe is not empty %}
+                {% for group in groupe %}
+                    <option value={{group.id}}>{{group.intitule}}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
+    </div>
+    <br>
+    <!-- select Etudiant -->
+
+    <div class="form-group">
+        <label for="gestion_notebundle_note_etudiant">{{ form_label(form.etudiant) }}</label>
+        {{ form_widget(form.etudiant) }}
+    </div>
+
+        <!-- select Matière -->
+        <div class="form-group">
+            <label for="gestion_notebundle_note_matiere">{{ form_label(form.matiere) }}</label>
+            {{ form_widget(form.matiere) }}
+        </div>
         <br>
-        <input type="submit" value="Enregistrer" type="button" class="btn btn-success">
-    </form>
+        <!-- select Semestre -->
+        <div class="form-group">
+            <label for="groupe_semestre">{{ form_label(form.semestre) }}</label>
+            {{ form_widget(form.semestre) }}
+        </div>
+        <br>
+        <!-- fin div cacher -->
+    </div>
+
+    <!-- saisir note cc -->
+    <div class="form-group">
+        <label for="groupe_cc">{{ form_label(form.cc) }}</label>
+        {{ form_widget(form.cc) }}
+    </div>
+    <br>
+    <!-- saisir note ds -->
+    <div class="form-group">
+        <label for="groupe_ds">{{ form_label(form.ds) }}</label>
+        {{ form_widget(form.ds) }}
+    </div>
+    <br>
+    <!-- saisir note examen -->
+    <div class="form-group">
+        <label for="groupe_examen">{{ form_label(form.examen) }}</label>
+        {{ form_widget(form.examen) }}
+    </div>
+    <br>
+
+    {{ form_end(form) }}
 
     <div class="control-group">
 
@@ -64,40 +118,15 @@
                     url: "{{ url('etudiant_list_ajax_call') }}?groupe_id=" + idGroupe,
                     success: function(data) {
                         // Remove current options
-                        $('#etudiant_list').html('');
+                        $('#gestion_notebundle_note_etudiant').html('');
                         $.each(data, function(k, v) {
-                            $('#etudiant_list').append('<option value="' + v + '">' + k + '</option>');
+                            $('#gestion_notebundle_note_etudiant').append('<option value="' + v + '">' + k + '</option>');
                         });
                     }
                 });
                 return false;
             });
         })(jQuery);
-    </script>
-
-    <!-- script permettant la séléction multiple des matières -->
-
-    <script>
-        var eventHandler = function(name) {
-            return function() {
-                console.log(name, arguments);
-                $('#log').append('<div><span class="name">' + name + '</span></div>');
-            };
-        };
-        var $select = $('#select-matieres').selectize({
-            create          : false,
-            plugins: ['remove_button'],
-            onChange        : eventHandler('onChange'),
-            onItemAdd       : eventHandler('onItemAdd'),
-            onItemRemove    : eventHandler('onItemRemove'),
-            onOptionAdd     : eventHandler('onOptionAdd'),
-            onOptionRemove  : eventHandler('onOptionRemove'),
-            onDropdownOpen  : eventHandler('onDropdownOpen'),
-            onDropdownClose : eventHandler('onDropdownClose'),
-            onFocus         : eventHandler('onFocus'),
-            onBlur          : eventHandler('onBlur'),
-            onInitialize    : eventHandler('onInitialize'),
-        });
     </script>
 
 {% endblock %}

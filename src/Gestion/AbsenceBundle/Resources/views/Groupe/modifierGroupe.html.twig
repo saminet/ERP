@@ -1,0 +1,26 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form,{'attr':{'action':path('ModifierGroupe', { 'id': groupe.id })}}) }}
+
+    <div class="form-group">
+        <label for="groupe_classe">{{ form_label(form.classe) }}</label>
+        {{ form_widget(form.classe) }}
+    </div>
+
+    <div class="form-group">
+        <label for="groupe_intitule">{{ form_label(form.intitule) }}</label>
+        {{ form_widget(form.intitule) }}
+    </div>
+
+    <div class="form-group">
+        <label for="groupe_nombre">{{ form_label(form.nombre) }}</label>
+        {{ form_widget(form.nombre) }}
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
+

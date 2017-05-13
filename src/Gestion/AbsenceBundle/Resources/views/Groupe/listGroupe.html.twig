@@ -1,0 +1,53 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#table').DataTable( {
+                columnDefs: [ {
+                    targets: [ 0 ],
+                    orderData: [ 0, 1 ]
+                }, {
+                    targets: [ 1 ],
+                    orderData: [ 1, 0 ]
+                }, {
+                    targets: [ 4 ],
+                    orderData: [ 4, 0 ]
+                } ]
+            } );
+        } );
+    </script>
+
+{% endblock %}
+
+{% block body %}
+    <h2>Liste des groupes :</h2>
+    <a href="{{ path('AjoutGroupe') }}">Ajouter Nouveau Groupe</a>
+<div>
+    <table class="table"  cellpadding="0" cellspacing="0" border="0" class="display" id="table" width="100%">
+   <thead>
+      <tr>
+        <th>Classe</th>
+        <th>Nom Groupe</th>
+        <th>Nombre</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for group in groupe %}
+      <tr>
+      <td>{{group.classe}}</td>
+      <td>{{group.intitule}}</td>
+      <td>{{group.nombre}}</td>
+        
+        <td><a href="{{ path('ModifierGroupe', { 'id': group.id }) }}"><button type="button" class="btn btn-success">Modifier</button></a><a href="{{ path('deleteGroupe', { 'id': group.id }) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+{% endblock %}
+
+

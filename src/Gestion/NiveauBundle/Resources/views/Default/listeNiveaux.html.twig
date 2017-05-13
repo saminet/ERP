@@ -1,18 +1,36 @@
 {% extends '::layoutAdmin.html.twig' %}
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                columnDefs: [ {
+                    targets: [ 0 ],
+                    orderData: [ 0, 1 ]
+                }, {
+                    targets: [ 1 ],
+                    orderData: [ 1, 0 ]
+                }, {
+                    targets: [ 4 ],
+                    orderData: [ 4, 0 ]
+                } ]
+            } );
+        } );
+    </script>
 
+{% endblock %}
 {% block body %}
-    <h1>Liste des Niveaux :</h1>
-    <a href="{{path('ajouter_Niveau')}}"><button class="btn btn-success">Ajouter Niveau</button></a>
-    <table class="table">
+    <h2>Liste des Niveaux :</h2>
+    <table class="table"  cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
         <thead>
         <tr>
             <th>Niveau</th>
             <th>Filière</th>
-            <th>Action</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{path('ajouter_Niveau')}}">+Ajouter Niveau</a></th>
         </tr>
         </thead>
-        {% for niv in niveau %}
         <tbody>
+        {% for niv in niveau %}
         <tr>
             <td>{{ niv.NomNiveau }}</td>
             <td>{{ niv.filiere }}</td>

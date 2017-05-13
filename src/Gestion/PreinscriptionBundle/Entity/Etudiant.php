@@ -28,6 +28,11 @@ class Etudiant
      */
     private $nom;
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     /**
      * @var string
      *
@@ -122,16 +127,9 @@ class Etudiant
     /**
      * @var string
      *
-     * @ORM\Column(name="niveau", type="string", length=255)
+     * @ORM\Column(name="classe", type="string", length=255)
      */
-    private $niveau;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="filiere", type="string", length=255)
-     */
-    private $filiere;
+    private $classe;
 
     /**
      *@ORM\ManyToOne(targetEntity="Gestion\AbsenceBundle\Entity\Groupe", cascade={"persist"})
@@ -151,6 +149,13 @@ class Etudiant
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=255)
+     */
+    private $etat;
 
     /**
      * Get id
@@ -547,54 +552,6 @@ class Etudiant
     }
 
     /**
-     * Set niveau
-     *
-     * @param string $niveau
-     *
-     * @return Etudiant
-     */
-    public function setNiveau($niveau)
-    {
-        $this->niveau = $niveau;
-
-        return $this;
-    }
-
-    /**
-     * Get niveau
-     *
-     * @return string
-     */
-    public function getNiveau()
-    {
-        return $this->niveau;
-    }
-
-    /**
-     * Set filiere
-     *
-     * @param string $filiere
-     *
-     * @return Etudiant
-     */
-    public function setFiliere($filiere)
-    {
-        $this->filiere = $filiere;
-
-        return $this;
-    }
-
-    /**
-     * Get filiere
-     *
-     * @return string
-     */
-    public function getFiliere()
-    {
-        return $this->filiere;
-    }
-
-    /**
      * Set groupe
      *
      * @param \Gestion\AbsenceBundle\Entity\Groupe $groupe
@@ -616,5 +573,54 @@ class Etudiant
     public function getGroupe()
     {
         return $this->groupe;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Etudiant
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+
+    /**
+     * Set classe
+     *
+     * @param string $classe
+     *
+     * @return Etudiant
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
     }
 }

@@ -56,12 +56,12 @@
                      </li>
                      <li class="dropdown more-dropdown-sub">
                          <a href="javascript:;">
-                             <i class="icon-basket"></i> Cahier de texte </a>
+                             <i class="glyphicon glyphicon-list-alt"></i> Cahier de texte </a>
                          <ul class="dropdown-menu">
 
                              <li>
                                  <a href="{{ path('competencescahierdestext') }}">
-                                     <i class="icon-basket"></i> Travail à faire </a>
+                                     <i class="glyphicon glyphicon-list-alt"></i> Travail à faire </a>
                              </li>
                          </ul>
                      </li>
@@ -74,11 +74,19 @@
                      <li class="dropdown more-dropdown-sub">
                          <a href="javascript:;"> Classes/Groupes  </a>
                          <ul class="dropdown-menu">
+						 
+						    <li>
+                                 <a href="{{ path('Liste_preinscrits') }}"> Liste des preinscrits </a>
+                             </li>
+
+                             <li>
+                                 <a href="{{ path('listGroupe') }}"> Liste des groupes </a>
+                             </li>
                              <li>
                                  <a href="{{ path('listEtudiant') }}"> Liste des étudiants </a>
                              </li>
                              <li>
-                                 <a href="{{ path('list_note') }}"> Consulter la liste des notes </a>
+                                 <a href="{{ path('list_note') }}"> Liste des notes </a>
                              </li>
                              <li>
                                  <a href="{{ path('ressourcesrelvedesnotes') }}"> Relevé de notes </a>
@@ -122,7 +130,7 @@
                          <a href="javascript:;">Personnels</a>
                          <ul class="dropdown-menu">
                              <li>
-                                 <a href="{{ path('listePersonnel') }}"> Liste des Personnels </a>
+                                 <a href="{{ path('liste_Membre') }}"> Liste des Personnels </a>
                              </li>
                              <li>
                                  <a href="table_datatables_colreorder.html"> Trombinoscope des Personnels </a>
@@ -177,11 +185,16 @@
                  <ul class="dropdown-menu dropdown-menu-fw">
                      <li class="dropdown more-dropdown-sub">
                          <a href="javascript:;">
-                             <i class="icon-basket"></i> Messegerie </a>
+                             <i class="glyphicon glyphicon-envelope"></i> Messegerie </a>
                          <ul class="dropdown-menu">
                              <li>
                                  <a href="{{ path('infoSondage') }}">
-                                     <i class="icon-home"></i> Information & Sondage </a>
+                                 <i class="icon-home"></i> Information & Sondage </a>
+                             </li>
+
+                             <li>
+                                 <a href="{{ path('myapplication_contact') }}">
+                                     <i class="glyphicon glyphicon-envelope"></i> Contacter Administration </a>
                              </li>
 
                          </ul>

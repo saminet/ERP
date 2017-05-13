@@ -1,19 +1,40 @@
-{% extends '::base.html.twig' %}
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                columnDefs: [ {
+                    targets: [ 0 ],
+                    orderData: [ 0, 1 ]
+                }, {
+                    targets: [ 1 ],
+                    orderData: [ 1, 0 ]
+                }, {
+                    targets: [ 4 ],
+                    orderData: [ 4, 0 ]
+                } ]
+            } );
+        } );
+    </script>
+
+{% endblock %}
 
 {% block body %}
     <h1>Liste des salles :</h1>
-    <a href="{{ path('ajouter_Salle') }}"><button class="btn btn-success"> Ajouter </button></a>
-    <table class="table">
+    <table class="table"  cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
         <thead>
         <tr>
             <th>Nom Salle</th>
             <th>Etat</th>
             <th>Nombre Max. de chaises</th>
             <th>Etage</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{path('ajouter_Salle')}}">+Nouvelle Salle</a></th>
         </tr>
         </thead>
-        {% for sal in salle %}
         <tbody>
+        {% for sal in salle %}
         <tr>
             <td>{{ sal.nomSalle }}</td>
             <td>{{ sal.etat }}</td>

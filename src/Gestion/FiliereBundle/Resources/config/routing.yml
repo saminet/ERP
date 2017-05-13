@@ -17,24 +17,3 @@ modifier_filieres:
 supprimer_filieres:
     path:     /filieres/supprimer/{id}
     defaults: { _controller: GestionFiliereBundle:Default:supprimerFilieres }
-
-gestion_filiere_homepage:
-    path:     /
-    defaults: { _controller: GestionFiliereBundle:Default:index }
-
-liste_filieres:
-    path:     /filieres/liste
-    defaults: { _controller: GestionFiliereBundle:Default:listFilieres }
-
-ajouter_filieres:
-    path:     /filieres/ajouter
-    defaults: { _controller: GestionFiliereBundle:Default:ajouterFiliere }
-
-modifier_filieres:
-    path:     /filieres/modifier/{id}
-    defaults: { _controller: GestionFiliereBundle:Default:modifierFilieres }
-
-supprimer_filieres:
-    path:     /filieres/supprimer/{id}
-    defaults: { _controller: GestionFiliereBundle:Default:supprimerFilieres }
-

@@ -58,3 +58,19 @@ ValiderModifClasse:
 deleteClasse:
     path:     /classe/delete/{id}
     defaults: { _controller: GestionAbsenceBundle:Classe:deleteClasse }
+
+listGroupe:
+    path:     /groupe
+    defaults: { _controller: GestionAbsenceBundle:Groupe:listGroupe }
+
+AjoutGroupe:
+    path:     /groupe/ajouter
+    defaults: { _controller: GestionAbsenceBundle:Groupe:AjoutGroupe }
+
+ModifierGroupe:
+    path:     /groupe/modifier/{id}
+    defaults: { _controller: GestionAbsenceBundle:Groupe:modifierGroupe }
+
+deleteGroupe:
+    path:     /groupe/delete/{id}
+    defaults: { _controller: GestionAbsenceBundle:Groupe:deleteGroupe }

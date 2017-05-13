@@ -1,42 +1,32 @@
 {% extends "::layoutAdmin.html.twig" %}
 
-{% block javascript %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
-
-    <script>
-        $(".loading").hide();
-        $("#form_recherche").submit(function(){
-            $(".loading").show();
-            var motcle = $("#motCle").val();
-            var DATA = 'motcle=' + motcle;
-            $.ajax({
-                type: "POST",
-                url: "{{ path('etudiant_rechercher')}}",
-                data: DATA,
-                cache: false,
-                success: function(data){
-                    $('#resultats_recherche').html(data);
-                    $(".loading").hide();
-                }
-            });
-            return false;
-        });
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                columnDefs: [ {
+                    targets: [ 0 ],
+                    orderData: [ 0, 1 ]
+                }, {
+                    targets: [ 1 ],
+                    orderData: [ 1, 0 ]
+                }, {
+                    targets: [ 4 ],
+                    orderData: [ 4, 0 ]
+                } ]
+            } );
+        } );
     </script>
 
 {% endblock %}
 
+
 {% block body %}
 
-    <form id="form_recherche" action="{{ path('etudiant_rechercher') }}" method="post">
-        <input type="text" id="motCle" class="form-control" name="motcle" placeholder="Chercher un(e) étudiant(e)  . . .">
-        <input type="submit" value="Rechercher" />
-    </form>
+                <h2>Liste des étudiants :</h2>
 
-
-                <h1>Liste des étudiants :</h1>
-                <a href="{{path('ajouter_Etudiant')}}"><button class="btn btn-success">Ajouter Etudiant</button></a>
-
-                <table class="table">
+                <table class="table"  cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
                     <thead>
                     <tr>
                         <th>Nom</th>
@@ -45,11 +35,11 @@
                         <th>LieuNaissance</th>
                         <th>Ville</th>
                         <th>Sexe</th>
-                        <th>Action</th>
+                        <th>&nbsp;&nbsp;&nbsp;<a href="{{path('ajouter_Etudiant')}}">+Nouveau Etudiant</a></th>
                     </tr>
                     </thead>
-                    {% for etd in etudiants %}
                     <tbody>
+                    {% for etd in etudiants %}
                     <tr>
                         <td><a href="{{ path('infosEtudiant', { 'id': etd.id }) }}">{{ etd.nom }}</a></td>
                         <td>{{ etd.prenom }}</td>

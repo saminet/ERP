@@ -27,8 +27,8 @@ class DefaultController extends Controller
         $em = $this->container->get('doctrine')->getEntityManager();
 
         $preinscrit1 = new Preinscrit();
-        $preinscrit1->setNom('Davide');
-        $preinscrit1->setPrenom('Crockett');
+        $preinscrit1->setNom('Khaldi');
+        $preinscrit1->setPrenom('Brahim');
         $preinscrit1->setDateNaissance(new \DateTime("2011-07-23 06:12:33"));
         $preinscrit1->setLieuNaissance('Paris');
         $preinscrit1->setNationalite('Francaise');
@@ -37,7 +37,7 @@ class DefaultController extends Controller
         $preinscrit1->setSexe('Masculain');
         $preinscrit1->setAdresse('Paris');
         $preinscrit1->setTel('123456');
-        $preinscrit1->setEmail('david2000@gmail.com');
+        $preinscrit1->setEmail('Khaldi001@gmail.com');
         $preinscrit1->setDiplome('Metrise');
         $preinscrit1->setEtablissement('Sorbon');
         $preinscrit1->setAnneeObtention(new \DateTime("2011-07-23 06:12:33"));
@@ -150,10 +150,8 @@ class DefaultController extends Controller
         $etudiant->setDiplome($preinscrit->getDiplome());
         $etudiant->setEtablissement($preinscrit->getEtablissement());
         $etudiant->setAnneeObtention($preinscrit->getAnneeObtention());
-        $etudiant->setNiveau($preinscrit->getNiveau());
-        $etudiant->setFiliere($preinscrit->getFormation());
-        //$etudiant->setClasse($preinscrit->getNiveau().' '.$preinscrit->getFormation());
-        //$etudiant->setGroupe('Groupe 1');
+        $etudiant->setClasse($preinscrit->getNiveau().' '.$preinscrit->getFormation());
+        $etudiant->setEtat('Inactif');
         $etudiant->setLogin($preinscrit->getEmail());
         $etudiant->setPassword($preinscrit->getNumCinPass());
 
@@ -166,7 +164,7 @@ class DefaultController extends Controller
         $hash = password_hash($preinscrit->getNumCinPass(),PASSWORD_BCRYPT,['cost' => 13]) ;
         $user->setPassword($hash);
         $user->setEmail($preinscrit->getEmail());
-        $user->setEnabled(true);
+        $user->setEnabled(false);
         $roles = 'ROLE_ETUDIANT';
         $user->setRoles(array($roles));
         $userManager->updateUser($user);
@@ -209,6 +207,8 @@ class DefaultController extends Controller
 
     public function ajouterEtudiantAction(Request $request)
     {
+        $groupe=null;
+        $classe= $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Classe')->findAll();
         $em = $this->container->get('doctrine')->getEntityManager();
         //on crée un nouveau etudiant
         $etudiant = new Etudiant();
@@ -221,6 +221,8 @@ class DefaultController extends Controller
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $donnee = $form->getData();
+            $etat = $donnee->getEtat();
+            //var_dump($etat);die('HELLO');
             $username = $donnee->getLogin();
             //var_dump($username);die('Hello');
             $password = $donnee->getPassword();
@@ -237,14 +239,16 @@ class DefaultController extends Controller
             $user->setEnabled(true);
             $user->setRoles(array($roles));
             $userManager->updateUser($user);
-            
+
+            //var_dump(array($donnee->getClasse()));die('Hello');
+
             $em->persist($etudiant);
             $em->flush();
             return $this->redirect($this->generateUrl('listEtudiant'));
         }
         //on rend la vue
         return $this->render('GestionPreinscriptionBundle:Default:ajouterEtudiant.html.twig',array(
-            'form'   => $formView));
+            'form'   => $formView, 'classe'   => $classe, 'groupe'   => $groupe));
     }
 
     public function verifLoginAction(Request $request)
@@ -303,17 +307,23 @@ class DefaultController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
             $donnee = $form->getData();
-            $niveau = $donnee->getNiveau();
-            $filiere = $donnee->getFiliere();
+            $etat = $donnee->getEtat();
             $username = $donnee->getLogin();
             $password = $donnee->getPassword();
             $email = $donnee->getEmail();
             $roles = 'ROLE_ETUDIANT';
-            //var_dump($username,$Old_usr,$roles,$password,$email,$roles);die('Hello');
+            //var_dump($username,$Old_usr,$roles,$password,$email,$roles,$etat);die('Hello');
             $userManager = $this->get('fos_user.user_manager');
             $user = $userManager->findUserByUsername($Old_usr);
-            if ($user instanceof User) {
-                throw new HttpException(409, 'Login déjà utilisé');
+
+            if ($etat=='Inactif') {
+                $user->setUsername($username);
+                $hash = password_hash($password,PASSWORD_BCRYPT,['cost' => 13]) ;
+                $user->setPassword($hash);
+                $user->setEmail($email);
+                $user->setEnabled(false);
+                $user->setRoles(array($roles));
+                $userManager->updateUser($user);
             }
             else{
             $user->setUsername($username);
@@ -327,9 +337,6 @@ class DefaultController extends Controller
             // Inutile de persister ici, Doctrine connait déjà notre annonce
             $em->flush();
         }
-
-            $request->getSession()->getFlashBag()->add('notice', 'Les données de l\'étudiant'.$etudiant->getId().' est bien modifiée.');
-
             return $this->redirectToRoute('listEtudiant', array('id' => $etudiant->getId()));
         }
 
@@ -608,6 +615,19 @@ class DefaultController extends Controller
         $em->remove($etudiant);
         $em->flush();
         return new RedirectResponse($this->get('router')->generate('listParent'));
+    }
+
+    public function ajaxGetGroupeAction(Request $request) {
+        // Get the classe ID
+        $id = $request->query->get('classe_id');
+        $result = array();
+        // Return a list of groups, based on the selected class
+        $repo = $this->getDoctrine()->getEntityManager()->getRepository('GestionAbsenceBundle:Groupe');
+        $groupe = $repo->findBy(array('classe' => $id), array('intitule' => 'asc'));
+        foreach ($groupe as $group) {
+            $result[$group->getIntitule()] = $group->getId();
+        }
+        return new JsonResponse($result);
     }
 
 

@@ -95,7 +95,7 @@
 {% endblock %}
 
 {% block body %}
-
+    <a href="{{path('listEtudiant')}}">Revenir à la liste des étudiants</a>
     {{ form_start(form,{'attr':{'action':path('modifier_Etudiant',{ 'id': etudiant.id })}}) }}
 
     <div class="form-group">
@@ -165,13 +165,13 @@
     </div>
 
     <div class="form-group">
-        <label for="etudiant_niveau">{{ form_label(form.niveau) }}</label>
-        {{ form_widget(form.niveau) }}
+        <label for="etudiant_classe">{{ form_label(form.classe) }}</label>
+        {{ form_widget(form.classe) }}
     </div>
 
     <div class="form-group">
-        <label for="etudiant_filiere">{{ form_label(form.filiere) }}</label>
-        {{ form_widget(form.filiere) }}
+        <label for="etudiant_groupe">{{ form_label(form.groupe) }}</label>
+        {{ form_widget(form.groupe) }}
     </div>
 
     <div class="form-group">
@@ -195,6 +195,25 @@
     </div>
 
     {{ form_end(form) }}
-
+    <!-- filtrer la liste des groupe selon la classe séléctionnée -->
+    <script type="text/javascript">
+        (function($) {
+            $('#etudiant_classe').change(function(){
+                var idClasse = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ url('groupe_list_ajax_call') }}?classe_id=" + idClasse,
+                    success: function(data) {
+                        // Remove current options
+                        $('#etudiant_groupe').html('');
+                        $.each(data, function(k, v) {
+                            $('#etudiant_groupe').append('<option value="' + v + '">' + k + '</option>');
+                        });
+                    }
+                });
+                return false;
+            });
+        })(jQuery);
+    </script>
 
 {% endblock %}

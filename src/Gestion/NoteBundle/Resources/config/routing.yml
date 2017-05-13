@@ -3,16 +3,12 @@ gestion_note_homepage:
     defaults: { _controller: GestionNoteBundle:Default:index }
 
 list_note:
-    path:     /note
+    path:     /notes
     defaults: { _controller: GestionNoteBundle:Default:listeNote }
 
 ajout_note:
     path:     /note/ajouter
     defaults: { _controller: GestionNoteBundle:Default:ajouterNote }
-
-Valider_Ajout_Note:
-    path:     /note/valider
-    defaults: { _controller: GestionNoteBundle:Default:validerNote }
 
 Valider_Note:
     path:     /note/verifier/{id}
