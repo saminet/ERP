@@ -2,47 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f93247d8-89e1-4ca9-a2ff-eac0d5f783f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Controller/GroupeController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Form/GroupeType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/views/Groupe/ajoutGroupe.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/views/Groupe/listGroupe.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/views/Groupe/modifierGroupe.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/layoutAdmin.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/layoutAdmin.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/listMembre.html.twig" afterPath="$PROJECT_DIR$/src/Admin/AdminBundle/Resources/views/Default/listMembre.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Entity/Classe.php" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Entity/Classe.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Entity/Groupe.php" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Entity/Groupe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Gestion/AbsenceBundle/Resources/config/routing.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/listeEns.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/EnseignantBundle/Resources/views/Default/listeEns.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/ajouterFiliere.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/ajouterFiliere.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/listeFiliere.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/listeFiliere.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/modifierFilieres.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/FiliereBundle/Resources/views/Default/modifierFilieres.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Entity/Matiere.php" afterPath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Entity/Matiere.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/listMatiere.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/MatiereBundle/Resources/views/Default/listMatiere.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/listeNiveaux.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NiveauBundle/Resources/views/Default/listeNiveaux.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Form/NoteType.php" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Form/NoteType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/ajouterNote.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/ajouterNote.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/listeNote.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/listeNote.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/modifierNote.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/modifierNote.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/resultSearch.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/NoteBundle/Resources/views/Default/resultSearch.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Etudiant.php" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Entity/Etudiant.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/EtudiantType.php" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Form/EtudiantType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/ajouterEtudiant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/ajouterEtudiant.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/contact.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/contact.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosEtudiant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/infosEtudiant.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listEtd.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listEtd.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listParents.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listParents.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listePre.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/listePre.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/modifierEtudiant.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/PreinscriptionBundle/Resources/views/Default/modifierEtudiant.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/SalleBundle/Resources/views/Default/listeSalles.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/SalleBundle/Resources/views/Default/listeSalles.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/listeUE.html.twig" afterPath="$PROJECT_DIR$/src/Gestion/UEBundle/Resources/views/Default/listeUE.html.twig" />
     </list>
     <ignored path="ERP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -194,6 +167,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -209,6 +183,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ERP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bundles" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -870,7 +876,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -1000,7 +1005,10 @@
       <workItem from="1494570359267" duration="6788000" />
       <workItem from="1494595662337" duration="4501000" />
       <workItem from="1494604755820" duration="20022000" />
-      <workItem from="1494671864460" duration="230000" />
+      <workItem from="1494671864460" duration="339000" />
+      <workItem from="1494780976899" duration="1056000" />
+      <workItem from="1494828439306" duration="165000" />
+      <workItem from="1494830043799" duration="110000" />
     </task>
     <task id="LOCAL-00001" summary="Fixing matiers list with jquery">
       <created>1492414128624</created>
@@ -1086,15 +1094,22 @@
       <option name="project" value="LOCAL" />
       <updated>1494503825914</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixing Login Layout">
+      <created>1494672115145</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1494672115145</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="690063000" />
+    <option name="totallyTimeSpent" value="691503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29355782" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1349,7 +1364,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1357,7 +1371,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="78" column="86" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1365,7 +1378,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1373,7 +1385,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1381,7 +1392,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="33" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1406,9 +1416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="308" column="12" selection-start-line="308" selection-start-column="12" selection-end-line="309" selection-end-column="39" />
-          <folding>
-            <element signature="e#58#109#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1416,7 +1423,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="33" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1424,7 +1430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1439,7 +1444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1447,7 +1451,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="94" selection-start-line="28" selection-start-column="94" selection-end-line="28" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1455,7 +1458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1470,7 +1472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="78" selection-start-line="4" selection-start-column="78" selection-end-line="4" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1478,7 +1479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="71" column="66" selection-start-line="71" selection-start-column="66" selection-end-line="71" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1486,9 +1486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
-          <folding>
-            <element signature="e#49#84#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1496,7 +1493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="69" column="14" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1504,7 +1500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1512,7 +1507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1520,7 +1514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="64" column="162" selection-start-line="64" selection-start-column="162" selection-end-line="64" selection-end-column="162" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1528,7 +1521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1536,7 +1528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>

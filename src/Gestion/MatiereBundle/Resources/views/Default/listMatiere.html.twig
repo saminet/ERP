@@ -43,7 +43,7 @@
       <td>{{matiere.credit}}</td>
       <td>{{matiere.classe}}</td>
         
-        <td><a href="{{ path('modifierMatiere', { 'id': matiere.id }) }}"><button type="button" class="btn btn-success">Modifier</button></a><a href="{{ path('deleteMatiere', { 'id': matiere.id })}}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+        <td><a href="{{ path('modifierMatiere', { 'id': matiere.id }) }}"><button type="button" class="btn btn-success">Modifier</button></a><a href="{{ path('deleteMatiere', { 'id': matiere.id })}}"><button type="button" class="btn btn-danger" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">Supprimer</button></a>
       </tr>
     {% endfor %}
     </tbody>

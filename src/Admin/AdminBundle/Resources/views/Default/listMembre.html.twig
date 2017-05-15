@@ -22,7 +22,7 @@
             <td>{{ mem.lieuxNaissance }}</td>
             <td>{{ mem.ville }}</td>
             <td>{{ mem.sexe }}</td>
-            <td><a href="{{ path('modifier_Membre',{'id':mem.id}) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('DeletetMembre',{'id':mem.id,'username':mem.login}) }}"><button class="btn btn-danger">Supprimer</button></a></td>
+            <td><a href="{{ path('modifier_Membre',{'id':mem.id}) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('DeletetMembre',{'id':mem.id,'username':mem.login}) }}"><button class="btn btn-danger" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">Supprimer</button></a></td>
         </tr>
         {% else %}
             <p>Aucun personnel n'a été trouvé.</p>

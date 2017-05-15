@@ -21,7 +21,7 @@
             <td>{{ ue.creditUnite }}</td>
             <td>{{ ue.niveau.nomNiveau }}</td>
             <td>{% for matiere in ue.matieres %}- {{matiere.nomMatiere}}<br>{% endfor %}</td>
-            <td><a href="{{path('modifier_UE',{'id':ue.id})}}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimer_UE', { 'id' : ue.id }) }}"><button class="btn btn-danger">Supprimer</button></a>
+            <td><a href="{{path('modifier_UE',{'id':ue.id})}}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimer_UE', { 'id' : ue.id }) }}"><button class="btn btn-danger" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">Supprimer</button></a>
         </tr>
         {% else %}
             <p>Aucune Unité n'a été trouvée.</p>

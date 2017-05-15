@@ -38,7 +38,7 @@
             <td>{{ fil.id }}</td>
             <td>{{ fil.intitule }}</td>
 			<td>{{ fil.niveau }}</td>
-            <td><a href="{{ path('modifier_filieres', { 'id': fil.id }) }}"><button class="btn btn-success">Modifier</button></a><a href="{{ path('supprimer_filieres', { 'id': fil.id }) }}"><button class="btn btn-danger">Supprimer</button></a>
+            <td><a href="{{ path('modifier_filieres', { 'id': fil.id }) }}"><button class="btn btn-success">Modifier</button></a><a href="{{ path('supprimer_filieres', { 'id': fil.id }) }}"><button class="btn btn-danger" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">Supprimer</button></a>
         </tr>
         {% else %}
             <p>Aucune filières n'a été trouvée.</p>

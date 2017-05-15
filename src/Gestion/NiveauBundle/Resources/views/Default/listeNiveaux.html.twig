@@ -34,7 +34,7 @@
         <tr>
             <td>{{ niv.NomNiveau }}</td>
             <td>{{ niv.filiere }}</td>
-            <td><a href="{{ path('modifier_Niveau', { 'id': niv.id }) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimer_Niveau', { 'id': niv.id }) }}"><button class="btn btn-danger">Supprimer</button></a>
+            <td><a href="{{ path('modifier_Niveau', { 'id': niv.id }) }}"><button class="btn btn-primary">Modifier</button></a><a href="{{ path('supprimer_Niveau', { 'id': niv.id }) }}"><button class="btn btn-danger" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">Supprimer</button></a>
         </tr>
         {% else %}
             <p>Aucune Niveau n'a été trouvée.</p>

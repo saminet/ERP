@@ -53,7 +53,7 @@
                     <a href="{{ path('Valider_Note',{'id':note.id}) }}">
                         <button class="btn btn-success">Valider</button></a>
                     <a href="{{ path('Supprimer_Note',{'id':note.id}) }}">
-                        <button class="btn btn-danger">Supprimer</button></a>
+                        <button class="btn btn-danger" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">Supprimer</button></a>
                 </td>
             </tr>
             {% else %}
